@@ -1,0 +1,114 @@
+ <div class="panel">
+  <div class="content-header">
+      <div class="col-md-12">
+        <span class="text-center">
+          <h3>
+            Pay Computation
+          </h3>
+        </span>
+        <p class="text-center back-pre-btn income-title">
+          <span class="pull-left"><%= link_to "<<", earnings_pay_computation_path(date: date - 1.year),class: "btn btn-default", remote: true %></span>
+          <span><b>Apr <%= date.strftime("%Y") %></b></span> - 
+          <span><b>Mar <%= next_year.strftime("%Y") %></b></span>
+          <span class="pull-right"><%= link_to ">>", earnings_pay_computation_path(date: date + 1.year),class: "btn btn-default", remote: true %></span>
+        </p>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3></h3>
+    </div>
+    <div class="col-md-12">
+      <table class="table table-striped com-border">
+        <thead class="thead-default my-definition">
+          <tr>
+            <th>Month</th>
+            <th>Basic</th>
+            <th>HRA</th>
+            <th>Special Allowance</th>
+            <th>Mobile Allowance</th>
+            <th>Medical Allowance</th>
+            <th>Employeer PF</th>
+            <th>Employee PF</th>
+            <th>PF(Including Arrears, if any)</th>
+            <th>Income Tax(Including Arrears, if any)</th>
+            <th>HRA Exemption</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Actuals</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <% previous_month.each do |p| %>
+            <tr>
+              <td><%= Date::MONTHNAMES[p.month_year.month].first(3) %></td>
+              <td><%= p.basic_pay.present? ? p.basic_pay : "--" %></td>
+              <td><%= p.hra.present? ? p.hra : "--" %></td>
+              <td><%= p.special_allowance.present? ? p.special_allowance : "--" %></td>
+              <td><%= p.telephone_allowance.present? ? p.telephone_allowance : "--" %></td>
+              <td><%= p.medical_allowance.present? ? p.medical_allowance : "--" %></td>
+              <td><%= p.pf_employeer_contribution.present? ? p.pf_employeer_contribution : "--" %></td>
+              <td><%= p.pf_employee_contribution.present? ? p.pf_employee_contribution : "--" %></td>
+              <td></td>
+              <td><%= p.tax_deduction.present? ? p.tax_deduction : "--" %></td>
+              <td></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td><b>Estimates</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <% next_month.each_with_index do |n, index| %>
+            <tr>
+              <td>
+                <span><%= Date::MONTHNAMES[n.month_year.month].first(3) %></span>
+              </td>
+              <td><%= n.basic_pay%></td>
+              <td><%= n.hra %></td>
+              <td><%= n.estimate_special_allowance %></td>
+              <td><%= n.estimate_mobile %></td>
+              <td><%= n.estimate_medical %></td>
+              <td><%= n.pf_employeer_contribution %></td>
+              <td><%= n.pf_employee_contribution %></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td>Total</td>
+            <td><%= employee_monthly_ctc.collect(&:basic_pay).compact.sum %></td>
+            <td><%= employee_monthly_ctc.collect(&:hra).compact.sum %></td>
+            <td><%= previous_month.collect(&:special_allowance).compact.sum + next_month.collect(&:estimate_special_allowance).compact.sum %></td>
+            <td><%= previous_month.collect(&:telephone_allowance).compact.sum %></td>
+            <td><%= previous_month.collect(&:medical_allowance).compact.sum %></td>
+            <td><%= employee_monthly_ctc.collect(&:pf_employeer_contribution).compact.sum %></td>
+            <td><%= employee_monthly_ctc.collect(&:pf_employee_contribution).compact.sum %></td>
+            <td></td>
+            <td><%= employee_monthly_ctc.collect(&:tax_deduction).compact.sum %></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

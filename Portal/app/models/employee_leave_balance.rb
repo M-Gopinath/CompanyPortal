@@ -1,0 +1,2 @@
+class EmployeeLeaveBalance < ApplicationRecord
+end

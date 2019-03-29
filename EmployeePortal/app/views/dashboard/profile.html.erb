@@ -1,0 +1,152 @@
+<section class="content-header">
+  <h1>
+    Profile Details
+  </h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#personalModal">
+        <div class="info-box">
+          <span class="info-box-icon bg-aqua"><i class="fa fa-info-circle" aria-hidden="true"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Personal Detail</span>
+          </div>
+        </div>
+      </button>
+      <div id="personalModal" class="modal fade" role="dialog">
+        <%= render partial: 'employee_personal_details/form', locals: {personal_detail: employee_personal_record } %>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#employeeAddress">
+        <div class="info-box">
+          <span class="info-box-icon bg-red">
+          <i class="fa fa-address-book" aria-hidden="true"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Address</span>
+          </div>
+        </div>
+      </button>
+      <div id="employeeAddress" class="modal fade" role="dialog">
+        <%= render partial: "employee_addresses/address_detail", locals: {employee: current_employee} %>
+      </div>
+    </div>
+    <div class="clearfix visible-sm-block"></div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      
+      <button class="data-modal-btn" data-toggle="modal" data-target="#emergencyContact">
+        <div class="info-box">
+          <span class="info-box-icon bg-green"><i class="fa fa-ambulance" aria-hidden="true"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Emergency Contact</span>
+          </div>
+        </div>
+      </button>
+      <div id="emergencyContact" class="modal fade" role="dialog">
+        <%= render partial: "employee_emergency_contact_details/contact_detail", locals: {employee: current_employee} %>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#employeeLanguage">
+        <div class="info-box">
+          <span class="info-box-icon bg-yellow"><i class="fa fa-language" aria-hidden="true"></i></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Language </span>
+          </div>
+        </div>
+      </button>
+      <div id="employeeLanguage" class="modal fade" role="dialog">
+        <%= render partial: "employee_languages/language_detail", locals: {employee: current_employee} %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#employeeQualification">
+        <div class="info-box">
+          <span class="info-box-icon bg-aqua"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Qualification</span>
+          </div>
+        </div>
+      </button>
+      <div id="employeeQualification" class="modal fade" role="dialog">
+        <%= render partial: "employee_qualification_details/qualification_detail", locals: {employee: current_employee} %>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#employeeProfessional">
+        <div class="info-box">
+          <span class="info-box-icon bg-red"><i class="fa fa-info" aria-hidden="true"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Professional Detail</span>
+          </div>
+        </div>
+      </button>
+      <div id="employeeProfessional" class="modal fade" role="dialog">
+        <%= render partial: "employee_professional_details/professional_detail", locals: {employee: current_employee} %>
+      </div>
+    </div>
+    <div class="clearfix visible-sm-block"></div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#edicationCertificate">
+        <div class="info-box">
+          <span class="info-box-icon bg-green"><i class="fa fa-certificate" aria-hidden="true"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Education Certificate</span>
+          </div>
+        </div>
+      </button>
+      <div id="edicationCertificate" class="modal fade" role="dialog">
+        <%= render partial: "employee_education_details/education_detail", locals: {employee: current_employee} %>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#employmentCertificate">
+        <div class="info-box">
+          <span class="info-box-icon bg-yellow"><i class="fa fa-shield" aria-hidden="true"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text"> Employment Certificate</span>
+          </div>
+        </div>
+      </button>
+      <div id="employmentCertificate" class="modal fade" role="dialog">
+        <%= render partial: "employee_employment_details/employment_detail", locals: {employee: current_employee} %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#employeeBank">
+        <div class="info-box">
+          <span class="info-box-icon bg-aqua"><i class="fa fa-university" aria-hidden="true"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Bank</span>
+          </div>
+        </div>
+      </button>
+      <div id="employeeBank" class="modal fade" role="dialog">
+      <%= render partial: "employee_bank_details/bank_detail", locals: {employee: current_employee} %>
+    </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#employeeAgreement">
+        <div class="info-box">
+          <span class="info-box-icon bg-red"><i class="fa fa-files-o" aria-hidden="true"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Agreeements</span>
+          </div>
+        </div>
+      </button>
+      <div id="employeeAgreement" class="modal fade" role="dialog">
+        <%= render "employee_agreements/employee_agreements" %>
+      </div>
+    </div>
+    <div class="clearfix visible-sm-block"></div>
+  </div>
+</section>
+
+
+
+

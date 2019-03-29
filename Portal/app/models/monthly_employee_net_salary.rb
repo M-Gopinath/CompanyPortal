@@ -1,0 +1,2 @@
+class MonthlyEmployeeNetSalary < ApplicationRecord
+end

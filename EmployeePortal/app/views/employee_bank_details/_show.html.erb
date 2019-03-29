@@ -1,0 +1,32 @@
+<div class="modal-dialog">
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Bank Detail</h4>
+    </div>
+    <div class="modal-body">
+      <div class="emp_bank">
+        <p>
+          <strong>Account number:</strong>
+          <%= bank_detail.account_number %>
+        </p>
+
+        <p>
+          <strong>Bank name:</strong>
+          <%= bank_detail.bank_name %>
+        </p>
+
+        <p>
+          <strong>Bank branch:</strong>
+          <%= bank_detail.bank_branch %>
+        </p>
+
+        <p>
+          <strong>Ifsc code:</strong>
+          <%= bank_detail.ifsc_code %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

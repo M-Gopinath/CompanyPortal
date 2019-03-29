@@ -1,0 +1,84 @@
+ <section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>Share Holder</h1><br />
+        </div>
+        <div class="col-md-4 content-header">
+        </div>
+        <div class="col-md-3 content-header">
+        </div>
+        <div class="header-border"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <p align="center">Share Holder create</p>
+        <%= form_for :share_holder, url: seed_table_create_share_holder_path do |f| %>
+        <div class="modal-body">
+          <div class="errors"></div>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, required: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :percentage %>
+            <%= f.number_field :percentage, required: true, class: 'form-control' %>
+          </div>
+        </div>
+        <%= f.submit class: "btn btn-primary pd-10" %>
+        <%end%>
+      </div>
+      <div class="col-md-7">
+        <p align="center">Share Holder List</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Share Holder Name</th>
+              <th>Share Holder Percentage</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @share_holders.each do |share_holder| %>
+            <tr>
+              <td><%= share_holder.name %></td>
+              <td><%= share_holder.percentage %></td>
+              <td class="action-link">
+                <a href="" data-toggle="modal" data-target="#share_holder_id_<%= share_holder.id%>">
+                  <i class="fa fa-user-circle-o"></i>
+                </a>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% @share_holders.each do |share_holder| %>
+  <!-- Modal -->
+  <div id="share_holder_id_<%= share_holder.id%>" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Share Holder</h4>
+        </div>
+        <div class="modal-body">
+          <p>Share Holder Name : <span><%= share_holder.name %></span></p>
+          <p>Share Holder Percentage : <span><%= share_holder.percentage %></span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% end %>

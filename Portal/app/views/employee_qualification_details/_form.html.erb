@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-2">
+    <label for="Education Degree">Education Degree</label>
+  </div>
+  <div class="col-md-2">
+    <label for="Year of Passing">Year of Passing</label>
+  </div>
+  <div class="col-md-2">
+    <label for="Percentage">Percentage</label>
+  </div>
+  <div class="col-md-2">
+    <label for="Institution Name">Institution Name</label>
+  </div>
+  <div class="col-md-2">
+    <label for="University Board">University Board</label>
+  </div>
+  <div class="col-md-2">
+    <label for="Actions">Actions</label>
+  </div>
+</div>
+<% employee_qualification_details.each do |uq| %>
+  <div class="quali-certificate_<%= uq.id %>">
+    <div class="row">
+      <div class="col-md-2">
+        <%= uq.education_degree %>
+      </div>
+      <div class="col-md-2">
+        <%= uq.year_of_passing %>
+      </div>
+      <div class="col-md-2">
+        <%= uq.percentage %> %
+      </div>
+      <div class="col-md-2">
+        <%= uq.institution_name %>
+      </div>
+      <div class="col-md-2">
+        <%= uq.university_board %>
+      </div>
+      <div class="col-md-1">
+        <%= link_to 'Edit', edit_employee_qualification_detail_path(uq), remote: true %>
+      </div>
+      <div class="col-md-1">
+        <%= link_to employee_qualification_detail_path(uq, employee_id: employee.id), method: :delete, data: { confirm: 'Are you sure?' }, remote: true do %>
+          <i class="fa fa-times" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="edu-cert-form">
+  <%= render partial: "employee_qualification_details/new_form", locals: {employee_qualification_detail: employee_qualification_detail, employee: employee} %>
+</div>

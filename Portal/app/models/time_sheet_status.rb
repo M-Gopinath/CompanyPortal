@@ -1,0 +1,2 @@
+class TimeSheetStatus < ApplicationRecord
+end

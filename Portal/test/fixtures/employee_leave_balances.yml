@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 
+  leave_type_id: 1
+  leave_balance: 1.5
+  current_month: 1
+  current_year: 1
+
+two:
+  employee_id: 
+  leave_type_id: 1
+  leave_balance: 1.5
+  current_month: 1
+  current_year: 1

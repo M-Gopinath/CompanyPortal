@@ -1,0 +1,12 @@
+<% if @task.errors.present? %>
+	$(".errors").text("");
+  <% @task.errors.full_messages.each do |error| %>
+    $(".errors").append("<li><%= error %></li>");
+  <% end %>
+<%else%>
+	// $('#GSCCModal<%= @task.id %>').modal('toggle');
+	// $('.client_project_list').html("<%= escape_javascript(render 'project_listings/task_management') %>");
+	// $('#GSCCModal<%= @task.id %>').html("<%= escape_javascript(render partial: 'project_listings/task_comments', locals: {project: @project,task: @task}) %>");
+	$('.form_comments').html("<%= escape_javascript(render partial: 'project_listings/form_comments', locals: {task: @task,project: @project}) %>");
+	// $('#GSCCModal<%= @task.id %>').modal('toggle');
+<%end%>

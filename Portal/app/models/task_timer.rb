@@ -1,0 +1,2 @@
+class TaskTimer < ApplicationRecord
+end

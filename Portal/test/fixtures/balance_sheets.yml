@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  month_year: 2017-05-12
+  office_income: 9.99
+  office_expense: 9.99
+  office_net_salary: 9.99
+  office_overall_salary: 9.99
+  diff_net_overall_salary: 9.99
+  office_share: 9.99
+  gopi_share: 9.99
+  saran_share: 9.99
+  office_profit_loss: 9.99
+  gopi_profit_loss: 9.99
+  saran_profit_loss: 9.99
+  amount_received_by_gopi: 9.99
+  amount_received_by_saran: 9.99
+  amount_spent_by_gopi: 9.99
+  amount_spent_by_saran: 9.99
+  balance_money_to_gopi: 9.99
+  balance_money_to_saran: 9.99
+  gopi_total_pay: 9.99
+  saran_total_pay: 9.99
+  final_total_pay_to_gopi: 9.99
+  final_total_pay_to_saran: 9.99
+
+two:
+  month_year: 2017-05-12
+  office_income: 9.99
+  office_expense: 9.99
+  office_net_salary: 9.99
+  office_overall_salary: 9.99
+  diff_net_overall_salary: 9.99
+  office_share: 9.99
+  gopi_share: 9.99
+  saran_share: 9.99
+  office_profit_loss: 9.99
+  gopi_profit_loss: 9.99
+  saran_profit_loss: 9.99
+  amount_received_by_gopi: 9.99
+  amount_received_by_saran: 9.99
+  amount_spent_by_gopi: 9.99
+  amount_spent_by_saran: 9.99
+  balance_money_to_gopi: 9.99
+  balance_money_to_saran: 9.99
+  gopi_total_pay: 9.99
+  saran_total_pay: 9.99
+  final_total_pay_to_gopi: 9.99
+  final_total_pay_to_saran: 9.99

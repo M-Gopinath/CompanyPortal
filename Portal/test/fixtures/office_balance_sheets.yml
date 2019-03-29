@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: MyString
+  month: MyString
+  office_income: 9.99
+  office_expense: 9.99
+  office_share: 9.99
+  gopinath_share: 9.99
+  saravanan_share: 9.99
+
+two:
+  year: MyString
+  month: MyString
+  office_income: 9.99
+  office_expense: 9.99
+  office_share: 9.99
+  gopinath_share: 9.99
+  saravanan_share: 9.99

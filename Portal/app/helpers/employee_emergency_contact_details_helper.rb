@@ -1,0 +1,2 @@
+module EmployeeEmergencyContactDetailsHelper
+end

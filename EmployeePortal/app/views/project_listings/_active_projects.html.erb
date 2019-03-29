@@ -1,0 +1,154 @@
+<div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Project Name</th>
+          <th>Description</th>
+          <th>Action
+            <a href="#" class="md-trigger pull-right" data-toggle="modal" data-target="#project_create"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+	    <% if project.present? %>
+      <tbody>
+				<% project.each do |pro| %>
+				<tr>
+					<td><%= pro.name %></td>
+					<td><%= pro.description %></td>
+					<td class="action-link">
+						<a data-toggle="modal" data-target="#active_project_<%= pro.id%>"><i class="fa fa-user-circle-o"></i></a>
+            <%= link_to edit_project_listing_path(pro) do%>
+              <i class="fa fa-edit"></i>
+            <% end %>
+            <%= link_to delete_project_path(project_id: pro.id), method: :delete,data: {confirm: "Are you sure?"} do%>
+              <i class="fa fa-times"></i>
+            <% end %>
+						<%= link_to 'Deactive', deactive_path(project_id: pro.id)%>
+					</td>
+					<td></td>
+				</tr>
+				<% end %>
+      </tbody>
+    	<% end %>
+    </table>
+</div>
+<div class="pagination-content">
+	<%= will_paginate project, renderer: BootstrapPagination::Rails %>
+</div>
+
+
+<% if project.present? %>
+  <% project.each do |ac|%>
+    <div id="active_project_<%= ac.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Active Projects</h4>
+          </div>
+          <div class="modal-body">
+          	<p>Project Name : <span><%= ac.try(:name) %></span></p>
+            <p>Description : <span><%= ac.try(:description) %></span></p>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Modal -->
+<div id="project_create" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New Project</h4>
+      </div>
+      <div class="modal-body">
+      	<div class="pd-10">
+          <%= form_for @project, url: project_create_path, method: :post do |f| %>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, placeholder: "Project Nane", class: "form-control", required: true %>
+            <%= f.hidden_field :is_active, value: 1  %>
+          </div>
+          <div class="form-group">
+            <label for="tags2">Skills</label>
+            <input type="text" class="form-control tag-input narrow" name="skill_tag" id="tags3" placeholder="Enter Skills" value="">
+          </div>
+          <div class="form-group">
+            <%= f.label :description %>
+            <%= f.text_area :description, placeholder: "Description", class: "form-control", required: true %>
+          </div>
+          <div class="form-group">
+            <%= f.submit class: "btn btn-primary" %>
+          </div>
+          <%end%>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+  $(function(){
+
+      // Instantiate the Bloodhound suggestion engine
+      var tags = new Bloodhound({
+          datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.tag); },
+          queryTokenizer: Bloodhound.tokenizers.whitespace,
+          local: [
+            <% @skills.each do |skill| %>
+              { tag: '<%= skill.name %>' },
+            <%end%>
+          ]
+      });
+
+      tags.initialize();
+
+      // Set up an on-screen console for the demo
+      var screenConsole = $('#console');
+
+      // Write callback data to the screen when tags are added or removed in demo inputs
+      var logCallbackDataToConsole = function(added, removed) {
+          screenConsole.append('Tag Data: ' + (this.val() || null) + ', Added: ' + added + ', Removed: ' + removed + '\n');
+      };
+
+      // Create typeahead-enabled tag inputs
+      $('.tag-input').tagInput({
+          allowDuplicates: false,
+          typeahead: true,
+          typeaheadOptions: {
+            highlight: true
+          },
+          typeaheadDatasetOptions: {
+            displayKey: 'tag',
+            source: tags.ttAdapter()
+          },
+          onTagDataChanged: logCallbackDataToConsole
+      });
+
+      // Create basic tag inputs with no typeahead
+      $('.tag-input-basic').tagInput({
+          onTagDataChanged: logCallbackDataToConsole
+      });
+
+      $('#results a[rel="external"]').attr('target', '_blank');
+
+  });
+
+</script>

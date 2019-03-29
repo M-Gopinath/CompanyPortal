@@ -1,0 +1,3 @@
+<%= link_to "<<", time_trackers_time_sheet_path(day: select_month_start - 1.month ), remote: true %>
+<%= select_month_start.strftime("%B %Y") %>
+<%= link_to ">>", select_month_start == Date.today.beginning_of_month ? "#" : time_trackers_time_sheet_path(day: select_month_start + 1.month ), remote: true %>

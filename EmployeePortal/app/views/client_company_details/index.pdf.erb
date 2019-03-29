@@ -1,0 +1,22 @@
+<table class="table">
+	<thead>
+   <tr>
+     <th>#</th>
+     <th>Client Name</th>
+     <th>Company Name</th>
+     <th>Contact Number</th>
+     <th>Address</th>
+   </tr> 
+  </thead>
+  <tbody>
+    <% @clients.each.with_index(1) do |client, index| %>
+      <tr>
+        <td><%= index %></td>
+        <td><%= client.try(:name?) %></td>
+        <td><%= client.try(:client_company).try(:name) %></td>
+        <td><%= client.try(:client_company).try(:contact_number) %></td>
+        <td><%= client.try(:client_company).try(:address?) %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>

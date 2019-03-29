@@ -1,0 +1,2 @@
+$(".expense-form").html("<%= escape_javascript(render partial: 'form', locals: {expense: OfficeExpense.new, url: finance_management_expenses_path}) %>")
+$(".expense-list").html("<%= escape_javascript(render partial: 'list', locals: {date: @date, office_expenses: @office_expenses} ) %>")

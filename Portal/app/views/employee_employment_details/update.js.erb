@@ -1,0 +1,1 @@
+$(".emp_employment_details_<%= @employee.id %>").html("<%= escape_javascript(render partial: 'form', locals: {employee_employment_details: @employee.employee_employment_details, employee_employment_detail: EmployeeEmploymentDetail.new, employee: @employee})%>");

@@ -1,0 +1,108 @@
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h3>My Definitions</h3>
+      </div>
+      <div class="col-md-12">
+        <table class="table table-striped table-definition">
+          <thead class="thead-default my-definition">
+            <tr>
+              <th class="text-center">Components</th>
+              <th class="text-center amount">Monthly(Rs)</th>
+              <th class="text-center amount">Annual(Rs)</th>
+              <th class="text-center">Definition Limit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= form_tag earnings_update_monthly_path do %>
+              <%= hidden_field_tag :month, @ctc_monthly.month_year %>
+              <%= hidden_field_tag :employee_id, current_employee.id %>
+              <tr>
+                <td>Basic</td>
+                <td class="text-center"><%= @ctc_monthly.basic_pay %></td>
+                <td class="text-center"><%= @ctc_yearly.basic_pay %></td>
+                <td class="text-center">30% of Cost to company(CTC) PM</td>
+              </tr>
+              <tr>
+                <td>House Rent Allowance</td>
+                <td class="text-center">
+                  <p class="rent-error"></p>
+                  <% if Date.today.day <= 15 %>
+                    <%= text_field_tag :house_rent, @ctc_monthly.house_rent, class: "text-center house-rent", "data-amount" => @ctc_yearly.hra/12 %>
+                  <% else %>
+                    <%= @ctc_monthly.house_rent %>
+                  <% end %>
+                </td>
+                <td class="text-center yearly-house-rent"><%= @ctc_monthly.house_rent * 12 %></td>
+                <td class="text-center">50% of Basic PM</td>
+              </tr>
+              <tr>
+                <td>Medical Allowance</td>
+                <td class="text-center">
+                  <p class="medical-error"></p>
+                  <% if Date.today.day <= 15 %>
+                    <%= text_field_tag :medical, @ctc_monthly.medical_allowance, class: "text-center medical-amt", "data-amount" => 1250 %>
+                  <% else %>
+                    <%= @ctc_monthly.medical_allowance %>
+                  <% end %>
+                </td>
+                <td class="text-center yearly-medical"><%= @ctc_monthly.medical_allowance * 12 %></td>
+                <td class="text-center">Maximun: 1250/- PM</td>
+              </tr>
+              <tr>
+                <td>Mobile Allowance</td>
+                <td class="text-center">
+                  <p class="telephone-error"></p>
+                  <% if Date.today.day <= 15 %>
+                    <%= text_field_tag :telephone, @ctc_monthly.telephone_allowance, class: "text-center telephone-amt", "data-amount" => 500 %>
+                  <% else %>
+                    <%= @ctc_monthly.telephone_allowance %>
+                  <% end %>
+                </td>
+                <td class="text-center yearly-telephone"><%= @ctc_monthly.telephone_allowance * 12 %></td>
+                <td class="text-center">Maximun: 500/- PM</td>
+              </tr>
+              <tr>
+                <td>Employeer PF Contribution</td>
+                <td class="text-center"><%= @ctc_monthly.pf_employeer_contribution %></td>
+                <td class="text-center"><%= @ctc_yearly.pf_employeer_contribution %></td>
+                <td class="text-center">Maximun 1800/- PM</td>
+              </tr>
+              <tr>
+                <td>Employee PF Contribution</td>
+                <td class="text-center"><%= @ctc_monthly.pf_employee_contribution %></td>
+                <td class="text-center"><%= @ctc_monthly.pf_employee_contribution * 12 %></td>
+                <td class="text-center">Maximun 1800/- PM</td>
+              </tr>
+              <!-- <tr>
+                <td>Gratuity Employeer Contribution</td>
+                <td class="text-center"><%= @ctc_monthly.gratuity_employeer_contribution %></td>
+                <td class="text-center"><%= @ctc_yearly.gratuity_employeer_contribution %></td>
+                <td class="text-center">4.82% of Basic PM</td>
+              </tr> -->
+              <tr>
+                <td>Incentive</td>
+                <td class="text-center"><%= @ctc_monthly.incentive %></td>
+                <td class="text-center"><%= @ctc_monthly.incentive * 12 %></td>
+                <td class="text-center"></td>
+              </tr>
+              <tr>
+                <td>Special Allowance</td>
+                <td class="text-center"><%= @ctc_monthly.special_allowance %></td>
+                <td class="text-center"><%= @ctc_monthly.special_allowance * 12 %></td>
+                <td class="text-center"></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td><%= submit_tag "Submit", class: "btn btn-success btn-definition #{Date.today.day > 15 ? 'disabled' : "disabled-none" }" %></td>
+                <td></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

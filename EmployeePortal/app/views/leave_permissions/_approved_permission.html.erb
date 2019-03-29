@@ -1,0 +1,83 @@
+<div class="table-responsive">
+	<% if approved_permissions.present? %>
+		<div class="scroll_content">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Emb.id</th>
+						<th>Firstname</th>
+						<th>Lastname</th>
+						<th>Status</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% approved_permissions.each do |ap|%>
+					<tr>
+						<td><%= ap.employee_id %></td>
+						<td><%= ap.get_emloyee_first_name(ap.employee_id) %></td>
+						<td><%= ap.get_emloyee_last_name(ap.employee_id) %></td>
+						<td><%= ap.get_status(ap.leave_permission_status_id) %></td>
+						<td class="action-link">
+							<a data-toggle="modal" data-target="#approve_permission_<%= ap.id%>"><i class="fa fa-user-circle-o"></i></a>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	<% else %>
+		<p align="center">No Permission</p>
+	<% end %>
+</div>
+
+<% if approved_permissions.present? %>
+  <% approved_permissions.each do |ap|%>
+    <div id="approve_permission_<%= ap.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Leaves</h4>
+          </div>
+          <div class="modal-body">
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <td>Permission Date</td>
+                  <td><%= ap.permission_date.strftime("%d-%m-%Y")%></td>
+                </tr>
+              	<tr>
+              		<td>From Time</td>
+              		<td><%= ap.try(:from_time?) %></td>
+              	</tr>
+              	<tr>
+              		<td>To Time</td>
+              		<td><%= ap.try(:to_time?) %></td>
+              	</tr>
+              	<tr>
+              		<td>No of hours</td>
+              		<td><%= ap.try(:no_of_hours?) %></td>
+              	</tr>
+              	<tr>
+              		<td>Reason</td>
+              		<td><%= ap.try(:reason) %></td>
+              	</tr>
+              	<tr>
+              		<td>Status</td>
+              		<td><%= ap.get_status(ap.leave_permission_status_id) %></td>
+              	</tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+<% end %>

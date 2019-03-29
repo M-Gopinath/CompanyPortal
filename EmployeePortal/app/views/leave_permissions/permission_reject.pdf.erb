@@ -1,0 +1,27 @@
+<div id="letter_bad">
+  <h2 align="center">Request List</h2>
+  <% if @reject_permission_request.present?%>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Emb.id</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reject_permission_request.each do |pr| %>
+      <tr>
+        <td><%= pr.employee_id %></td>
+        <td><%= pr.get_emloyee_first_name(pr.employee_id) %></td>
+        <td><%= pr.get_emloyee_last_name(pr.employee_id) %></td>
+        <td><%= pr.get_status(pr.leave_permission_status_id) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+    <p align="center">No Request</p>
+  <% end %>
+</div>

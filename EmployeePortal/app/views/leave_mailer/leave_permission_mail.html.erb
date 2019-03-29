@@ -1,0 +1,17 @@
+<h4>Hi <%= @employee.full_name %></h4>
+
+<p>
+  You have applied leave
+</p>
+<p>
+  From: <%= @leave.from_date.strftime("%d-%m-%Y") %>
+</p>
+<p>
+  To: <%= @leave.to_date.strftime("%d-%m-%Y") %>
+</p>
+<p>
+  Number of Days: <%= @leave.no_of_days %>
+</p>
+<p>
+  Reason : <%= @leave.reason %>
+</p>

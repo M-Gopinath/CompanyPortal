@@ -1,0 +1,99 @@
+<p>Permission Request</p>
+<div class="panel panel-bg">
+  <% if @pending_requests.present? %>
+  <div class="table-responsive">
+    <div class="scroll_content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Emb.id</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pending_requests.each do |pr|%>
+          <% if pr.leave_permission_status_id == 1%>
+          <tr>
+            <td><%= pr.employee_id%></td>
+            <td><%= pr.get_emloyee_first_name(pr.employee_id)%></td>
+            <td><%= pr.get_emloyee_last_name(pr.employee_id)%></td>
+            <td class="action-link">
+              <a data-toggle="modal" data-target="#fullview_permission_<%= pr.id%>"><i class="fa fa-user-circle-o"></i></a>
+              <%= link_to  leave_permissions_approve_permission_path(permission_id: pr.id, leave_permission_status_id: 2), remote: true do %>
+              <i class="fa fa-check"></i>
+              <% end %>
+              <%= link_to leave_permissions_approve_permission_path(permission_id: pr.id, leave_permission_status_id: 3), remote: true do %>
+              <i class="fa fa-times"></i>
+              <% end%>
+            </td>
+          </tr>
+          <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% else %>
+    <p align="center">No records</p>
+  <% end %>
+</div>
+<% if @pending_requests.present? %>
+  <% @pending_requests.each do |pr|%>
+    <div id="fullview_permission_<%= pr.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Approve / Cancel Request</h4>
+          </div>
+          <div class="modal-body">
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <td>Permission Date</td>
+                  <td><%= pr.permission_date.strftime("%d-%m-%Y")%></td>
+                </tr>
+                <tr>
+                  <td>From Time</td>
+                  <td><%= pr.try(:from_time?) %></td>
+                </tr>
+                <tr>
+                  <td>To Time</td>
+                  <td><%= pr.try(:to_time?) %></td>
+                </tr>
+                <tr>
+                  <td>No of hours</td>
+                  <td><%= pr.try(:no_of_hours?) %></td>
+                </tr>
+                <tr>
+                  <td>Reason</td>
+                  <td><%= pr.try(:reason) %></td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td><%= pr.get_status(pr.leave_permission_status_id) %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <div class="col-md-8 pull-left">
+              <% if pr.leave_permission_status_id == 1%>
+                <%= link_to "Approve", leave_permissions_approve_permission_path(permission_id: pr.id, leave_permission_status_id: 2), class: 'btn btn-default remove-model', remote: true %>
+              <% end %>
+              <% if pr.leave_permission_status_id == 1%>
+                <%= link_to "Reject", leave_permissions_approve_permission_path(permission_id: pr.id, leave_permission_status_id: 3), class: 'btn btn-default remove-model', remote: true %>
+              <% end %>
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+<% end %>

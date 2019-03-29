@@ -1,0 +1,86 @@
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>Yearly Holiday Calendar</h1><br />
+        </div>
+        <div class="col-md-4 content-header">
+        </div>
+        <div class="col-md-3 content-header">
+        </div>
+        <div class="header-border"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <p align="center">Yearly Holiday Calendar create</p>
+        <%= form_for :yearly_holiday_calendar, url: seed_table_create_yearly_holiday_calendar_path do |f| %>
+        <div class="modal-body">
+          <div class="errors"></div>
+          <div class="form-group">
+            <%= f.label :holiday_date %>
+            <%= f.text_field :holiday_date, required: true, class: 'form-control datepicker' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :description %>
+            <%= f.text_field :description, required: true, class: 'form-control' %>
+          </div>
+        </div>
+        <%= f.submit class: "btn btn-primary pd-10" %>
+        <%end%>
+      </div>
+      <div class="col-md-7">
+        <p align="center">Yearly Holiday Calendar List</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Yearly Holiday Calendar Holiday Date</th>
+              <th>Yearly Holiday Calendar Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @yearly_holiday_calendars.each do |yearly_holiday_calendar| %>
+            <tr>
+              <td><%= yearly_holiday_calendar.holiday_date %></td>
+              <td><%= yearly_holiday_calendar.description %></td>
+              <td class="action-link">
+                <a href="" data-toggle="modal" data-target="#yearly_holiday_calendar_id_<%= yearly_holiday_calendar.id%>">
+                  <i class="fa fa-user-circle-o"></i>
+                </a>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% @yearly_holiday_calendars.each do |yearly_holiday_calendar| %>
+  <!-- Modal -->
+  <div id="yearly_holiday_calendar_id_<%= yearly_holiday_calendar.id%>" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Yearly Holiday Calendar</h4>
+        </div>
+        <div class="modal-body">
+          <p>Yearly Holiday Calendar Date : <span><%= yearly_holiday_calendar.holiday_date %></span></p>
+          <p>Yearly Holiday Calendar Description : <span><%= yearly_holiday_calendar.description %></span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% end %>
+
+

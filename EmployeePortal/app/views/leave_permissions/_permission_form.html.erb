@@ -1,0 +1,127 @@
+<% if @limit.count >= 2 %>
+  <div class="permission-warning">Reached your monthly limit. You can apply 2 times per month </div>
+<% else %>
+  <%= form_for apply_permission, url: leave_permissions_create_apply_permission_path do |f| %>
+    <% if apply_permission.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(apply_permission.errors.count, "error") %> prohibited this permission_request from being saved:</h2>
+
+        <ul>
+        <% apply_permission.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <% if current_employee.admin? %>
+      <div class="form-group">
+        <%= f.select :employee_id, options_for_select(Employee.all.map{|emp| [emp.email, emp.id]}, apply_permission.employee_id), {prompt: 'Select'}, class:"form-control", required: true%>
+      </div>
+    <% else %>
+      <%= f.hidden_field :employee_id, value: current_employee.id %>
+      <%= f.hidden_field :approver_id, value: current_employee.supervisor_id %>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :permission_date %>
+      <%= f.text_field :permission_date, class: "datepicker form-control", required: true %>
+    </div>
+    <div class="form-grop">
+      <%= f.label :from_time %>
+      <%= f.text_field :from_time, class: "timepicker form-control", required: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :to_time %>
+      <%= f.text_field :to_time, class: "timepicker form-control", required: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :no_of_hours %>
+      <%= f.text_field :no_of_hours, class: "no_of_hours form-control", required: true, readonly: true  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :reason %>
+      <%= f.text_area :reason, class:"form-control", rows:"7", required: true%>
+    </div>
+    <div class="actions">
+      <%= f.submit "Create Permission Request", class: "btn btn-primary btn-lg btn-block it-btn-them" %>
+    </div>
+  <% end %>
+<% end %>
+
+<script>
+  $(document).ready(function(){
+    $('.timepicker').timepicker({ 'scrollDefault': 'now' });
+    $(document).on('change', '#permission_request_to_time', function(){
+      var from_time = $('#permission_request_from_time').val();
+      var to_time = $(this).val();
+      console.log("sdsdfsdfsdf");
+      if (from_time > to_time) {
+        alert("To Time is greater than From Time");
+        $('#permission_request_to_time').val('');
+      }
+    });
+    $(document).on("focus", ".datepicker", function(){
+      $(this).datepicker({
+        todayHighlight:'TRUE',
+        startDate: '-0d',
+        endDate: '+2m',
+        format: 'dd-mm-yyyy',
+        autoclose: true
+      });
+    });
+    $(document).on("change", "#permission_request_to_time", function(){
+      calculateDiff();
+
+      function calculateDiff(){
+        _start = $('#permission_request_from_time').val();
+        _end = $('#permission_request_to_time').val();
+
+        _start_time = parseAMDate(_start);
+        _end_time = parseAMDate(_end);
+
+        if (_end_time < _start_time){
+          _end_time = parseAMDate(_end,1);
+        }
+
+        var difference= _end_time - _start_time;
+
+        var hours = Math.floor(difference / 36e5),
+        minutes = Math.floor(difference % 36e5 / 60000);
+        if (parseInt(hours) >= 0 ){
+          if (minutes == 0){
+            minutes = "00";
+          }
+          duration = hours+":"+minutes;
+          if (duration < '2:00') {
+            $('#permission_request_no_of_hours').val(hours+":"+minutes);
+          }
+          else{
+            alert('Permission Hours should be 2 hours or less than 2 hours!');
+            $('#permission_request_no_of_hours').val('');
+            $('#permission_request_to_time').val('');
+          }
+        }
+      }
+
+      function parseAMDate(input, next_day) {
+
+        var dateReg = /(\d{1,2}):(\d{2})\s*(am|pm)/;
+
+        var hour, minute, result = dateReg.exec(input);
+
+        if (result) {
+          hour = +result[1];
+          minute = +result[2];
+
+          if (result[3] === 'pm' && hour !== 12) {
+            hour += 12;
+          }
+        }
+        if (!next_day) {
+          return new Date(1970, 01, 01, hour, minute).getTime();
+        }else{
+          return new Date(1970, 01, 02, hour, minute).getTime();
+        }
+      }
+    });
+  });
+</script>

@@ -1,0 +1,30 @@
+	<div class="pd-10">
+		<% i = 0 %>
+		<% j = 13 %>
+		<% (select_month_start..select_month_end).each do |day|%>
+		<div class="progress-container vertical rounded">
+			<div class="progress-bar">
+				<div class="progress-track">
+					<div class="progress-fill">
+						<span><%= i += 1 %></span>
+						<% i = 0 if i > 11 %>
+					</div>
+					<div class="progress-fill-two">
+						<span><%= j -= 1 %></span>
+						<% j = 13 if j < 2 %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%end%>
+	</div>
+	<div class="col-md-12">
+		<% (select_month_start..select_month_end).each do |day|%>
+		<%= link_to day.end_of_day > Date.today.end_of_day ? "#" : time_trackers_time_sheet_path(day: day), remote: true do %>
+		<div class="timesheet_day <%= is_select_week(@select_week,day) ? 'week_selected' : '' %> <%= is_select_day(@select_day,day) ? 'day_selected' : '' %>">
+			<%= day.strftime("%d") %><br>
+			<%= day.strftime("%a")[0] %>
+		</div>
+		<%end%>
+		<%end%>
+	</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Portal</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="icon" href="../assets/fav.ico" type="image/x-icon">
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+  <% if admin_signed_in? %>
+  <div class="wrapper">
+    <!-- header -->
+    <%= render partial: "layouts/header"%>
+    <!-- sidebar -->
+    <%= render partial: "layouts/sidebar"%>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+  <% end %>
+      <%= yield %>
+  <% if admin_signed_in? %>
+    </div>
+    <!-- footer -->
+    <%= render partial: "layouts/footer"%>
+    
+    <div class="control-sidebar-bg"></div>
+  </div>
+  <% end %>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Project Details</h4>
+    </div>
+    <div class="modal-body">
+      <p>
+        <strong>Designation:</strong>
+        <%= project.try(:name) %>
+      </p>
+
+      <p>
+        <strong>project Id:</strong>
+        <%= project.try(:id) %>
+      </p>
+
+      <p>
+        <strong>Client Name:</strong>
+        <%= project.try(:client).try(:name?) %>
+      </p>
+
+    </div>
+  </div>
+</div>

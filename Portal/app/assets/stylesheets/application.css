@@ -1,0 +1,625 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ 
+ *= require font-awesome
+ *= require bootstrap-datepicker
+ *= require jquery.timepicker
+ *= require_self
+ *= require bootstrap.min
+ *= require dashbord.min
+ *= require dataTables.bootstrap
+ *= require editor
+ *= require skin.min
+ *= require tags/mab-jquery-taginput
+ */
+
+ .action-link a{
+ 	padding: 10px;
+ }
+ .fa-social-1{
+	padding:10px;
+	font-size:30px;
+}
+ .new-action-link a{
+ 	padding: 10px;
+ }
+ .action-link button{
+ 	margin-left: 20px;
+ }
+ .example1_length{
+ 	width: 30%;
+ }
+ .top-links a{
+ 	padding: 10px;
+ }
+ .pd-15{
+ 	padding: 5px;
+ }
+ .pd-10{
+ 	padding: 10px;
+ }
+ .active-btn{
+ 	color: #fff;
+ 	background-color: #72afd2;
+ }
+ .header-border{
+ 	background-color: #d2d6de;
+ 	float: left;
+ 	height: 1px;
+ 	margin-left: 2%;
+ 	position: relative;
+ 	width: 96%;
+ }
+ .new-header-border{
+ 	background-color: #fff;
+ 	float: left;
+ 	height: 1px;
+ 	margin-left: 2%;
+ 	position: relative;
+ 	width: 96%;
+ }
+.content-header h1{
+	text-transform: uppercase;
+}
+.content-header p{
+	font-size: 12px;
+}
+.search-box{
+	width: 70%;
+}
+.pagination-content{
+  text-align: center;
+}
+
+.new-top{
+	margin-left: 80px;
+}
+
+.calender-header{
+	padding: 10px;
+}
+
+.policy-content{
+	padding: 10px;
+}
+
+.panel-bg{
+	background-color: #cfcfd0 !important;
+	 margin-bottom: 0px !important;
+}
+
+.pd-lt-10{
+	padding-left: 10px;
+}
+.h2, h2 {
+  font-size: 15px !important;
+  font-weight: bold;
+}
+
+.wd-50{
+	width: 50%;
+	float: left;
+}
+
+.new-panel{
+	margin-left: -5px !important;
+	margin-right: -5px !important;
+	margin-top: 10px;
+}
+
+.progress-container {
+	float: left;
+	overflow: hidden;
+	width: 3.2%;
+}
+.vertical .progress-bar {
+	float: left;
+	height: 100px;
+	width: 20px;
+}
+.progress-bar {
+	background-color: #337ab7;
+	box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+	color: #fff;
+	float: left;
+	font-size: 12px;
+	height: 100%;
+	line-height: 20px;
+	text-align: center;
+	transition: width 0.6s ease 0s;
+	width: 0;
+}
+.progress-bar {
+	background-color: #337ab7;
+	box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+	color: #fff;
+	float: left;
+	font-size: 12px;
+	height: 100%;
+	line-height: 20px;
+	text-align: center;
+	transition: width 0.6s ease 0s;
+	width: 0;
+}
+.rounded .progress-track, .rounded .progress-fill {
+	border-radius: 3px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) inset;
+}
+.vertical .progress-track {
+	background: #ebebeb none repeat scroll 0 0;
+	height: 100%;
+	position: relative;
+	width: 20px;
+}
+.vertical .progress-fill {
+	background: #825 none repeat scroll 0 0;
+	color: #fff;
+	float: left;
+	font-family: "Lato","Verdana",sans-serif;
+	font-size: 12px;
+	height: 50%;
+	line-height: 20px;
+	position: relative;
+	text-align: center;
+	width: 10px;
+}
+.vertical .progress-fill-two {
+	background: #825 none repeat scroll 0 0;
+	color: #fff;
+	float: right;
+	font-family: "Lato","Verdana",sans-serif;
+	font-size: 12px;
+	height: 50%;
+	line-height: 20px;
+	position: relative;
+	text-align: center;
+	width: 10px;
+}
+.day_of_week{
+  width:14.8%;
+  float:left;
+  padding: 10px;
+  border: 1px solid #1ec09f;
+  margin: 9px;
+  text-align:center;
+}
+.time_sheet_header {
+    border: 1px solid #1ec09f;
+    margin: 6px;
+    padding: 10px;
+}
+
+.timesheet_day {
+	float: left;
+	width: 3.2%;
+}
+
+.week_selected{
+  border-bottom:1px solid red;
+}
+
+.day_selected{
+  background:#673AB7;
+  color:#fff;
+}
+
+.day_of_week_background{
+  background:#673AB7;
+  color:#fff;
+}
+
+.info-box-text {
+  text-transform: uppercase;
+  padding-top: 30px !important;
+  padding-left: 3px !important;
+  text-align: left;
+}
+
+.content-wrapper{
+	height: 570px !important;
+	overflow-y: scroll;
+}
+
+.info-box {
+	margin-bottom: 42px !important;
+}
+
+.data-modal-btn {
+	padding: 0px !important;
+  border: 0px !important;
+  background: transparent !important;
+  width: 100% !important;
+}
+
+.image-preview-input {
+    position: relative;
+	overflow: hidden;
+	margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.image-preview-input input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
+}
+
+.pie-chart {
+
+}
+
+.addres-modal-dialog,.emergency-contact-details{
+	width: 1200px !important
+}
+
+.my-modal-dialog {
+	width: 900px !important;
+}
+
+.employment-certificate-modal {
+	width:1000px !important;
+}
+
+.one-more-add {
+	margin-top:25px;
+}
+
+.box-body-hei {
+	height: 150px;
+}
+
+.pie-chart {
+  min-width: 310px; 
+  height: 300px; 
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.box-bottom-7{
+	margin-bottom: 7px !important;
+}
+
+button:active, .button:active, button:focus, .button:focus, button:hover, .button:hover{
+    border:none !important;
+    outline:none !important;
+}
+
+.letter-btn {
+	width: 175px;
+	height: 50px;
+}
+
+.align-btn {
+	text-align: center;
+	margin-top: 55px
+}
+
+.align-center {
+	text-align: center;
+}
+
+.fa-file-pdf-o {
+	margin-right: 16px;
+  font-size: 22px;
+}
+
+.top-15 {
+	margin-top: 15px;
+}
+
+.title-th {
+	width: 40%;
+}
+
+.dropbtn {
+  color: #673AB7;
+  padding: 0px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  line-height: 6px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  display:block;
+}
+
+tr:hover .dropdown{
+  display:block;
+}
+
+
+.dropdown-content {
+  display: none;
+  margin-left: -128px;
+  position: absolute;
+  background-color: #fff;
+  min-width: 174px;
+  border: 1px solid #E6E9ED;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #000;
+  padding: 2px 5px;
+  text-decoration: none !important;
+  display: block;
+  border-bottom: 1px solid #E6E9ED;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.chat {
+	border-bottom: 1px solid #eee;
+}
+
+.box-titls-span span {
+	margin-right: 10px;
+}
+
+hr {
+	margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
+
+.remove-border-table>thead>tr>th {
+	border-bottom: 2px solid rgba(244, 244, 244, 0) !important;
+}
+
+.collapse-btn {
+	cursor: pointer;
+	margin-bottom: 8px;
+}
+
+.task-comments {
+	cursor: pointer;
+}
+
+.task-border {
+	border-radius: 0px !important ;
+  border-top: 1px solid rgba(210, 214, 222, 0.15) !important;
+}
+
+.overflow-scroll {
+	height: 700px;
+	overflow-y: scroll;
+}
+
+.product-img img {
+	width: 50px;
+	height: 50px;
+}
+
+.margin-bottom {
+	border-bottom: 1px solid #eee;
+}
+
+.permission-warning {
+  color: red;
+  text-align: center;
+}
+.dzs_today {
+  background: #1ec09f;
+}
+
+.dzs_table {
+	background: #fff !important
+}
+
+.itbeezone-logo-cal {
+	font-size: 20px;
+}
+
+.table-color-meeting {
+   background: #fff !important
+}
+
+.with-tr-td {
+	width: 100px;
+}
+
+.with-tr-td-date {
+  width: 10%;
+}
+
+.width-tr-td-icon {
+	width: 2%;
+}
+
+.width-tr-td-time {
+	width: 15%;
+}
+
+.widht-tr-td-mess {
+	width:75%;
+}
+
+.left-point {
+	margin-right: 15px;
+	font-weight: bold;
+}
+
+.left-point-tr-td {
+	width: 70px;
+}
+
+.description-message-table {
+	display: none;
+}
+
+.fa-replay-click,.time-click {
+   cursor: pointer;
+   font-weight: bold;
+}
+
+.mar-bottom-10 {
+	margin-bottom: 10px;
+}
+
+.time-in-input {
+	border: 1px solid silver;
+  padding: 7px;
+  margin-right: 10px;
+}
+
+.time-out-input {
+	border: 1px solid silver;
+  padding: 7px;
+  margin-left: 10px;
+}
+
+.margin-top-10 {
+	margin-top: 10px;
+}
+
+.btn span.glyphicon {    			
+	opacity: 0;				
+}
+.btn.active span.glyphicon {				
+	opacity: 1;				
+}
+
+
+.color-box input[type=checkbox], .color-box input[type=radio] {
+   display: none !important;
+}
+
+
+#div2 {
+	display: none;
+}
+
+#div3 {
+	display: none;
+}
+
+#div4 {
+	display: none;
+}
+
+#div5 {
+	display: none;
+}
+
+#div7 {
+	display: none;
+}
+
+#my-file-selector {
+	display: none;
+	cursor: pointer;
+}
+.profile-image {
+  max-width: 250px;
+  max-height: 200px;
+}
+
+.scroll_content{
+	height: 222px;
+	overflow-y: scroll;
+}
+
+.scroll_content table{
+	margin-bottom: 0px;
+}
+.income-title {
+  font-size: 20px;
+}
+.income-new {
+  margin-top: 12px;
+}
+.income-head {
+  background: #1ec09f;
+  color: #fff;
+}
+
+.income-table {
+  height: 425px;
+  overflow-y: auto;
+  overflow-x: auto;
+  text-align: center;
+}
+.income-table .table-bordered, .income-table .table td, .income-table .table th {
+    /*min-width: 100px;*/
+    border: 1px solid #1ec09f;
+}
+
+.income-table .table th:first-child {
+  width: 10px !important;
+}
+
+.expense-table {
+  height: 347px;
+  overflow-y: auto;
+}
+
+.mg-3{
+	margin-top:3px;
+}
+
+.data_ellipsis{
+	text-overflow: ellipsis;max-width: 100px;overflow: hidden;white-space: nowrap;
+}
+
+.assigned_users{
+  margin:10px;
+}
+
+.unassigned_users{
+  margin:10px;
+}
+.bs-yellow {
+  background: #F0E68C;
+}
+.bs-table .table>thead>tr>th, .bs-table .table>tbody>tr>td {
+  border: 0px solid #fff;
+}
+.bs-sky-blue {
+  background: #87CEFA;
+  color: #000;
+}
+.bs-blood-color {
+  background: #DC143C;
+}
+.bs-lite-red {
+  background: #FF69B4;
+}
+.bs-lite-purple {
+  background: #DDA0DD;
+}
+.bs-little-blue {
+  background: #6A5ACD;
+}
+.bs-little-green {
+  background: #5BC85B;
+}
+.responsive_image img{
+	max-width: 100%;
+}

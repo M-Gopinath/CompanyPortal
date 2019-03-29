@@ -1,0 +1,43 @@
+ <section class="content">
+  <div class="panel">
+    <div class="wel">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-4 content-header">
+            <h1>Project Listing</h1>
+          </div>
+          <div class="col-md-4 content-header">
+            <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' }, remote: true do |f| %>
+            <%= f.text_field(
+              :search_query,
+              class: 'filterrific-periodically-observed search-input col-xs-11 search-clients form-control',placeholder: "Search"
+            ) %>
+            <%= f.hidden_field :sorted_by, value: "created_at_desc" %>
+            <%#= render_filterrific_spinner %>
+          <%end%>
+          </div>
+          <div class="col-md-4 content-header">
+            <div class="top-links pull-right">
+              <a href="">xls</a>
+              <a href="">csv</a>
+              <a href="">pdf</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 content-header">
+          <p class="col-md-9 active_projects_entry"><%= page_entries_info @active_projects %></p>
+          <p class="col-md-3">
+            <a href="" class="pull-right" data-toggle="modal" data-target="#newProject"><span><i class="fa fa-plus-circle"></i></span></a></p>
+          <div id="newProject" class="modal fade" role="dialog">
+            <%= render partial: 'new_project', locals: {project: Project.new} %>
+          </div>
+        </div>
+        <div class="col-md-12 active_projects">
+          <%= render "dashboard/active_projects" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

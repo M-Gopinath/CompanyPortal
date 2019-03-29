@@ -1,0 +1,13 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Employee Language Detail</h4>
+    </div>
+    <div class="modal-body">
+      <div class="emp_language_<%= employee.id %>">
+        <%= render partial: 'employee_languages/form', locals: {language_details: employee.employee_languages, language_detail: EmployeeLanguage.new, employee: employee  } %>
+      </div>
+    </div>
+  </div>
+</div>

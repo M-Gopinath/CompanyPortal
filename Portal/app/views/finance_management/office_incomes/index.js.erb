@@ -1,0 +1,1 @@
+$(".income-lists").html("<%= escape_javascript(render partial: 'income_list', locals: {date: @date, office_incomes: @office_incomes, clients: @clients}) %>")

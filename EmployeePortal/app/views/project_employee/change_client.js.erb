@@ -1,0 +1,6 @@
+$('.assign-select-project').empty();
+$('.assign-select-project').append($('<option>Select</option>'));
+$('.assign-select-project').append("<%= escape_javascript(options_for_select(@projects.map {|u| [u.name, u.id]})) %>");
+$(".client_id_hid").val("<%= @client.id %>")
+$(".assigned_users").html("<%= escape_javascript(render partial: 'assigned_users', locals: {assigned_users: []}) %>")
+$(".unassigned_users").html("<%= escape_javascript(render partial: 'unassigned_users', locals: {unassigned_users: []}) %>")

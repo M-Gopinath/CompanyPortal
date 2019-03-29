@@ -1,0 +1,47 @@
+<div class="x_panel">
+  <table class=" table table-striped users-list-table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th><button class="md-trigger pull-right" data-toggle="modal" data-target="#empRegisterModal"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% employees.each do |emp| %>
+        <tr>
+          <td><%= emp.first_name %></td>
+          <td><%= emp.last_name %></td>
+          <td><%= emp.email %></td>
+          <td>
+            <button class="md-trigger" data-toggle="modal" data-target="#empBankModal_<%= emp.id %>" title="Bank"><i class="fa fa-university" aria-hidden="true"></i></button>
+            <div id="empBankModal_<%= emp.id %>" class="modal fade" role="dialog">
+              <%= render partial: "employee_bank_details/bank_detail", locals: {employee: emp} %>
+            </div>
+          </td>
+          <td>
+            <button class="md-trigger" data-toggle="modal" data-target="#empContactModal_<%= emp.id %>" title="Bank"><i class="fa fa-address-card" aria-hidden="true"></i></button>
+            <div id="empContactModal_<%= emp.id %>" class="modal fade" role="dialog">
+              <%= render partial: "employee_emergency_contact_details/contact_detail", locals: {employee: emp, new_record: true} %>
+            </div>
+          </td>
+          <td>
+            <button class="md-trigger" data-toggle="modal" data-target="#empLangModal_<%= emp.id %>" title="Language"><i class="fa fa-language" aria-hidden="true"></i></button>
+            <div id="empLangModal_<%= emp.id %>" class="modal fade" role="dialog">
+              <%= render partial: "employee_languages/language_detail", locals: {employee: emp, new_record: true} %>
+            </div>
+          </td>
+          <td>
+            <%= link_to destroy_employee_path(emp), method: :delete, data: { confirm: 'Are you sure?' }, title: 'Destroy' do %>
+              <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %>
+          </td>
+          <td>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= render partial: 'employees/registrations/register_form', locals: {employee: Employee.new} %>

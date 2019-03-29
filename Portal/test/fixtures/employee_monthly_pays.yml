@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_ctc_monthly_id: 1
+  employee_id: 
+  basic_pay: 9.99
+  hra: 9.99
+  special_allowance: 9.99
+  telephone_allowance: 9.99
+  medical_allowance: 9.99
+  pf_employeer_contribution: 9.99
+  pf_employee_contribution: 9.99
+  gratuity_employeer_contribution: 9.99
+  professonal_tax: 9.99
+  loss_of_pay: 9.99
+  total_earnings: 9.99
+  total_deduction: 9.99
+  net_salary: 9.99
+
+two:
+  employee_ctc_monthly_id: 1
+  employee_id: 
+  basic_pay: 9.99
+  hra: 9.99
+  special_allowance: 9.99
+  telephone_allowance: 9.99
+  medical_allowance: 9.99
+  pf_employeer_contribution: 9.99
+  pf_employee_contribution: 9.99
+  gratuity_employeer_contribution: 9.99
+  professonal_tax: 9.99
+  loss_of_pay: 9.99
+  total_earnings: 9.99
+  total_deduction: 9.99
+  net_salary: 9.99

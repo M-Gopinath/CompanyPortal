@@ -1,0 +1,8 @@
+<% if @task.errors.present? %>
+	$(".errors").text("");
+  <% @task.errors.full_messages.each do |error| %>
+    $(".errors").append("<li><%= error %></li>");
+  <% end %>
+<%else%>
+	$('.form_comments').html("<%= escape_javascript(render partial: 'projects/form_comments', locals: {task: @task,project: @project}) %>");
+<%end%>

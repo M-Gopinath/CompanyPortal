@@ -1,0 +1,24 @@
+<div id="letter_bad">
+  <h2 align="center">Projects List</h2>
+  <%#= wicked_pdf_image_tag('letterhead-itbeezone.jpg',style:"width:180px;") %>
+  <% if @project.present?%>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @project.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.description %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+<p align="center">No Project</p>
+<% end %>
+</div>

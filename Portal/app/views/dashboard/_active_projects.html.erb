@@ -1,0 +1,51 @@
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Project Name</th>
+      <th>Client Name</th>
+      <th>Client Email</th>
+      <th>Project Description</th>
+      <th colspan="4">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @active_projects.count > 0 %>
+      <% @active_projects.each.with_index(1) do |project,index| %>
+      <tr>
+        <td><%= index %></td>
+        <td><%= project.try(:name) %></td>
+        <td><%= project.try(:client).try(:name?) %></td>
+        <td><%= project.try(:client).try(:email) %></td>
+        <td><%= project.try(:description) %></td>
+        <td class="action-link">
+          <a href="#" data-toggle="modal" data-target="#showProject<%= project.id %>"><i class="fa fa-user-circle-o"></i></a>
+          <div id="showProject<%= project.id %>" class="modal fade" role="dialog">
+            <%= render partial: 'show_project', locals: {project: project} %>
+          </div>
+        </td>
+        <td class="action-link">
+          <a href="#" data-toggle="modal" data-target="#editProject<%= project.id %>"><i class="fa fa-edit"></i></a>
+          <div id="editProject<%= project.id %>" class="modal fade" role="dialog">
+            <%= render partial: 'edit_project', locals: {project: project} %>
+          </div>
+        </td>
+        <td class="action-link">
+          <%= link_to portal_project_destroy_path(project), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-times"></i>
+          <%end%>
+        </td>
+        <td>
+          <% btn_select = project.is_active ? "btn-danger" : "btn-primary" %>
+          <%= link_to project.is_active ? "Deactive" : "Active" , portal_project_deactive_path(project, is_active: project.is_active ? false : true), data: { confirm: 'Are you sure?' }, method: :put, class: "btn #{btn_select} btn-xs" %>
+        </td>
+      </tr>
+      <%end%>
+    <%else%>
+      <tr><td colspan="5">No Projects</td></tr>
+    <%end%>
+  </tbody>
+</table>
+<div class="pagination-content">
+  <%= will_paginate @active_projects, renderer: BootstrapPagination::Rails %>
+</div>

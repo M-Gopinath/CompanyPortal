@@ -1,0 +1,17 @@
+<div class="content-header">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="text-center back-pre-btn income-title">
+        <span class="pull-left"><%= link_to "<<", finance_management_balance_sheets_path(date: date - 1.year),class: "btn btn-default", remote: true %></span>
+        <span><b><%= Date::MONTHNAMES[date.month] %></b></span>
+        <span><b><%= date.strftime("%Y") %></b></span>
+        <span class="pull-right"><%= link_to ">>", finance_management_balance_sheets_path(date: date + 1.year),class: "btn btn-default", remote: true %></span>
+      </p>
+      <p class="text-center back-pre-btn">
+        <% (1..12).each_with_index do |m, index| %>
+        <span><%= link_to "#{Date::MONTHNAMES[m].first(3)}", finance_management_balance_sheets_path(date: date.beginning_of_year + index.month),class: "btn btn-default", remote: true %></span>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

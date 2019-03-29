@@ -1,0 +1,8 @@
+<div class="content">
+  <div class="col-md-5 expense-form">
+    <%= render partial: "form", locals: {expense: OfficeExpense.new, url: finance_management_expenses_path}  %>
+  </div>
+  <div class="col-md-7 expense-list">
+    <%= render partial: "list", locals: {date: @date, office_expenses: @office_expenses} %>
+  </div>
+</div>

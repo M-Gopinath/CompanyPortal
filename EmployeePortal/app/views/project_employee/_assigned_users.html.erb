@@ -1,0 +1,29 @@
+<% if assigned_users.present? %>
+  <%= form_tag(assigned_employees_path, method: 'post', multipart: true, remote: true) do %>
+    <%= hidden_field_tag "project_id", "", class: "project_id_hid" %>
+    <%= hidden_field_tag "client_id", "", class: "client_id_hid" %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Select</th>
+          <th class="data_ellipsis">First Name</th>
+          <th class="data_ellipsis">Last Name</th>
+          <th class="data_ellipsis">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if assigned_users.present? %>
+          <% assigned_users.each do |au| %>
+            <tr>
+              <td class="unassign_user_checkbox"><%= check_box_tag "project_employee_unassign[]", au.id %>
+              <td class="data_ellipsis"><%= au.first_name %></td>
+              <td class="data_ellipsis"><%= au.last_name %></td>
+              <td class="data_ellipsis"><%= au.email %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <%= submit_tag "Unassign User", class: "btn btn-success unassign-btn" %>
+  <% end %>
+<% end %>

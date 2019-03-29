@@ -1,0 +1,29 @@
+<section class="content">
+	<div class="panel">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-4 content-header">
+					<h1>Active Projects</h1><br />
+					<p class="active_projects_entry"><%= page_entries_info @projects %></p>
+				</div>
+				<div class="col-md-4 content-header">
+					<%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' }, remote: true do |f| %>
+		        <%= f.text_field(:search_query, class: 'filterrific-periodically-observed search-input col-xs-11 search-clients form-control',placeholder: "Search") %>
+		        <%= f.hidden_field :sorted_by, value: "created_at_desc" %>
+		      <%end%>
+				</div>
+				<div class="col-md-4 content-header">
+					<div class="top-links new-top">
+						<%= link_to 'xls', active_projects_path(format: "xls", page: params[:page]) %>
+						<%= link_to 'csv', active_projects_path(format: "csv", page: params[:page]) %>
+						<%= link_to 'pdf', active_projects_path(format: :pdf, page: params[:page]) %>
+					</div>
+				</div>
+				<div class="header-border"></div>
+			</div>
+		</div>
+		<div class="active_projects">
+			<%= render partial: 'active_projects', locals: {project: @projects}%>
+		</div>
+	</div>
+</section>

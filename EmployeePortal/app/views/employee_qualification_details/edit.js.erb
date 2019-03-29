@@ -1,0 +1,1 @@
+$(".quali-certificate_<%= @employee_qualification_detail.id %>").html("<%= escape_javascript(render partial: 'employee_qualification_details/new_form', locals: {employee_qualification_detail: @employee_qualification_detail, employee: @employee_qualification_detail.employee})%>");

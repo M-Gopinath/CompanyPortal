@@ -1,0 +1,66 @@
+<div class="col-md-7 bs-table">
+  <div class="panel">
+    <table class="table">
+      <% start_date = date.beginning_of_year %>
+      <thead>
+          <tr>
+            <th>Month</th>
+            <th>Office Share(50%)</th>
+            <th>Gopi Share(30%)</th>
+            <th>Saran Share(20%)</th>
+          </tr>
+          <% (4..12).each.with_index(3) do |m, index| %>
+            <tr>
+              <th><%= Date::MONTHNAMES[m] %></th>
+              <% balance_sheets.each do |bs| %>
+                <th><%= check_current_month_pf(start_date, bs, index) ? bs.office_share : "--" %></th>
+                <th><%= check_current_month_pf(start_date, bs, index) ? bs.gopi_share : "--" %></th>
+                <th><%= check_current_month_pf(start_date, bs, index) ? bs.saran_share : "--" %></th>
+              <% end %>
+            </tr>
+          <% end %>
+          <% (1..3).each.with_index(0) do |m, index| %>
+            <tr>
+              <th><%= Date::MONTHNAMES[m] %></th>
+              <% balance_sheets.each do |bs| %>
+                <th><%= check_next_month_pf(start_date, bs, index) ? bs.office_share : "--" %></th>
+                <th><%= check_next_month_pf(start_date, bs, index) ? bs.gopi_share : "--" %></th>
+                <th><%= check_next_month_pf(start_date, bs, index) ? bs.saran_share : "--" %></th>
+              <% end %>
+            </tr>
+          <% end %>
+      </thead>
+    </table>
+  </div>
+</div>
+<div class="col-md-5 bs-table">
+  <div class="panel">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Gopi Profit/Loss(50%)</th>
+          <th>Saran Profit/Loss(50%)</th>
+        </tr>
+        <% (4..12).each.with_index(3) do |m, index| %>
+            <tr>
+              <th><%= Date::MONTHNAMES[m] %></th>
+              <% balance_sheets.each do |bs| %>
+                <th><%= check_current_month_pf(start_date, bs, index) ? bs.gopi_profit_loss : "--" %></th>
+                <th><%= check_current_month_pf(start_date, bs, index) ? bs.saran_profit_loss : "--" %></th>
+              <% end %>
+            </tr>
+          <% end %>
+          <% (1..3).each.with_index(0) do |m, index| %>
+            <tr>
+              <th><%= Date::MONTHNAMES[m] %></th>
+              <% balance_sheets.each do |bs| %>
+                <th><%= check_next_month_pf(start_date, bs, index) ? bs.gopi_profit_loss : "--" %></th>
+                <th><%= check_next_month_pf(start_date, bs, index) ? bs.saran_profit_loss : "--" %></th>
+              <% end %>
+            </tr>
+          <% end %>
+      </thead>
+    </table>
+  </div>
+</div>

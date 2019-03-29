@@ -1,0 +1,12 @@
+<div class="shareholder-pl">
+  <%= render partial: "selected_year", locals: {date: @date, next_year: @next_year} %>
+</div>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="profit-loss">
+        <%= render partial: "profit_loss", locals: {balance_sheets: @balance_sheets, date: @date} %>
+      </div>
+    </div>
+  </div>
+</section>

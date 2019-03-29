@@ -1,0 +1,44 @@
+<div class="row">
+  <%= form_for(employee_qualification_detail, remote: true) do |f| %>
+    <%= f.hidden_field :employee_id, value: employee.id %>
+    <div class="col-md-2">
+      <%= f.select :education_degree, options_for_select(EducationCertificate.all.map{|ct| [ct.name, ct.name]}, employee_qualification_detail.education_degree), {prompt: 'Select'}, class: "form-control", required: true %>
+    </div>
+    <div class="col-md-2">
+      <%= f.text_field :year_of_passing, class: "form-control quali-datepicker", required: true %>
+    </div>
+    <div class="col-md-2">
+      <%= f.text_field :percentage, class: "form-control", required: true %>
+    </div>
+    <div class="col-md-2">
+      <%= f.text_field :institution_name, class: "form-control", required: true %>
+    </div>
+    <div class="col-md-2">
+      <%= f.text_field :university_board, class: "form-control" %>
+    </div>
+    <div class="col-md-2">
+      <%= f.submit employee_qualification_detail.new_record? ? "Create" : "Update", class: "btn btn-primary btn-lg btn-block it-btn-them qualification-btn" %>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $(document).on("focus", ".quali-datepicker", function(){
+    $(this).datepicker( {
+      format: " yyyy", // Notice the Extra space at the beginning
+      viewMode: "years", 
+      minViewMode: "years",
+      autoclose: true
+    });
+  });
+  $('#employee_qualification_detail_institution_name').bind('keyup blur',function(){ 
+    $(this).val(function(i, val) {
+      return val.replace(/[^a-z\s]/gi,''); 
+    });
+  });
+  $('#employee_qualification_detail_university_board').bind('keyup blur',function(){ 
+    $(this).val(function(i, val) {
+      return val.replace(/[^a-z\s]/gi,''); 
+    });
+  });
+</script>

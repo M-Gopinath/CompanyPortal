@@ -1,0 +1,2 @@
+class SpeakingProficiency < ApplicationRecord
+end

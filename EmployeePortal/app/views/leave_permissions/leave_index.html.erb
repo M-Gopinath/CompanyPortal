@@ -1,0 +1,25 @@
+<%= render 'layouts/side_nav' %>
+<div class="right_col" role="main">
+  <div class="row tile_count">
+    <div class="col-md-12">
+      <div class="right_col_header">
+        <span>Approve Leaves</span>
+      </div>
+      <div class="col-md-6 col-xs-12" style="padding:0px;">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Pending Lists</h2>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <div class="pending_leave_lists">
+              <%= render partial: "pending_lists", locals: {pending_requests: @pending_requests} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      

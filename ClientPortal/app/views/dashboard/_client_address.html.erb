@@ -1,0 +1,59 @@
+<div class="form-group row">
+	 <%= form_for @client, url: dashboard_update_same_address_path, method: :post, remote: true do |f| %>
+	 	<%= f.label :same_as_client_address, class: "col-sm-4 col-form-label" %>
+	 	<div class="col-sm-8">
+	 		<%= f.check_box :same_as_client_address, value: f.object.try(:same_as_client_address) %>
+	 		<%= f.submit style: "display:none"%>
+	 	</div>
+	 <%end%>
+</div>
+<% same_address = @client.same_as_client_address %>
+<%= form_for @client_company, url: dashboard_create_client_company_path, method: :post do |f| %>
+	<div class="form-group row">
+		<%= f.label :name, class: 'col-sm-4 col-form-label' %>
+		<div class="col-sm-8">
+			<%= f.text_field :name, class: 'form-control' %>
+		</div>
+	</div>
+	<div class="form-group row">
+		<%= f.label :contact_number, class: 'col-sm-4 col-form-label' %>
+		<div class="col-sm-8">
+			<%= f.text_field :contact_number, value: same_address ? @client.contact_number : f.object.try(:contact_number), class: 'form-control', minlength: "10", maxlength: "15","onkeypress" => "return isNumberKey(event)" %>
+		</div>
+	</div>
+	<div class="form-group row">
+		<%= f.label :address, class: 'col-sm-4 col-form-label' %>
+		<div class="col-sm-8">
+			<%= f.text_field :address,value: same_address.present? ? @client.address : f.object.try(:address), class: 'form-control' %>
+		</div>
+	</div>
+	<div class="form-group row">
+		<%= f.label :city, class: 'col-sm-4 col-form-label' %>
+		<div class="col-sm-8">
+			<%= f.text_field :city, value: same_address.present? ? @client.city : f.object.try(:city), class: 'form-control' %>
+		</div>
+	</div>
+	<div class="form-group row">
+		<%= f.label :state, class: 'col-sm-4 col-form-label' %>
+		<div class="col-sm-8">
+			<%= f.text_field :state, value: same_address.present? ? @client.state : f.object.try(:state),class: 'form-control' %>
+		</div>
+	</div>
+	<div class="form-group row">
+		<%= f.label :country, class: 'col-sm-4 col-form-label' %>
+		<div class="col-sm-8">
+			<%= f.text_field :country, value: same_address.present? ? @client.country : f.object.try(:country),class: 'form-control' %>
+		</div>
+	</div>
+	<div class="form-group row">
+		<%= f.label :zip_code, class: 'col-sm-4 col-form-label' %>
+		<div class="col-sm-8">
+			<%= f.text_field :zip_code,value: same_address.present? ? @client.zip_code : f.object.try(:zip_code), class: 'form-control' %>
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-sm-12">
+			<%= f.submit class: 'btn btn-primary'%>
+		</div>
+	</div>
+<% end %>

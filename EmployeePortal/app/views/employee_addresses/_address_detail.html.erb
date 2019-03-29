@@ -1,0 +1,59 @@
+<div class="modal-dialog modal-lg">
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h3 class="modal-title text-center">Employee Address</h3>
+      <% if current_employee.present? && current_employee.admin? %>
+        <p>Employee Id : <%= employee.employee_id%></p>
+        <p>Employee Email : <%= employee.email%></p>
+      <% else %>
+        <p>Employee Id : <%= current_employee.employee_id%></p>
+        <p>Employee Email : <%= current_employee.email%></p>
+      <% end %>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-4 col-xs-12">
+          <div class="x_title">
+            <h4 class="text-center">Home Address</h4>
+            <div class="clearfix"></div>
+          </div>
+          <div class="home_address_<%= employee.id %>">
+            <% if check_home_address(employee) %>
+              <%= render partial: "employee_addresses/show", locals: {address_details: check_home_address(employee), employee: employee} %>
+            <% else %>
+              <%= render partial: "employee_addresses/form", locals: {address_details: EmployeeAddress.new, employee: employee, address_type: 1} %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <div class="x_title">
+            <h4 class="text-center">Mail Address</h4>
+            <div class="clearfix"></div>
+          </div>
+          <div class="mail_address_<%= employee.id %>">
+            <% if check_mail_address(employee) %>
+              <%= render partial: "employee_addresses/show", locals: {address_details: check_mail_address(employee), employee: employee} %>
+            <% else %>
+              <%= render partial: "employee_addresses/form", locals: {address_details: EmployeeAddress.new, employee: employee, address_type: 2} %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <div class="x_title">
+            <h4 class="text-center">Work Address</h4>
+            <div class="clearfix"></div>
+          </div>
+          <div class="work_address_<%= employee.id %>">
+            <% if check_work_address(employee) %>
+              <%= render partial: "employee_addresses/show", locals: {address_details: check_work_address(employee), employee: employee} %>
+            <% else %>
+              <%= render partial: "employee_addresses/form", locals: {address_details: EmployeeAddress.new, employee: employee, address_type: 3} %>
+            <% end %>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+</div>

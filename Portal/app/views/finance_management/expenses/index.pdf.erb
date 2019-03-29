@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Transaction Via</th>
+      <th>Spent Date</th>
+      <th>Money Spent</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @office_expenses.each do |oe| %>
+      <tr>
+        <td><%= oe.transaction_via.name %></td>
+        <td><%= oe.spent_date.strftime("%b %d") %></td>
+        <td><%= oe.money_spent %></td>
+        <td><%= oe.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

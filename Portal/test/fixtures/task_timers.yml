@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 
+  task_id: MyString
+  lap_time: 2017-04-24 15:13:20
+  start_time: 2017-04-24 15:13:20
+  end_time: 2017-04-24 15:13:20
+
+two:
+  employee_id: 
+  task_id: MyString
+  lap_time: 2017-04-24 15:13:20
+  start_time: 2017-04-24 15:13:20
+  end_time: 2017-04-24 15:13:20

@@ -1,0 +1,12 @@
+<div class="content-header">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="text-center back-pre-btn income-title">
+          <span class="pull-left"><%= link_to "<<", finance_management_shareholder_profit_loss_path(date: date - 1.year),class: "btn btn-default", remote: true %></span>
+          <span><b>Apr <%= date.strftime("%Y") %></b></span> - 
+          <span><b>Mar <%= next_year.strftime("%Y") %></b></span>
+          <span class="pull-right"><%= link_to ">>", finance_management_shareholder_profit_loss_path(date: date + 1.year),class: "btn btn-default", remote: true %></span>
+        </p>
+    </div>
+  </div>
+</div>

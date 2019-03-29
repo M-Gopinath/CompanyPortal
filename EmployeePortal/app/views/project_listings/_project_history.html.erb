@@ -1,0 +1,57 @@
+<div class="panel">
+  <div class="table-responsive">
+    <p align="center">Project History</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Project Name</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <% if project.present? %>
+      <tbody>
+        <% project.each do |pro| %>
+          <% if pro.get_project_history(pro.project_id).present?   %>
+            <tr>
+              <td><%= pro.get_project_history(pro.project_id).try(:name) %></td>
+              <td><%= pro.get_project_history(pro.project_id).try(:description) %></td>
+              <td class="action-link">
+                <a data-toggle="modal" data-target="#project_history_<%= pro.id%>"><i class="fa fa-user-circle-o"></i></a>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+  <div class="pagination-content">
+    <%= will_paginate project, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>
+
+
+<% if project.present? %>
+<% project.each do |ac|%>
+<div id="project_history_<%= ac.id%>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Project History</h4>
+      </div>
+      <div class="modal-body">
+       <p>Project Name : <span><%= ac.get_project_history(ac.project_id).try(:name) %></span></p>
+       <p>Description : <span><%= ac.get_project_history(ac.project_id).try(:description) %></span></p>
+
+     </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+<% end %>
+<% end %>

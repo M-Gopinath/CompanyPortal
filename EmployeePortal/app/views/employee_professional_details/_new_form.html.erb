@@ -1,0 +1,36 @@
+<div class="row">
+  <%= form_for(employee_professional_detail, remote: true) do |f| %>
+    <%= f.hidden_field :employee_id, value: employee.id %>
+    <div class="col-md-3">
+      <%= f.text_field :employment_name, class: "form-control", required: true %>
+    </div>
+    <div class="col-md-2">
+      <%= f.text_field :from_date, class: "datepicker form-control pro_from_date from_pro_#{employee.id}", "data-user_id" => employee.id, required: true %>
+    </div>
+    <div class="col-md-2">
+      <%= f.text_field :to_date, class: "datepicker form-control pro_to_date to_pro_#{employee.id}", "data-user_id" => employee.id,  required: true %>
+    </div>
+    <div class="col-md-3">
+      <%= f.text_field :designation, class: "form-control", required: true %>
+    </div>
+    <div class="col-md-2">
+      <%= f.submit employee_professional_detail.new_record? ? "Create" : "Update", class: "btn btn-primary btn-lg btn-block it-btn-them" %>
+    </div>
+  <% end %>
+</div>
+<script type="text/javascript">
+  $(document).on("focus", ".datepicker", function(){
+    $(this).datepicker({
+      todayHighlight:'TRUE',
+      startDate: '-0d',
+      endDate: '+2m',
+      format: 'dd-mm-yyyy',
+      autoclose: true
+    });
+  });
+  $('#employee_professional_detail_designation').bind('keyup blur',function(){ 
+    $(this).val(function(i, val) {
+      return val.replace(/[^a-z\s]/gi,''); 
+    });
+  });
+</script>

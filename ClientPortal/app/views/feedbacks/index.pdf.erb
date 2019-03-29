@@ -1,0 +1,27 @@
+<div id="letter_bad">
+  <h2 align="center">Privacy Policy List</h2>
+  <% if @feedbacks.present?%>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Client Name</th>
+        <th>Employee </th>
+        <th>Feedback </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @feedbacks.each do |feed| %>
+      <tr>
+        <td><%= feed.get_project_name(feed.project_id) %></td>
+        <td><%= feed.get_client_name(current_client.id) %></td>
+        <td><%= feed.get_employee_name(feed.employee_id) %></td>
+        <td><%= feed.try(:feedback) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+    <p align="center">No Feedback List</p>
+  <% end %>
+</div>

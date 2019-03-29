@@ -1,0 +1,35 @@
+ <section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>Policy</h1><br />
+        </div>
+        <div class="col-md-4 content-header">
+        </div>
+        <div class="col-md-3 content-header">
+          <div class="top-links new-top">
+            <a href="">xls</a>
+            <a href="">csv</a>
+            <a href="">pdf</a>
+          </div>
+        </div>
+        <div class="header-border"></div>
+      </div>
+    </div>
+    <div class="policy-content">
+      <p id="notice"><%= notice %></p>
+
+      <p>
+        <strong>Amount:</strong>
+        <%= @privacy_policy.topic %>
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= @privacy_policy.description %>
+      </p>
+      <%= link_to 'Edit', edit_privacy_policy_path(@privacy_policy), class: "btn btn-default" %>
+    </div>
+  </div>
+</section>

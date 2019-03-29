@@ -1,0 +1,1 @@
+$(".expense-list").html("<%= escape_javascript(render partial: 'list', locals: {date: @date, office_expenses: @office_expenses} ) %>")

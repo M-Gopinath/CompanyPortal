@@ -1,0 +1,2 @@
+class OfficeSalaryBreakage < ApplicationRecord
+end

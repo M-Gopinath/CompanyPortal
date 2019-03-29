@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 
+  basic_pay: 9.99
+  hra: 9.99
+  pf_employeer_contribution: 9.99
+  gratuity_employeer_contribution: 9.99
+  medical_insurance: 9.99
+  special_allowance: 9.99
+
+two:
+  employee_id: 
+  basic_pay: 9.99
+  hra: 9.99
+  pf_employeer_contribution: 9.99
+  gratuity_employeer_contribution: 9.99
+  medical_insurance: 9.99
+  special_allowance: 9.99

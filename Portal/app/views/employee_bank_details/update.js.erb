@@ -1,0 +1,3 @@
+$(".bank_list_<%= @employee_bank_detail.employee.id %>").html("<%= escape_javascript(render partial: 'users_list', locals: {emp: @employee_bank_detail.employee})%>");
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();

@@ -1,0 +1,382 @@
+\<aside class="main-sidebar">
+
+  <section class="sidebar">
+
+    <div class="user-panel">
+      <div class="pull-left image">
+        <% if current_employee.employee_personal_detail && current_employee.employee_personal_detail.avatar? %>
+          <%= image_tag(current_employee.employee_personal_detail.avatar_url, class: "img-circle")  %>
+        <% else %>
+          <img src="/assets/missing.jpg" class="img-circle" alt="User Image">
+        <% end %>
+      </div>
+      <div class="pull-left info">
+        <p>Alexander Pierce</p>
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <!-- <ul class="sidebar-menu">
+      <li class="header">HEADER</li>
+      <li class="treeview">
+        <a href="#"><i class="fa fa-link"></i> <span>Employees</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="#">Personal Details</a></li>
+          <li><a href="#">Professional Details</a></li>
+          <li><%#= link_to "Bank", employee_bank_details_path %></li>
+          <li><%#= link_to "Emergency Contact", employee_emergency_contact_details_path %></li>
+          <li><%#= link_to "Language", employee_languages_path %></li>
+          <li><%#= link_to "Address", employee_addresses_path %></li>
+          <li><a href="#">Qualification</a></li>
+          <li><a href="#">Education Certificates</a></li>
+          <li><a href="#">Employement Certificates</a></li>
+          <li><a href="#">Agreements</a></li>
+          <li><a href="#">Asset Details</a></li>
+          <li><a href="#">Hardware Details</a></li>
+          <li><a href="#">Software Details</a></li>
+        </ul>
+      </li>
+    </ul> -->
+    <%if current_employee.present? %>
+      <% if current_employee.admin? %>
+        <ul class="sidebar-menu">
+          <li class="treeview">
+            <%= link_to dashboard_index_path do %>
+              <i class="fa fa-home" aria-hidden="true"></i><span>Dashboard</span>
+            <% end %>
+          </li>
+          <li class="treeview"><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span>Employee</span><span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+            <ul class="treeview-menu">
+              <li>
+                <%= link_to "Active Listing", active_employees_path%>
+              </li>
+              <li>
+                <%= link_to "Deactive Listing", deactive_employees_path%>
+              </li>
+              <li>
+                <%= link_to "Personal Details", employee_personal_details_path%>
+              </li>
+              <li>
+                <%= link_to "Address", employee_addresses_path %>
+              </li>
+              <li>
+                <%= link_to "Emergency Contact", employee_emergency_contact_details_path %>
+              </li>
+              <li>
+                <%= link_to "Language", employee_languages_path %>
+              </li>
+              <li>
+                <%= link_to "Qualification", employee_qualification_details_path %>
+              </li>
+              <li>
+                <%= link_to "Professional Details", employee_professional_details_path %>
+              </li>
+              <li>
+                <%= link_to "Education Certificates", employee_education_details_path %>
+              </li>
+              <li><%= link_to "Employement Certificates", employee_employment_details_path %></li>
+              <li>
+                <%= link_to "Bank", employee_bank_details_path %>
+              </li>
+              <li>
+                <%= link_to "Agreements", employee_agreements_path %>
+              </li>
+            </ul>
+          </li>
+          <li class="treeview"><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span>Clients</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span></a>
+            <ul class="treeview-menu">
+              <li><%= link_to "Active Clients", active_clients_path %></li>
+              <li><%= link_to "Deactive Clients", deactive_clients_path %></li>
+              <li><%= link_to "Company Details", client_company_details_path %></li>
+              <li><%= link_to "Social Network Details", client_social_networks_path %></li>
+            </ul>
+          </li>
+          <li class="treeview"><a href="#"><i class="fa fa-folder-open" aria-hidden="true"></i><span>Projects</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span></a>
+            <ul class="treeview-menu">
+              <li><%= link_to "Assign Employees", assign_employees_path %></li>
+              <li><%= link_to "Active Projects", active_projects_path %></li>
+              <li><%= link_to "Deactive Projects", deactive_projects_path %></li>
+            </ul>
+          </li>
+          <li class="treeview"><%= link_to project_listings_task_management_path do %><i class="fa fa-tasks" aria-hidden="true"></i><span>Task Management</span><%end%></li>
+
+          <li class="treeview"><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Time Tracking</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span></a>
+            <ul class="treeview-menu">
+              <li><%= link_to "Approve / Cancel Request", time_trackers_index_path %></li>
+              <li><%= link_to "Timesheet", time_trackers_time_sheet_path %></li>
+            </ul>
+          </li>
+          <li class="treeview"><a href="#"><i class="fa fa-sticky-note" aria-hidden="true"></i><span>Leave & Permission</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            <ul class="treeview-menu">
+              <li><%= link_to "Leave Approve", leave_permissions_leave_approve_path %></li>
+              <li><%= link_to "Leave Reject", leave_permissions_leave_reject_path %></li>
+              <li><%= link_to "Leave Cancel", leave_permissions_leave_cancel_path %></li>
+              <li><%= link_to "Permission Approve", leave_permissions_permission_approve_path %></li>
+              <li><%= link_to "Permission Reject", leave_permissions_permission_reject_path %></li>
+              <li><%= link_to "Permission Cancel", leave_permissions_permission_cancel_path %></li>
+            </ul>
+          </li>
+          <li class="treeview"><%= link_to meeting_calendar_index_path do%><i class="fa fa-calendar" aria-hidden="true"></i><span>Meeting Calendar</span><%end %></li>
+          
+          <li class="treeview">
+            <%= link_to yearly_holiday_calendar_index_path do %>
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>Leave Calendar</span>
+            <% end %>
+          </li>
+           <li class="treeview">
+            <%= link_to privacy_policies_path do %>
+              <i class="fa fa-file-text" aria-hidden="true"></i><span>Policy</span>
+            <% end %>
+          </li>
+          <li class="treeview"><a href="#"><i class="fa fa-table" aria-hidden="true"></i><span>Seed Table</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            <ul class="treeview-menu">
+              <li><%= link_to "Role", seed_table_role_path %></li>
+              <li><%= link_to "Employee", seed_table_employee_path %></li>
+              <li><%= link_to "Skill", seed_table_skill_path %></li>
+              <li><%= link_to "EmployeeAddressType", seed_table_employee_address_type_path %></li>
+              <li><%= link_to "Education Certificate", seed_table_education_certificate_path %></li>
+              <li><%= link_to "Employment Certificate", seed_table_employment_certificate_path %></li>
+              <li><%= link_to "EmployeeAgreementType", seed_table_employee_agreement_type_path %></li>
+              <li><%= link_to "Client Company", seed_table_client_company_path %></li>
+              <li><%= link_to "Share Holder", seed_table_share_holder_path %></li>
+              <li><%= link_to "Transaction Vium", seed_table_transaction_vium_path %></li>
+              <li><%= link_to "Leave Type", seed_table_leave_type_path %></li>
+              <li><%= link_to "Leave Permission Status", seed_table_leave_permission_status_path %></li>
+              <li><%= link_to "Meeting Event Notification", seed_table_meeting_event_notification_path %></li>
+              <li><%= link_to "Meeting Event Repeat", seed_table_meeting_event_repeat_path %></li>
+              <li><%= link_to "Privacy Policy", seed_table_privacy_policy_path %></li>
+              <li><%= link_to "Speaking Proficiency", seed_table_speaking_proficiency_path %></li>
+              <li><%= link_to "Writing Proficiency", seed_table_writing_proficiency_path %></li>
+              <li><%= link_to "Project", seed_table_project_path %></li>
+              <li><%= link_to "Socialnetwork", seed_table_socialnetwork_path %></li>
+              <li><%= link_to "Task Type", seed_table_task_type_path %></li>
+              <li><%= link_to "Task Priority", seed_table_task_priority_path %></li>
+              <li><%= link_to "Task Status", seed_table_task_status_path %></li>
+              <li><%= link_to "Time Sheet Status", seed_table_time_sheet_status_path %></li>
+              <li><%= link_to "Yearly Holiday Calendar", seed_table_yearly_holiday_calendar_path %></li>
+            </ul>
+          </li>
+          <li class="treeview"><a href="#"><i class="fa fa-sticky-note" aria-hidden="true"></i><span>Earnings</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            <ul class="treeview-menu">
+              <li><%= link_to "PaySlip", employee_payslips_path %></li>
+            </ul>
+          </li>
+          <li class="treeview"><a href="#"><i class="fa fa-desktop" aria-hidden="true"></i><span>Asset Management</span></a></li>
+        </ul>
+      <%end%>
+
+      <%if current_employee.manager?%>
+        <ul class="sidebar-menu">
+          <li class="treeview">
+            <%= link_to dashboard_index_path do %>
+              <i class="fa fa-home" aria-hidden="true"></i><span>Dashboard</span>
+            <% end %>
+          </li>
+          <li class="treeview">
+            <%= link_to personal_details_path do %>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              <span>My Profile</span>
+            <%end%>
+          </li>
+
+          <li class="treeview"><a href="#"><i class="fa fa-info" aria-hidden="true"></i><span>Report List</span></a></li>
+          <li class="treeview"><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span>Clients</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span></a>
+            <ul class="treeview-menu">
+              <li><%= link_to "Active Clients", active_clients_path %></li>
+              <li><%= link_to "Deactive Clients", deactive_clients_path %></li>
+              <li><%= link_to "Company Details", client_company_details_path %></li>
+              <li><%= link_to "Social Network Details", client_social_networks_path %></li>
+            </ul>
+          </li>
+          <li class="treeview"><a href="#"><i class="fa fa-folder-open" aria-hidden="true"></i><span>Projects</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span></a>
+            <ul class="treeview-menu">
+              <li><%= link_to "Assign Employees", assign_employees_path %></li>
+              <li><%= link_to "Active Projects", active_projects_path %></li>
+              <li><%= link_to "Deactive Projects", deactive_projects_path %></li>
+            </ul>
+          </li>
+          <li class="treeview"><%= link_to project_listings_task_management_path do %><i class="fa fa-tasks" aria-hidden="true"></i><span>Task Management</span><%end%></li>
+
+          <li class="treeview"><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Time Tracking</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span></a>
+            <ul class="treeview-menu">
+              <li><%= link_to "Approve / Cancel Request", time_trackers_index_path %></li>
+              <li><%= link_to "Timesheet", time_trackers_time_sheet_path %></li>
+            </ul>
+          </li>
+          <li class="treeview"><a href="#"><i class="fa fa-sticky-note" aria-hidden="true"></i><span>Leave & Permission</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+             <ul class="treeview-menu">
+              <li><%= link_to "Approve / Cancel Request", leave_permissions_index_path %></li>
+              <li><%= link_to "Apply Leave", leave_permissions_apply_leave_path %></li>
+              <li><%= link_to "Apply Permission", leave_permissions_apply_permission_path %></li>
+            </ul>
+          </li>
+          <li class="treeview"><%= link_to meeting_calendar_index_path do%><i class="fa fa-calendar" aria-hidden="true"></i><span>Meeting Calendar</span><%end %></li>
+          <li class="treeview">
+            <%= link_to yearly_holiday_calendar_index_path do %>
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>Leave Calendar</span>
+            <% end %>
+          </li>
+          <li class="treeview">
+            <%= link_to privacy_policies_path do %>
+              <i class="fa fa-file-text" aria-hidden="true"></i><span>Policy</span>
+            <% end %>
+          </li>
+           
+          <li class="treeview"><a href="#"><i class="fa fa-usd" aria-hidden="true"></i><span>My Earings</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+            <ul class="treeview-menu">
+              <li><%= link_to "My Definitions", earnings_my_definition_path(id: current_employee.id) %></li>
+              <li><%= link_to "Pay Computation", earnings_pay_computation_path(id: current_employee.id) %></li>
+              <li><%= link_to "PaySlip", earnings_employee_payslip_path(id: current_employee.id) %></li>
+            </ul>
+          </li>
+
+          <li class="treeview"><a href="#"><i class="fa fa-desktop" aria-hidden="true"></i><span>Asset Management</span></a></li>
+        </ul>
+      <%end%>
+      <%if current_employee.team_lead?%>
+        <ul class="sidebar-menu">
+          <li class="treeview">
+            <%= link_to dashboard_index_path do %>
+              <i class="fa fa-home" aria-hidden="true"></i><span>Dashboard</span>
+            <% end %>
+          </li>
+          <li class="treeview">
+            <%= link_to personal_details_path do %>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              <span>My Profile</span>
+            <%end%>
+          </li>
+
+          <li class="treeview"><a href="#"><i class="fa fa-info" aria-hidden="true"></i><span>Report List</span></a></li>
+          <li class="treeview"><%= link_to project_listings_task_management_path do %><i class="fa fa-tasks" aria-hidden="true"></i><span>Task Management</span><%end%></li>
+         
+
+          <li class="treeview"><a href="#"><i class="fa fa-folder-open" aria-hidden="true"></i><span>Projects</span></a></li>
+          <li class="treeview"><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Time Tracking</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span></a>
+          <ul class="treeview-menu">
+            <li><%= link_to "Timesheet", time_trackers_time_sheet_path %></li>
+          </ul>
+        </li>
+        <li class="treeview"><a href="#"><i class="fa fa-sticky-note" aria-hidden="true"></i><span>Leave & Permission</span><span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+          <ul class="treeview-menu">
+            <li><%= link_to "Approve / Cancel Request", leave_permissions_index_path %></li>
+            <li><%= link_to "Apply Leave", leave_permissions_apply_leave_path %></li>
+            <li><%= link_to "Apply Permission", leave_permissions_apply_permission_path %></li>
+          </ul>
+        </li>
+         <li class="treeview"><%= link_to meeting_calendar_index_path do%><i class="fa fa-calendar" aria-hidden="true"></i><span>Meeting Calendar</span><%end %></li>
+          <li class="treeview">
+            <%= link_to yearly_holiday_calendar_index_path do %>
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>Leave Calendar</span>
+            <% end %>
+          </li>
+           <li class="treeview">
+            <%= link_to privacy_policies_path do %>
+              <i class="fa fa-file-text" aria-hidden="true"></i><span>Policy</span>
+            <% end %>
+          </li>
+           <li class="treeview"><a href="#"><i class="fa fa-usd" aria-hidden="true"></i><span>My Earings</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+            <ul class="treeview-menu">
+              <li><%= link_to "My Definitions", earnings_my_definition_path(id: current_employee.id) %></li>
+              <li><%= link_to "Pay Computation", earnings_pay_computation_path(id: current_employee.id) %></li>
+              <li><%= link_to "PaySlip", earnings_employee_payslip_path(id: current_employee.id) %></li>
+            </ul>
+          </li>
+          <li class="treeview"><a href="#"><i class="fa fa-desktop" aria-hidden="true"></i><span>Asset Management</span></a></li>
+        </ul>
+      <%end%>
+      <%if current_employee.software_engineers?%>
+        <ul class="sidebar-menu"> 
+          <li class="treeview">
+            <%= link_to dashboard_index_path do %>
+              <i class="fa fa-home" aria-hidden="true"></i><span>Dashboard</span>
+            <% end %>
+          </li>
+          <li class="treeview">
+            <%= link_to personal_details_path do %>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              <span>My Profile</span>
+            <%end%>
+          </li>
+
+          <li class="treeview">
+            <%= link_to project_list_path do%>
+              <i class="fa fa-folder-open" aria-hidden="true"></i><span>Projects</span>
+            <% end %>
+          </li>
+
+          <li class="treeview"><%= link_to project_listings_task_management_path do %><i class="fa fa-tasks" aria-hidden="true"></i><span>Task Management</span><%end%></li>
+
+
+          <li class="treeview"><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Time Tracking</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span></a>
+            <ul class="treeview-menu">
+              <li><%= link_to "Timesheet", time_trackers_time_sheet_path %></li>
+            </ul>
+          </li>
+          <li class="treeview"><a href="#"><i class="fa fa-sticky-note" aria-hidden="true"></i><span>Leave & Permission</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+             <ul class="treeview-menu">
+              <li><%= link_to "Apply Leave", leave_permissions_apply_leave_path %></li>
+              <li><%= link_to "Apply Permission", leave_permissions_apply_permission_path %></li>
+            </ul>
+          </li>
+          <li class="treeview"><%= link_to meeting_calendar_index_path do%><i class="fa fa-calendar" aria-hidden="true"></i><span>Meeting Calendar</span><%end %></li>
+          <li class="treeview">
+            <%= link_to yearly_holiday_calendar_index_path do %>
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>Leave Calendar</span>
+            <% end %>
+          </li>
+          <li class="treeview">
+            <%= link_to privacy_policies_new_index_path do %>
+              <i class="fa fa-file-text" aria-hidden="true"></i><span>Policy</span>
+            <% end %>
+          </li>
+           <li class="treeview"><a href="#"><i class="fa fa-usd" aria-hidden="true"></i><span>My Earings</span><span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+            <ul class="treeview-menu">
+              <li><%= link_to "My Definitions", earnings_my_definition_path(id: current_employee.id) %></li>
+              <li><%= link_to "Pay Computation", earnings_pay_computation_path(id: current_employee.id) %></li>
+              <li><%= link_to "PaySlip", earnings_employee_payslip_path(id: current_employee.id) %></li>
+            </ul>
+          </li>
+         <li class="treeview"><a href="#"><i class="fa fa-desktop" aria-hidden="true"></i><span>Asset Management</span></a></li>
+        </ul>
+      <%end%>
+    <%end%>
+    
+  </section>
+
+</aside>

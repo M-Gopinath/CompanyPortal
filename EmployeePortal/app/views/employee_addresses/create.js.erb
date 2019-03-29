@@ -1,0 +1,17 @@
+<% if @employee_address.errors.any? %>
+  <% if @employee_address.employee_address_type_id == employee_address_type('PERMANENT ADDRESS') %>
+    $(".home_address_<%= @employee_address.employee.id %>").html("<%= escape_javascript(render partial: 'form', locals: {address_details: @employee_address, employee:  @employee_address.employee, address_type: 1}) %>")
+  <% elsif @employee_address.employee_address_type_id == employee_address_type('CURRENT ADDRESS') %>
+    $(".mail_address_<%= @employee_address.employee.id %>").html("<%= escape_javascript(render partial: 'form', locals: {address_details: @employee_address, employee:  @employee_address.employee, address_type: 2 }) %>")
+  <% elsif @employee_address.employee_address_type_id == employee_address_type('OFFICIAL ADDRESS') %>
+    $(".work_address_<%= @employee_address.employee.id %>").html("<%= escape_javascript(render partial: 'form', locals: {address_details: @employee_address, employee:  @employee_address.employee, address_type: 3 }) %>")
+  <% end %>
+<% else %>
+  <% if @employee_address.employee_address_type_id == employee_address_type('PERMANENT ADDRESS') %>
+    $(".home_address_<%= @employee_address.employee.id %>").html("<%= escape_javascript(render partial: 'show', locals: {address_details: @employee_address, employee:  @employee_address.employee}) %>")
+  <% elsif @employee_address.employee_address_type_id == employee_address_type('CURRENT ADDRESS') %>
+    $(".mail_address_<%= @employee_address.employee.id %>").html("<%= escape_javascript(render partial: 'show', locals: {address_details: @employee_address, employee:  @employee_address.employee }) %>")
+  <% elsif @employee_address.employee_address_type_id == employee_address_type('OFFICIAL ADDRESS') %>
+    $(".work_address_<%= @employee_address.employee.id %>").html("<%= escape_javascript(render partial: 'show', locals: {address_details: @employee_address, employee:  @employee_address.employee }) %>")
+  <% end %>
+<% end %>

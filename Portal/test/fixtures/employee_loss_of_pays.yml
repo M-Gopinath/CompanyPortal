@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 
+  month: 1
+  month: 1
+  leave_period: MyString
+
+two:
+  employee_id: 
+  month: 1
+  month: 1
+  leave_period: MyString

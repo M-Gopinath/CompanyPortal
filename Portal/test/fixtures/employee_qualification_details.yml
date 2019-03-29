@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 
+  education_degree: MyString
+  year_of_passing: 2017-04-18
+  institution_name: MyString
+  university_board: MyString
+  percentage: MyString
+
+two:
+  employee_id: 
+  education_degree: MyString
+  year_of_passing: 2017-04-18
+  institution_name: MyString
+  university_board: MyString
+  percentage: MyString

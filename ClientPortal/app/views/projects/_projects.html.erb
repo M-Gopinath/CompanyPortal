@@ -1,0 +1,166 @@
+<div class="table-responsive policy-content">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Topic</th>
+        <th width="40%">Description</th>
+        <th colspan="3">Action
+          <a href="#" class="md-trigger pull-right" data-toggle="modal" data-target="#project_create"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% projects.each do |project| %>
+      <tr>
+        <td><%= project.try(:name) %></td>
+        <td><%= project.try(:description) %></td>
+        <td class="action-link">
+          <a data-toggle="modal" data-target="#projects_<%= project.id%>"><i class="fa fa-user-circle-o"></i></a>
+          <a data-toggle="modal" data-target="#edit_projects_<%= project.id%>"><i class="fa a fa-edit"></i></a>
+          <%= link_to project_remove_project_path(project_id: project.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-times"></i>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="pagination-content">
+  <%= will_paginate projects, renderer: BootstrapPagination::Rails %>
+</div>
+
+
+<% if projects.present? %>
+  <% projects.each do |ac|%>
+    <div id="projects_<%= ac.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Project</h4>
+          </div>
+          <div class="modal-body">
+            <p>Name : <span><%= ac.try(:name) %></span></p>
+            <p>Description : <span><%= ac.try(:description) %></span></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% if projects.present? %>
+  <% projects.each do |ac|%>
+    <div id="edit_projects_<%= ac.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Project</h4>
+          </div>
+          <div class="modal-body">
+            <%= form_for :project, url: project_edit_project_path(project_id: ac.id), method: :put do |f| %>
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, placeholder: "Project Nane", class: "form-control", required: true, value: ac.try(:name) %>
+            </div>
+            <div class="form-group">
+              <label for="tags2">Skills</label>
+              <input type="text" class="form-control tag-input narrow" name="skill_tag" id="tags3" placeholder="Enter Skills" value="<%= ac.project_skill_name? %>">
+            </div>
+            <div class="form-group">
+              <%= f.label :description %>
+              <%= f.text_field :description, placeholder: "Description", class: "form-control", required: true, value: ac.try(:description) %>
+            </div>
+            <div class="form-group">
+              <%= f.submit 'Update Project',class: "btn btn-primary" %>
+            </div>
+            <%end%>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Modal -->
+<div id="project_create" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New Project</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for :project, url: projects_path, method: :post do |f| %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, placeholder: "Project Nane", class: "form-control", required: true %>
+        </div>
+        <div class="form-group">
+          <label for="tags2">Skills</label>
+          <input type="text" class="form-control tag-input narrow" name="skill_tag" id="tags3" placeholder="Enter Skills" value="">
+        </div>
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_field :description, placeholder: "Description", class: "form-control", required: true %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+        <%end%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+      // Instantiate the Bloodhound suggestion engine
+      var tags = new Bloodhound({
+          datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.tag); },
+          queryTokenizer: Bloodhound.tokenizers.whitespace,
+          local: [
+            <% @skills.each do |skill| %>
+              { tag: '<%= skill.name %>' },
+            <%end%>
+          ]
+      });
+      tags.initialize();
+      // Set up an on-screen console for the demo
+      var screenConsole = $('#console');
+      // Write callback data to the screen when tags are added or removed in demo inputs
+      var logCallbackDataToConsole = function(added, removed) {
+          screenConsole.append('Tag Data: ' + (this.val() || null) + ', Added: ' + added + ', Removed: ' + removed + '\n');
+      };
+      // Create typeahead-enabled tag inputs
+      $('.tag-input').tagInput({
+          allowDuplicates: false,
+          typeahead: true,
+          typeaheadOptions: {
+              highlight: true
+          },
+          typeaheadDatasetOptions: {
+              displayKey: 'tag',
+              source: tags.ttAdapter()
+          },
+          onTagDataChanged: logCallbackDataToConsole
+      });
+      // Create basic tag inputs with no typeahead
+      $('.tag-input-basic').tagInput({
+          onTagDataChanged: logCallbackDataToConsole
+      });
+      $('#results a[rel="external"]').attr('target', '_blank');
+  });
+</script>

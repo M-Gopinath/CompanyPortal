@@ -1,0 +1,1 @@
+$('#employee_name').html("<%= escape_javascript(select_tag 'feedback[employee_id]', options_for_select(@project_employee.map {|at| [at.name?, at.employee_id?]}),prompt: @project_employee.count > 0 ? 'Select Employee' : 'None of Employee Assigned', class: 'form-control') %>");

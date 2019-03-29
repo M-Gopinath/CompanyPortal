@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_task_id: 
+  project_id: 1
+  employee_id: 
+  title: MyText
+  description: MyText
+  task_type_id: 1
+  task_priority_id: 1
+  task_status_id: 1
+  start_date: 2017-04-18
+  due_date: 2017-04-18
+  estimated_hours: 2017-04-18 15:47:41
+  actual_hours_taken: 2017-04-18 15:47:41
+  hide_to_client: false
+
+two:
+  project_task_id: 
+  project_id: 1
+  employee_id: 
+  title: MyText
+  description: MyText
+  task_type_id: 1
+  task_priority_id: 1
+  task_status_id: 1
+  start_date: 2017-04-18
+  due_date: 2017-04-18
+  estimated_hours: 2017-04-18 15:47:41
+  actual_hours_taken: 2017-04-18 15:47:41
+  hide_to_client: false

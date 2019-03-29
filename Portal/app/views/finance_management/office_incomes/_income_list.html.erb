@@ -1,0 +1,108 @@
+<div class="content-header">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="text-center back-pre-btn income-title">
+        <span class="pull-left"><%= link_to "<<", finance_management_office_incomes_path(date: date - 1.year),class: "btn btn-default", remote: true %></span>
+        <span><b>Office Income</b></span>
+        <span><b><%= Date::MONTHNAMES[date.month] %></b></span>
+        <span><b><%= date.strftime("%Y") %></b></span>
+        <span class="pull-right"><%= link_to ">>", finance_management_office_incomes_path(date: date + 1.year),class: "btn btn-default", remote: true %></span>
+      </p>
+      <p class="text-center back-pre-btn">
+        <% (1..12).each_with_index do |m, index| %>
+        <span><%= link_to "#{Date::MONTHNAMES[m].first(3)}", finance_management_office_incomes_path(date: date.beginning_of_year + index.month),class: "btn btn-default", remote: true %></span>
+        <% end %>
+        <span><a href="#" class="md-trigger pull-right income-new" data-toggle="modal" data-target="#newIncomeForm"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
+        <div id="newIncomeForm" class="modal fade" role="dialog">
+          <%= render partial: "new_form", locals: {income: OfficeIncome.new, url: finance_management_office_incomes_path} %>
+        </div>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="content-header">
+  <div class="row">
+    <div class="col-md-12">
+       <div class="top-links pull-right">
+        <%= link_to 'xls', finance_management_office_incomes_path(format: "xls", date: date) %>
+        <%= link_to 'csv', finance_management_office_incomes_path(format: "csv", date: date) %>
+        <%= link_to 'pdf', finance_management_office_incomes_path(format: :pdf, date: date) %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive income-table">
+      <table class="table table-bordered fixed-header">
+        <thead class="thead-default">
+          <tr>
+            <td colspan="2"></td>
+            <td>#</td>
+            <td><%= Date::MONTHNAMES[date.month] %> <%= date.strftime("%Y") %></td>
+            <td><%= get_income(office_incomes, "OFFICE") %></td>
+            <td><%= get_income(office_incomes, "GOPINATH") %></td>
+            <td><%= get_income(office_incomes, "SARAVANAN") %></td>
+            <td><%= get_income(office_incomes, "OTHERS") %></td>
+            <td><%= get_all_income(office_incomes) %></td>
+            <% if clients.present? %>
+              <% clients.uniq.each do |c| %>
+                <td><%= get_client_income(c, office_incomes) %></td>
+              <% end %>
+            <% end %>
+          </tr>
+          <tr class="income-head">
+            <th colspan="2" class="text-center">Actions</th>
+            <th>S.No</th>
+            <th>Money Received Date</th>
+            <th>Money Holding By Office</th>
+            <th>Money Holding By Gopi</th>
+            <th>Money Holding By Saravanan</th>
+            <th>Money Holding By Other</th>
+            <th>Total Amount</th>
+            <% if clients.present? %>
+              <% clients.uniq.each do |c| %>
+                <th><%= c.first_name %></th>
+              <% end %>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% office_incomes.each.with_index(1) do |oi, index| %>
+            <tr>
+              <td class="text-center">
+                <a href="#" class="md-trigger income-new" data-toggle="modal" data-target="#editIncomeForm_<%= index %>"><i class="fa fa-edit"></i></a>
+                <div id="editIncomeForm_<%= index %>" class="modal fade" role="dialog">
+                   <%= render partial: "new_form", locals: {income: oi, url: finance_management_office_income_path(oi)} %>
+                </div>
+              </td>
+              <td class="text-center">
+                <%= link_to finance_management_office_income_path(oi), method: :delete, data: {confirm: "are you sure"} do %>
+                  <i class="fa fa-times"></i>
+                <% end %>
+              </td>
+              <td><%= index %>
+              <td><%= oi.money_received_date.strftime("%b %d") %></td>
+              <td><%= holding_income(oi, "OFFICE") %></td>
+              <td><%= holding_income(oi, "GOPINATH") %></td>
+              <td><%= holding_income(oi, "SARAVANAN") %></td>
+              <td><%= holding_income(oi, "OTHERS") %></td>
+              <td><%= oi.money_received %></td>
+              <% if clients.present? %>
+                <% clients.uniq.each do |c| %>
+                  <% if c.id == oi.client_id %>
+                    <td>
+                      <%= oi.money_received %>
+                    </td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

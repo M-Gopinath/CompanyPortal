@@ -1,0 +1,34 @@
+<%= form_for(employee_contact_detail, remote: true) do |f| %>
+  <%= f.hidden_field :employee_id, value: employee.id %>
+  <div class="form-group col-md-3">
+    <%= f.text_field :contact_person_name, class:"form-control", required: true %>
+  </div>
+  <div class="form-group col-md-2">
+    <%= f.text_field :relationship, class:"form-control", required: true %>
+  </div>
+  <div class="form-group col-md-2">
+    <%= f.check_box :primary, required: true %>
+  </div>
+  <div class="form-group col-md-3">
+    <%= f.text_field :contact_number, class:"form-control", required: true %>
+  </div>
+  <div class="actions col-md-2">
+   <%= f.submit employee_contact_detail.new_record? ? "Create" : "Update", :class => 'btn btn-primary btn-lg btn-block it-btn-them' %>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $('#employee_emergency_contact_detail_contact_person_name').bind('keyup blur',function(){ 
+    $(this).val(function(i, val) {
+      return val.replace(/[^a-z\s]/gi,''); 
+    });
+  });
+  $("#employee_emergency_contact_detail_contact_number").numeric();
+  $(document).ready(function(){
+    $("#employee_emergency_contact_detail_contact_number").change(function(){
+      var test_value = $("#employee_emergency_contact_detail_contact_number").val();
+      if(test_value.length < 10){
+        $("#employee_emergency_contact_detail_contact_number").val('');
+      }
+    });
+  });
+</script>

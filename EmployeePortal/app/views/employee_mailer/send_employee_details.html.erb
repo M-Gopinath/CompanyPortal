@@ -1,0 +1,14 @@
+<h1>Welcome to ITBEEZONE, <%= @employee.full_name %></h1>
+<p>
+  your email is: <%= @employee.email %>.<br>
+</p>
+<p>
+  Your Password is: <%= @employee.first_password %>
+</p>
+<p>
+  Your Designation is: <%= @employee.role.try(:name) %>
+</p>
+<p>
+  To login to the site, just follow this link: <%= link_to "Login", new_employee_session_url %>.
+</p>
+<p>Thanks for joining and have a great day!</p>

@@ -1,0 +1,217 @@
+<div class="panel">
+  <div class="content-header">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="text-center back-pre-btn income-title">
+          <span class="pull-left"><%= link_to "<<", earnings_employee_payslip_path(date: date - 1.year),class: "btn btn-default", remote: true %></span>
+          <span><b><%= Date::MONTHNAMES[date.month] %></b></span>
+          <span><b><%= date.strftime("%Y") %></b></span>
+          <span class="pull-right"><%= link_to ">>", earnings_employee_payslip_path(date: date + 1.year),class: "btn btn-default", remote: true %></span>
+        </p>
+        <p class="text-center back-pre-btn">
+          <% (1..12).each_with_index do |m, index| %>
+          <span><%= link_to "#{Date::MONTHNAMES[m].first(3)}", earnings_employee_payslip_path(date: date.beginning_of_year + index.month),class: "btn btn-default", remote: true %></span>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <div class="text-center">
+        <p><h4><b>ITBEEZONE BUSINESS SOLUTIONS</b></h4></p>
+        <p>G3 block, majestic enclave,M.S.Viswanathan Nagar, karayanchavadi</p>
+        <p> poonamalle,chennai - 56</p>
+        <p><b>Payslip for the month of <%= Date::MONTHNAMES[date.month] %> <%= date.strftime("%Y") %></b></p>
+      </div>
+    </div>
+    <% if monthly_ctc.present? && monthly_ctc.month_year < Date.today.beginning_of_month %>
+      <div class="col-md-2">
+        <%= link_to "Download", earnings_employee_payslip_path(format: :pdf, date: date), class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+  <% if monthly_ctc.present? && monthly_ctc.month_year < Date.today.beginning_of_month %>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table borderless payslip-table">
+          <thead>
+            <tr>
+              <th>Name:</th>
+              <td><%= employee.full_name %></td>
+            </tr>
+            <tr>
+              <th>Designation:</th>
+              <td><%= employee.role.name %></td>
+            </tr>
+            <% if work_days.present? && work_days.employee_worked_days.present? %>
+              <tr>
+                <th>Effective Work Days:</th>
+                <td><%= work_days.employee_worked_days.to_s.include?('.5') ? work_days.employee_worked_days : work_days.employee_worked_days.to_i %></td>
+              </tr>
+            <% end %>
+            <% if work_days.present? && work_days.company_working_days.present? %>
+              <tr>
+                <th>Days In Month:</th>
+                <td><%= work_days.company_working_days.to_s.include?('.5') ? work_days.company_working_days : work_days.company_working_days.to_i %></td>
+              </tr>
+            <% end %>
+            <% if work_days.present? && work_days.loss_of_pay.present? && work_days.loss_of_pay > 0 %>
+              <tr>
+                <th>LOP:</th>
+                <td><%= work_days.try(:loss_of_pay) %></td>
+              </tr>
+            <% end %>
+          </thead>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table borderless payslip-table">
+          <thead>
+            <tr>
+              <th>Employee ID:</th>
+              <td><%= employee.employee_id %></td>
+            </tr>
+            <tr>
+              <th>Date of Joining:</th>
+              <td><%= employee.created_at.strftime('%d-%b-%Y') %></td>
+            </tr>
+            <% if employee.employee_bank_detail.try(:bank_name).present? %>
+              <tr>
+                <th>Bank Name:</th>
+                <td><%= employee.employee_bank_detail.try(:bank_name) %></td>
+              </tr>
+            <% end %>
+            <% if employee.employee_bank_detail.try(:account_number) %>
+              <tr>
+                <th>Bank Account No:</th>
+                <td><%= employee.employee_bank_detail.try(:account_number) %></td>
+              </tr>
+            <% end %>
+            <% if employee.employee_personal_detail.try(:pan_number) %>
+              <tr>
+                <th>PAN No:</th>
+                <td><%= employee.employee_personal_detail.try(:pan_number) %></td>
+              </tr>
+            <% end %>
+            <!-- <tr>
+              <th>Leave Balance:</th>
+              <td>sdfsdfsdfs</td>
+            </tr> -->
+          </thead>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table borderless payslip-table">
+          <thead>
+            <tr>
+              <th>Earnings</th>
+              <th>Full</th>
+              <th>Actual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Basic</td>
+              <td><%= monthly_ctc.basic_pay %></td>
+              <td><%= monthly_ctc.lop_basic.present? ? monthly_ctc.lop_basic : monthly_ctc.basic_pay %></td>
+            </tr>
+            <tr>
+              <td>HRA</td>
+              <td><%= monthly_ctc.hra %></td>
+              <td><%= monthly_ctc.lop_hra.present? ? monthly_ctc.lop_hra : monthly_ctc.hra %></td>
+            </tr>
+            <% if monthly_ctc.medical_allowance > 0 %>
+              <tr>
+                <td>MEDICAL REIMB</td>
+                <td><%= monthly_ctc.medical_allowance %></td>
+                <td><%= monthly_ctc.medical_allowance %></td>
+              </tr>
+            <% end %>
+            <% if monthly_ctc.telephone_allowance > 0 %>
+              <tr>
+                <td>TELEPHONE REIMP</td>
+                <td><%= monthly_ctc.telephone_allowance %></td>
+                <td><%= monthly_ctc.telephone_allowance %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td>SPECIAL ALLOWANCE</td>
+              <td><%= monthly_ctc.special_allowance %></td>
+              <td><%= monthly_ctc.lop_special_allowance.present? ? monthly_ctc.lop_special_allowance : monthly_ctc.special_allowance %></td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table borderless payslip-table">
+          <thead>
+            <tr>
+              <td> Total Earnings: Rs.</td>
+              <td><%= full_earnings(monthly_ctc) %></td>
+              <td><%= actual_earnings(monthly_ctc) %></td>
+            </tr>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table borderless payslip-table">
+          <thead>
+            <tr>
+              <th>Deductions</th>
+              <th>Actual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PF</td>
+              <td><%= monthly_ctc.pf_employeer_contribution %></td>
+            </tr>
+            <% if monthly_ctc.tax_deduction.present? && monthly_ctc.tax_deduction > 0 %>
+              <tr>
+                <td>INCOME TAX</td>
+                <td><%= monthly_ctc.tax_deduction %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td>PROF TAX</td>
+              <td><%= monthly_ctc.professonal_tax %></td>
+            </tr>
+            <% if monthly_ctc.loss_of_pay.present? %>
+              <tr>
+                <td>LOP:</td>
+                <td><%= monthly_ctc.loss_of_pay %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <table class="table borderless payslip-table">
+          <thead>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Total Deduction: Rs.</td>
+              <td><%= total_deduction(monthly_ctc) %></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <table class="table borderless payslip-table">
+          <thead>
+            <tr>
+              <th>Net Pay for the month(Total Earnings - Total Deduction): <%= monthly_ctc.try(:net_salary) %></th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>

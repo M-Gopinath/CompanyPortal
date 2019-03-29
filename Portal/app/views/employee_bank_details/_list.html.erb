@@ -1,0 +1,5 @@
+<% employees.each do |emp| %>
+  <tr class="bank_list_<%= emp.id %>">
+    <%= render partial: 'users_list', locals: {emp: emp} %>
+  </tr>
+<% end %>

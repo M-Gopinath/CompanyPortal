@@ -1,0 +1,15 @@
+$(".recent_activities").html("<%= escape_javascript(render partial: 'permission_recent_activities', locals: {recent_activities: get_recent_permission_activities})%>")
+$( ".datepicker" ).datepicker({
+    todayHighlight:'TRUE',
+    startDate: '-0d',
+    endDate: '+2m',
+    format: 'dd-mm-yyyy',
+    autoclose: true
+  });
+$('.timepicker').timepicker({ 'scrollDefault': 'now' });
+$(".permission-lists").html("<%= escape_javascript(render partial: 'permission_list', locals: {permission_list_calendars: @permission_list_calendars, date: @date})%>")
+$(".approved_leave").html("<%= escape_javascript(render partial: 'approved_leave', locals: {approved_leaves: @approved_leaves})%>")
+$(".approved_permission").html("<%= escape_javascript(render partial: 'approved_permission', locals: {approved_permissions: @approved_permissions})%>")
+$(".remove-model").modal('hide');
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();

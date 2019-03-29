@@ -1,0 +1,62 @@
+<div class="x_panel">
+  <div class="x_title">
+    <h2>Permission List</h2>
+    <div class="clearfix"></div>
+  </div>
+  <div class="x_content">
+    <div>
+    <p class="text-center back-pre-btn">
+     <span class="pull-left"><%= link_to "<<", leave_permissions_apply_permission_path(date: date - 1.year),class: "btn btn-default btn-xs", remote: true %></span>
+     <span><b><%= date.strftime("%Y") %></b></span>
+     <span class="pull-right"><%= link_to ">>", leave_permissions_apply_permission_path(date: date + 1.year),class: "btn btn-default btn-xs", remote: true %></span>
+    </p>
+    <p class="text-center back-pre-btn">
+     <span><b><%= Date::MONTHNAMES[date.month] %></b></span>
+    </p>
+    <p class="text-center back-pre-btn">
+    <% (1..12).each_with_index do |m, index| %>
+      <span><%= link_to "#{Date::MONTHNAMES[m].first(3)}", leave_permissions_apply_permission_path(date: date.beginning_of_year + index.month),class: "btn btn-default btn-xs", remote: true %></span>
+    <% end %>
+    </p>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Reason</th>
+          <th>Status</th>
+          <th colspan="3">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% permission_list_calendars.each do |permission| %>
+        <tr>
+          <td><%= permission.permission_date.strftime("%d-%m-%Y") %></td>
+          <td><%= permission.from_time.strftime("%I:%M %p") %></td>
+          <td><%= permission.to_time.strftime("%I:%M %p") %></td>
+          <td><%= permission.reason %></td>
+          <td><%= permission.get_status(permission.leave_permission_status_id) %></td>
+          <td>
+            <% if permission.try(:leave_permission_status_id) == 1 %>
+              <button type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#cancel_permission_<%=permission.id%>">Cancel</i></button>
+              <div id="cancel_permission_<%=permission.id%>" class="modal fade" role="dialog">
+                <%= render partial: "cancel_permission", locals: {permission: permission} %>
+              </div>
+            <% else %>
+              <p>No Action</p>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="pagination-content">
+      <%= will_paginate permission_list_calendars, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+  </div>
+</div>

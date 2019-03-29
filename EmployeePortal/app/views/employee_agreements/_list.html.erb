@@ -1,0 +1,22 @@
+<% employees.each do |emp| %>
+  <tr>
+    <td><%= emp.first_name %></td>
+    <td><%= emp.last_name %></td>
+    <td><%= emp.email %></td>
+    <td>
+      <%= link_to 'Bond Letter', employee_agreements_bond_letter_path(employee_id: emp.id, format: :pdf) %>
+    </td>
+    <td>
+      <%= link_to 'Experience Letter', employee_agreements_experience_letter_path(employee_id: emp.id, format: :pdf) %>
+    </td>
+    <td>
+      <%= link_to 'Relieving Letter', employee_agreements_relieving_letter_path(employee_id: emp.id, format: :pdf) %>
+    </td>
+    <td>
+      <%= link_to 'Resignation Letter', employee_agreements_resignation_letter_path(employee_id: emp.id, format: :pdf) %>
+    </td>
+    <td>
+      <%= link_to 'Joining Letter', employee_agreements_joining_letter_path(employee_id: emp.id, format: :pdf) %>
+    </td>
+  </tr>
+<% end %>

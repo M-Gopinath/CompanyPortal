@@ -1,0 +1,94 @@
+<section class="content">
+	<div class="panel">
+		<div class="row">
+			<div class="wel">
+				<div class="col-sm-9 col-md-9 ht-100 main-content">
+					<h2 align="center">Client Edit Profile</h2>
+					<div class="col-md-8 col-sm-12">
+						<div class="panel pd-25">
+							<%= form_for @client, url: update_clients_path, method: :put do |f| %>
+							<div class="form-group row">
+								<%= f.label :email, class: 'col-sm-4 col-form-label' %>
+								<div class="col-sm-8">
+									<%= f.email_field :email, :readonly => true, class: 'form-control' %>
+								</div>
+							</div>
+							<div class="form-group row">
+								<%= f.label :first_name, class: 'col-sm-4 col-form-label' %>
+								<div class="col-sm-8">
+									<%= f.text_field :first_name, class: 'form-control' %>
+								</div>
+							</div>
+							<div class="form-group row">
+								<%= f.label :last_name, class: 'col-sm-4 col-form-label' %>
+								<div class="col-sm-8">
+									<%= f.text_field :last_name, class: 'form-control' %>
+								</div>
+							</div>
+							<div class="form-group row">
+								<%= f.label :full_name, class: 'col-sm-4 col-form-label' %>
+								<div class="col-sm-8">
+									<%= f.text_field :full_name, class: 'form-control' %>
+								</div>
+							</div>
+							<div class="form-group row">
+								<%= f.label :contact_number, class: 'col-sm-4 col-form-label' %>
+								<div class="col-sm-8">
+									<%= f.text_field :contact_number, class: 'form-control' %>
+								</div>
+							</div>
+							<div class="form-group row">
+								<%= f.label :secondary_email, class: 'col-sm-4 col-form-label' %>
+								<div class="col-sm-8">
+									<%= f.email_field :secondary_email, class: 'form-control' %>
+								</div>
+							</div>
+							<div class="form-group row">
+								<%= f.label :secondary_contact_number, class: 'col-sm-4 col-form-label' %>
+								<div class="col-sm-8">
+									<%= f.text_field :secondary_contact_number, class: 'form-control' %>
+								</div>
+							</div>
+							<div class="form-group row">
+								<%= f.label :address, class: 'col-sm-4 col-form-label' %>
+								<div class="col-sm-8">
+									<%= f.text_area :address, class: 'form-control' %>
+								</div>
+							</div>
+							<div class="form-group row">
+								<%= f.label :city, class: 'col-sm-4 col-form-label' %>
+								<div class="col-sm-8">
+									<%= f.text_field :city, class: 'form-control' %>
+								</div>
+							</div>
+							<div class="form-group row">
+								<%= f.label :state, class: 'col-sm-4 col-form-label' %>
+								<div class="col-sm-8">
+									<%= f.text_field :state, class: 'form-control' %>
+								</div>
+							</div>
+							<div class="form-group row">
+								<%= f.label :country, class: 'col-sm-4 col-form-label' %>
+								<div class="col-sm-8">
+									<%= f.text_field :country, class: 'form-control' %>
+								</div>
+							</div>
+							<div class="form-group row">
+								<%= f.label :zip_code, class: 'col-sm-4 col-form-label' %>
+								<div class="col-sm-8">
+									<%= f.text_field :zip_code, class: 'form-control' %>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<%= f.submit "Update" , class: 'btn btn-primary'%>
+								</div>
+							</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,41 @@
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>Feedback Edit</h1><br />
+        </div>
+        <div class="col-md-4 content-header">
+        </div>
+        <div class="col-md-3 content-header">
+        </div>
+        <div class="header-border"></div>
+      </div>
+      <div class="feedback_edit pd-10">
+        <div class="col-md-5">
+          <%= form_for @feedback, url: feedbacks_update_feedback_path(@feedback), method: :put do |f| %>
+
+        <div class="form-group">
+          <%= f.label :project_id %>
+          <input type="text" value="<%= @feedback.get_project_name(@feedback.project_id) %>" name="" class="form-control"  disabled>
+        </div>
+          <%= f.hidden_field :client_id %>
+        <div class="form-group">
+          <%= f.label :employee_id %>
+          <input type="text" value="<%= @feedback.get_employee_name(@feedback.employee_id) %>" name="" class="form-control"  disabled>
+        </div>
+        <div class="form-group">
+          <%= f.label :feedback %>
+          <%= f.text_area :feedback, required: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <div class="actions">
+            <%= f.submit class: "btn btn-primary btn-lg btn-block it-btn-them" %>
+          </div>
+        </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

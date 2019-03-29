@@ -1,0 +1,21 @@
+<div class="row">
+  <%= form_for(employee_education_detail, remote: true,multipart: true,authenticity_token: true) do |f| %>
+    <%= f.hidden_field :employee_id, value: employee.id %>
+    <%= hidden_field_tag :employee_id, employee.id %>
+    <div class="col-md-3">
+      <%= f.select :employee_qualification_detail_id, options_for_select(employee.employee_qualification_details.all.map{|ct| [ct.institution_name, ct.id]}, employee_education_detail.employee_qualification_detail_id), {prompt: 'Select'}, class: "form-control", required: true %>
+    </div>
+    <div class="col-md-2">
+     <%= f.select :education_certificate_id, options_for_select(EducationCertificate.all.map{|ct| [ct.name, ct.id]}, employee_education_detail.education_certificate_id), {prompt: 'Select'}, class: "form-control", required: true %>
+    </div>
+    <div class="col-md-2">
+      <%= f.text_field :certificate_id, class: "form-control", required: true %>
+    </div>
+    <div class="col-md-3">
+      <%= f.file_field :photo_copy, class: "form-control", required: true %>
+    </div>
+    <div class="col-md-2">
+      <%= f.submit employee_education_detail.new_record? ? "Create" : "Update", class: "btn btn-primary btn-lg btn-block it-btn-them" %>
+    </div>
+  <% end %>
+</div>

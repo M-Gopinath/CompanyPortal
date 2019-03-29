@@ -1,0 +1,19 @@
+<%= form_for(language_detail, remote: true) do |f| %>
+  <%= f.hidden_field :employee_id, value: employee.id %>
+  <div class="col-md-2">
+    <%= f.text_field :language, class:"form-control", required: true %>
+  </div>
+  <div class="col-md-3">
+    <% SpeakingProficiency.all.each do |sp| %>
+      <%= f.radio_button :speaking_proficiency_id, sp.id, required: true %><%= sp.name %>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <% WritingProficiency.all.each do |wp| %>
+      <%= f.radio_button :writing_proficiency_id, wp.id, required: true %><%= wp.name %>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+   <%= f.submit language_detail.new_record? ? "Create" : "Update", :class => 'btn btn-primary btn-lg btn-block it-btn-them' %>
+  </div>
+<% end %>

@@ -1,0 +1,84 @@
+<div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Employee Personal Detail</h4>
+    </div>
+    <div class="modal-body">
+      <p>
+        <strong>Employee Name:</strong>
+        <%= personal_detail.employee.full_name %>
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <%= personal_detail.employee.email %>
+      </p>
+
+      <p>
+        <strong>Personal Email:</strong>
+        <%= personal_detail.personal_email %>
+      </p>
+      <p>
+        <strong>Contact Number 1:</strong>
+        <%= personal_detail.contact_number_1 %>
+      </p>
+
+      <p>
+        <strong>Contact Number 2:</strong>
+        <%= personal_detail.contact_number_2 %>
+      </p>
+      <p>
+        <strong>Gender:</strong>
+        <%= personal_detail.gender %>
+      </p>
+      <p>
+        <strong>Blood Group:</strong>
+        <%= personal_detail.blood_group %>
+      </p>
+      <p>
+        <strong>Profile Picture:</strong>
+        <%= image_tag(personal_detail.avatar_url, class: "profile-image") if personal_detail.avatar? %>
+      </p>
+      <p>
+        <strong>Identity Mark 1:</strong>
+        <%= personal_detail.identity_mark_1 %>
+      </p>
+      <p>
+        <strong>Identity Mark 2:</strong>
+        <%= personal_detail.identity_mark_2 %>
+      </p>
+      <p>
+        <strong>Pan Number:</strong>
+        <%= personal_detail.pan_number %>
+      </p>
+      <p>
+        <strong>Adhaar Card Number:</strong>
+        <%= personal_detail.adhaar_card_number %>
+      </p>
+      <p>
+        <strong>Driving License Number:</strong>
+        <%= personal_detail.driving_license_number %>
+      </p>
+      <p>
+        <strong>Voter Id:</strong>
+        <%= personal_detail.voter_id %>
+      </p>
+      <p>
+        <strong>Passport Number:</strong>
+        <%= personal_detail.passport_number %>
+      </p>
+      <p>
+        <strong>Passport Expiry Date:</strong>
+        <%= personal_detail.passport_expiry_date.strftime("%d-%m-%Y") if personal_detail.passport_expiry_date %>
+      </p>
+      <p>
+        <strong>Passport Registration Place:</strong>
+        <%= personal_detail.passport_registration_place %>
+      </p>
+
+    </div>
+  </div>
+</div>

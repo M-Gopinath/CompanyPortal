@@ -1,0 +1,2 @@
+class MeetingEventRepeat < ApplicationRecord
+end

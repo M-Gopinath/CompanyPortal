@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-2">
+    <label for="Certificate Type">Language</label>
+  </div>
+  <div class="col-md-3">
+    <label for="Certificate Id">Speaking Proficiency</label>
+  </div>
+  <div class="col-md-3">
+    <label for="Certificate File">Writing Proficiency</label>
+  </div>
+  <div class="col-md-4 text-center">
+    <label for="Actions">Actions</label>
+  </div>
+
+<% language_details.each.with_index(1) do |ld, index| %>
+  <div class="emp-language_<%= ld.id %>">  
+    <div class="row">
+      <div class="col-md-2">
+        <%= ld.language %>
+      </div>
+
+      <div class="col-md-3">
+        <%= ld.speaking_proficiency.name %>
+      </div>
+
+      <div class="col-md-3">
+        <%= ld.writing_proficiency.name %>
+      </div>
+      <div class="col-md-2">
+        <%= link_to 'Edit', edit_employee_language_path(ld), remote: true %>
+      </div>
+      <div class="col-md-2">
+        <%= link_to employee_language_path(ld, employee_id: employee.id), method: :delete, data: { confirm: 'Are you sure?' }, remote: true do %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+          <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if employee.employee_languages.count <= 4 %>
+  <div class="language-form">
+    <%= render partial: "employee_languages/new_form", locals: {language_detail: language_detail, employee: employee} %>
+  </div>
+<% end %>
+</div>

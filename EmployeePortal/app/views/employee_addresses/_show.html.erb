@@ -1,0 +1,28 @@
+
+<p>
+  <strong>Address</strong>
+  <%= address_details.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= address_details.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= address_details.state %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= address_details.country %>
+</p>
+
+<p>
+  <strong>Zip Code:</strong>
+  <%= address_details.zipcode %>
+</p>
+
+<%= link_to 'Edit', edit_employee_address_path(address_details), remote: true, class:"btn btn-primary btn-lg btn-block it-btn-them"%> 
+

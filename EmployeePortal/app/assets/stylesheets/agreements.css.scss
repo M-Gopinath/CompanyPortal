@@ -1,0 +1,41 @@
+/*
+  @import require bootstrap.min
+ */
+
+html, body{
+  padding: 0mm !important;
+  font-size: 10px;
+  margin: 0px !important;
+  height: 100%;
+  background-image: url('letterhead-itbeezone.jpg') !important;
+  background-repeat: repeat;
+  background-size: 100% 100%;
+}
+
+#letter_bad_new{
+  padding-top: 150px;
+  padding-left: 50px;
+  padding-right: 50px;  
+}
+
+#new_table_column{
+  width: 150px;
+  word-wrap: break-word;
+}
+.exp-cert-div {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 14px !important;
+}
+.exp-cert-div table {
+  margin: auto; 
+  text-align: left;
+}
+.exp-cert-div table tr {
+  line-height:30px;
+}
+.exp-cert-footer {
+  margin-top: 100px;
+  text-align: right;
+  font-size: 14px;
+}

@@ -1,0 +1,85 @@
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>Leave Type</h1><br />
+        </div>
+        <div class="col-md-4 content-header">
+        </div>
+        <div class="col-md-3 content-header">
+        </div>
+        <div class="header-border"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <p align="center">Leave Type create</p>
+        <%= form_for :leave_type, url: seed_table_create_leave_type_path do |f| %>
+        <div class="modal-body">
+          <div class="errors"></div>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, required: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :short_name %>
+            <%= f.text_field :short_name, required: true, class: 'form-control' %>
+          </div>
+        </div>
+        <%= f.submit class: "btn btn-primary pd-10" %>
+        <%end%>
+      </div>
+      <div class="col-md-7">
+        <p align="center">Leave Type List</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Leave Type Name</th>
+              <th>Leave Type Short Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @leave_types.each do |leave_type| %>
+            <tr>
+              <td><%= leave_type.name %></td>
+              <td><%= leave_type.short_name %></td>
+              <td class="action-link">
+                <a href="" data-toggle="modal" data-target="#leave_type_id_<%= leave_type.id%>">
+                  <i class="fa fa-user-circle-o"></i>
+                </a>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% @leave_types.each do |leave_type| %>
+  <!-- Modal -->
+  <div id="leave_type_id_<%= leave_type.id%>" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Leave Type</h4>
+        </div>
+        <div class="modal-body">
+          <p>Leave Type Name : <span><%= leave_type.name %></span></p>
+          <p>Share Holder Percentage : <span><%= leave_type.short_name %></span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% end %>
+

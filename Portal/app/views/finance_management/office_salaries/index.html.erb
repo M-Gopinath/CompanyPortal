@@ -1,0 +1,37 @@
+<div class="selected-month">
+  <%= render partial: "selected_month", locals: {date: @date} %>
+</div>
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>Employee Salary</h1><br />
+          <p class="displaying_employees"><%= page_entries_info @actived_employees %></p>
+        </div>
+        <div class="col-md-4 content-header">
+          <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' }, remote: true do |f| %>
+            <%= f.text_field(
+              :search_query,
+              class: 'filterrific-periodically-observed search-input col-xs-11 search-clients form-control',placeholder: "Search"
+            ) %>
+            <%= f.hidden_field :sorted_by, value: "created_at_desc" %>
+            <%= hidden_field_tag :date, @date %>
+            <%#= render_filterrific_spinner %>
+          <%end%>
+        </div>
+        <div class="col-md-3 content-header">
+          <div class="top-links new-top">
+            <%= link_to 'xls', finance_management_office_salaries_path(format: "xls") %>
+            <%= link_to 'csv', finance_management_office_salaries_path(format: "csv") %>
+            <%= link_to 'pdf', finance_management_office_salaries_path(format: :pdf) %>
+          </div>
+        </div>
+        <div class="header-border"></div>
+      </div>
+    </div>
+    <div class="employee_salary">
+      <%= render partial: "user_index", locals: {actived_employees: @actived_employees, date: @date, monthly_ctcs: @monthly_ctc} %>
+    </div>
+  </div>
+</section>

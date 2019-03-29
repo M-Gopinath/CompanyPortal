@@ -1,0 +1,28 @@
+<div class="">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Status</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% recent_activities.each do |ra| %>
+      <tr>
+        <td><%= ra.try(:permission_request).try(:permission_date).strftime("%d-%m-%Y") if ra.try(:permission_request).try(:permission_date).present? %></td>
+        <td><%= ra.try(:permission_request).try(:from_time).strftime("%I:%M %p") if ra.try(:permission_request).try(:from_time).present? %></td>
+        <td><%= ra.try(:permission_request).try(:to_time).strftime("%I:%M %p") if ra.try(:permission_request).try(:to_time).present? %></td>
+        <td><%= ra.get_status(ra.leave_permission_status_id) %></td>
+        <td><%= ra.try(:description) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="pagination-content">
+    <%= will_paginate recent_activities, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>

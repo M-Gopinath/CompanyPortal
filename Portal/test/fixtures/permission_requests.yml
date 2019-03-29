@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 
+  approver_id: 
+  permission_date: 2017-04-18
+  from_time: 2017-04-18
+  to_date: 2017-04-18 16:17:03
+  no_of_hours: 2017-04-18 16:17:03
+  reason: MyText
+  leave_permission_status_id: 
+
+two:
+  employee_id: 
+  approver_id: 
+  permission_date: 2017-04-18
+  from_time: 2017-04-18
+  to_date: 2017-04-18 16:17:03
+  no_of_hours: 2017-04-18 16:17:03
+  reason: MyText
+  leave_permission_status_id: 

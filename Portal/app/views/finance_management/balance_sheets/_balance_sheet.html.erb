@@ -1,0 +1,234 @@
+<% if balance_sheet.present? %>
+  <div class="bs-table">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="well">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="bs-yellow">50% Salary</th>
+                <th class="bs-yellow"><%= balance_sheet.office_share %></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th colspan="2" class="bs-sky-blue">Overall 50%</th>
+                <th colspan="2" class="bs-blood-color">Gopi 30%</th>
+                <th colspan="2" class="bs-lite-red">Saran 20%</th>
+              </tr>
+              <tr>
+                <th class="bs-yellow">Office Exp</th>
+                <th class="bs-yellow"><%= balance_sheet.office_expense %></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th class="bs-sky-blue">50%</th>
+                <th class="bs-sky-blue"><%= balance_sheet.office_share %></th>
+                <th class="bs-blood-color">30%</th>
+                <th class="bs-blood-color"><%= balance_sheet.gopi_share %></th>
+                <th class="bs-lite-red">20%</th>
+                <th class="bs-lite-red"><%= balance_sheet.saran_share %></th>
+              </tr>
+               <tr>
+                <th class="bs-yellow">Salary given</th>
+                <th class="bs-yellow"><%= over_all_monthly_net_pay(date.beginning_of_month) %></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th class="bs-sky-blue"></th>
+                <th class="bs-sky-blue"></th>
+                <th class="bs-blood-color"></th>
+                <th class="bs-blood-color"></th>
+                <th class="bs-lite-red"></th>
+                <th class="bs-lite-red"></th>
+              </tr>
+              <tr>
+                <th class="bs-yellow">Balance Total</th>
+                <th class="bs-yellow"><%= balance_sheet.office_profit_loss %></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th class="bs-sky-blue">Total</th>
+                <th class="bs-sky-blue"><%= balance_sheet.office_share %></th>
+                <th class="bs-blood-color">Total</th>
+                <th class="bs-blood-color"><%= balance_sheet.gopi_share %></th>
+                <th class="bs-lite-red">Total</th>
+                <th class="bs-lite-red"><%= balance_sheet.saran_share %></th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="well">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th colspan="2" class="bs-lite-purple">Saravanan Overall Pay</th>
+                  <th></th>
+                  <th></th>
+                  <th colspan="2" class="bs-little-blue">Income to Saravanan</th>
+                  <th></th>
+                  <th></th>
+                  <th colspan="2" class="bs-little-green">This Month Final Settlement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="bs-lite-purple">Amount Received to Saravanan</td>
+                  <td class="bs-lite-purple"><%= balance_sheet.amount_received_by_saran %></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-blue">As Share</td>
+                  <td class="bs-little-blue"><%= balance_sheet.saran_share %></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-green">Profit / Loss Split (50%) </td>
+                  <td class="bs-little-green"><%= balance_sheet.saran_profit_loss %></td>
+                </tr>
+                <tr>
+                  <td class="bs-lite-purple">Amount Spent by Saravanan</td>
+                  <td class="bs-lite-purple"><%= balance_sheet.amount_spent_by_saran %></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-blue"></td>
+                  <td class="bs-little-blue"></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-green">Saravanan TOT Balance Pay</td>
+                  <td class="bs-little-green"><%= balance_sheet.saran_total_pay %></td>
+                </tr>
+                <tr>
+                  <td class="bs-lite-purple">Balance Money to Saravanan</td>
+                  <td class="bs-lite-purple"><%= balance_sheet.balance_money_to_saran %></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-blue"></td>
+                  <td class="bs-little-blue"></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-green"></td>
+                  <td class="bs-little-green"></td>
+                </tr>
+                <tr>
+                  <td class="bs-blood-color">Balance</td>
+                  <td class="bs-blood-color"><%= balance_sheet.saran_total_pay %></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-blue">Total</td>
+                  <td class="bs-little-blue"><%= balance_sheet.saran_share %></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-green">Final TOT Amt to Saravanan</td>
+                  <td class="bs-little-green"><%= balance_sheet.final_total_pay_to_saran %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="well">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th colspan="2" class="bs-lite-purple">Gopi Overall Pay</th>
+                  <th></th>
+                  <th></th>
+                  <th colspan="2" class="bs-little-blue">Income to Gopi</th>
+                  <th></th>
+                  <th></th>
+                  <th colspan="2" class="bs-little-green">This Month Final Settlement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="bs-lite-purple">Amount Received to Gopi</td>
+                  <td class="bs-lite-purple"><%= balance_sheet.amount_received_by_gopi %></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-blue">As Share</td>
+                  <td class="bs-little-blue"><%= balance_sheet.gopi_share %></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-green">Profit / Loss Split (50%) </td>
+                  <td class="bs-little-green"><%= balance_sheet.gopi_profit_loss %></td>
+                </tr>
+                <tr>
+                  <td class="bs-lite-purple">Amount Spent to Gopi</td>
+                  <td class="bs-lite-purple"><%= balance_sheet.amount_spent_by_gopi %></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-blue"></td>
+                  <td class="bs-little-blue"></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-green">Gopi TOT Balance Pay</td>
+                  <td class="bs-little-green"><%= balance_sheet.gopi_total_pay %></td>
+                </tr>
+                <tr>
+                  <td class="bs-lite-purple">Balance Money by Gopi</td>
+                  <td class="bs-lite-purple"><%= balance_sheet.balance_money_to_gopi %></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-blue"></td>
+                  <td class="bs-little-blue"></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-green"></td>
+                  <td class="bs-little-green"></td>
+                </tr>
+                <tr>
+                  <td  class="bs-blood-color">Balance</td>
+                  <td  class="bs-blood-color"><%= balance_sheet.gopi_total_pay %></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-blue">Total</td>
+                  <td class="bs-little-blue"><%= balance_sheet.gopi_share %></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bs-little-green">Final TOT Amt to Gopi</td>
+                  <td class="bs-little-green"><%= balance_sheet.final_total_pay_to_gopi %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="well">
+          <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-3">
+              <h1><%= balance_sheet.office_income %></h1>
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-5">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Gopi Balance Money to Give / Get:</th>
+                    <th><b><%= balance_sheet.final_total_pay_to_gopi %></b></th>
+                  </tr>
+                  <tr>
+                    <th>Saravanan Balance Money to Give / Get:</th>
+                    <th><b><%= balance_sheet.final_total_pay_to_saran %></b></th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

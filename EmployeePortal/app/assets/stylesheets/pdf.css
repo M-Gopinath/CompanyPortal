@@ -1,0 +1,12 @@
+/*
+*= require bootstrap.min
+*/
+
+.rent-error, .medical-error, .telephone-error{
+  display: none;
+  color: red;
+}
+
+.table.payslip-table>thead>tr>th,  .table.payslip-table>thead>tr>td, .table.payslip-table>tbody>tr{
+  border: 2px solid #fff
+}

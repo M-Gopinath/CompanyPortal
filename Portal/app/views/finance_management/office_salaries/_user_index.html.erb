@@ -1,0 +1,110 @@
+<% if actived_employees.present? && monthly_ctcs.present? %>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th><%= over_all_monthly_earnings %></th>
+          <th><%= over_all_monthly_deduction(date) %></th>
+          <th><%= over_all_monthly_net_pay(date) %></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th><%= monthly_ctcs.collect(&:total_earnings).compact.sum %></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th><%= monthly_ctcs.collect(&:total_deduction).compact.sum %></th>
+          <th><%= monthly_ctcs.collect(&:net_salary).compact.sum %></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>Emb.id</th>
+          <th>Full Name</th>
+          <th>Total Earnings</th>
+          <th>Total Deduction</th>
+          <th>Total NetPay</th>
+          <th>Basic</th>
+          <th>HRA</th>
+          <th>Special Allowance</th>
+          <th>Mobile Allowance</th>
+          <th>Medical Allowance</th>
+          <th>Earnings</th>
+          <th>Employee PF</th>
+          <th>Prof Tax</th>
+          <th>Income Tax</th>
+          <th>LOP</th>
+          <th>Deduction</th>
+          <th>NetPay</th>
+          <th>Medical Insurance</th>
+          <th>Gratuity</th>
+          <th>Employeer PF</th>
+        </tr>
+      </thead>
+      <tbody class="active_listings">
+        <%= render partial: "user_listings", locals: {actived_employees: actived_employees, date: @date} %>
+      </tbody>
+    </table>
+  </div>
+<<<<<<< HEAD
+</div>
+ <section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>Salary</h1><br />
+          <p class="displaying_employees"><%= page_entries_info actived_employees %></p>
+        </div>
+        <div class="col-md-4 content-header">
+          <%= form_for_filterrific filterrific, html: { id: 'filterrific-no-ajax-auto-submit' }, remote: true do |f| %>
+            <%= f.text_field(
+              :search_query,
+              class: 'filterrific-periodically-observed search-input col-xs-11 search-clients form-control',placeholder: "Search"
+            ) %>
+            <%= f.hidden_field :sorted_by, value: "created_at_desc" %>
+            <%#= render_filterrific_spinner %>
+          <%end%>
+        </div>
+        <div class="col-md-3 content-header">
+          <div class="top-links new-top">
+            <%= link_to 'xls', finance_management_office_salaries_path(format: "xls") %>
+            <%= link_to 'csv', finance_management_office_salaries_path(format: "csv") %>
+            <%= link_to 'pdf', finance_management_office_salaries_path(format: :pdf) %>
+          </div>
+        </div>
+        <div class="header-border"></div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Emb.id</th>
+            <th>Email</th>
+            <th colspan="3" class="text-center">Action
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="active_listings">
+          <%= render partial: "user_listings", locals: {actived_employees: actived_employees} %>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination-content">
+      <%= will_paginate actived_employees, renderer: BootstrapPagination::Rails %>
+    </div>
+=======
+  <div class="pagination-content">
+    <%= will_paginate actived_employees, renderer: BootstrapPagination::Rails %>
+>>>>>>> f3324394c005c3caf3d14d778383ca2fc7b3c878
+  </div>
+<% end %>
+  

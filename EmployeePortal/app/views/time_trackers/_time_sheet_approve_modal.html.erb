@@ -1,0 +1,53 @@
+<div class="modal-dialog">
+
+	<!-- Modal content-->
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Approve / Cancel Request</h4>
+		</div>
+		<div class="modal-body">
+			<table class="table table-striped">
+			<p class=""></p>
+				<tbody>
+					<%= form_for time_sheet, url: "#" do |f| %>
+						<tr>
+							<td>Entry Date</td>
+							<td><%= time_sheet.entry_date? %></td>
+						</tr>
+						<tr>
+							<td>From Time</td>
+							<td><%= time_sheet.start_time? %></td>
+						</tr>
+						<tr>
+							<td>To Time</td>
+							<td><%= time_sheet.end_time? %></td>
+						</tr>
+						<tr>
+							<td>No of hours</td>
+							<td><%= current_employee.hours_format(time_sheet.hours_taken) %></td>
+						</tr>
+						<tr>
+							<td>Description</td>
+							<td><%= time_sheet.try(:description).to_s.html_safe %></td>
+						</tr>
+						<tr>
+							<td>Status</td>
+							<td>
+								<%= time_sheet.try(:status?) %>
+							</td>
+						</tr>
+					<%end%>
+				</tbody>
+			</table>
+		</div>
+		<div class="modal-footer">
+			<div class="col-md-8 pull-left">
+				<%= link_to "Approve", time_sheet_approved_cancelled_path(time_sheet,status: "APPROVED"),method: :put , class: "btn btn-primary btn-sm" %>
+				<%= link_to "Cancel", time_sheet_approved_cancelled_path(time_sheet, status: "CANCELLED"),method: :put, class: "btn btn-danger btn-sm" %>
+			</div>
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,146 @@
+<section class="content-header">
+  <h1>Meeting Calendar</h1>
+</section>
+<section class="content"> 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="var-nav">
+		    <div class="col-md-2">
+		  	  <div class="itbeezone-logo-cal">
+		  	  	<p class="align-center ">Calendar</p>
+		  	  </div>
+		    </div>
+		    <div class="col-md-5">
+		    	<ul class="list-inline">
+		    	  <li><button class="btn btn-primary">Today</button></li>
+		    	  <li>
+		    	  	<div class="btn-group">
+		            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+		            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+		          </div>
+		        </li>
+		        <li><span>Thursday</span><span>,</span><span>Apr</span><span>,</span><span>20</span><span>,</span><span>2017</span></li>
+		    	</ul>
+		    </div>
+		    <div class="col-md-5">
+		    	<ul class="list-inline">
+		    		<li><a id="showdiv1" class="btn btn-primary">Day</a></li>
+		    		<li><a id="showdiv2" class="btn btn-primary">Week</a></li>
+		    		<li><a id="showdiv3" class="btn btn-primary">Month</a></li>
+		    		<li><a id="showdiv4" class="btn btn-primary">4 Days</a></li>
+		    		<li><a id="showdiv5" class="btn btn-primary">Agenda</a></li>
+		    		<li>
+		    			<select class="form-control">
+		    				<option>Print</option>
+		    				<option>Refresh</option>
+		    			</select>
+		    		</li>
+
+		    	</ul>
+		    </div>
+      </div>
+     </div>
+  </div>
+  <hr>
+  <div class="row">
+  	<div class="col-md-3">
+  		<div class="row">
+  		  <div class="col-md-12 mar-bottom-10">
+  		    <button class="btn btn-primary" data-toggle="modal" data-target="#calendar-creat">CREATE</button>
+  		  </div>
+  		  <div class="col-md-12">
+  		  	 <%= render "small_calendar" %>
+  		  </div>
+  		  <div class="col-md-12">
+  		  	 <p>My Calendaers</p>
+  		  </div>
+  		</div>
+  	</div>
+  	<div class="col-md-9">
+      <div class="select-day-calendar" id="div1">
+      	<%= render 'day_view'%>
+      </div>
+		  <div class="select-week-calendar" id="div2">
+		  	<%= render "week_view"%>
+		  </div>
+		  <div class="select-month-calendar" id="div3">
+		    <%= render "month_view" %>
+		  </div>
+   
+      <div class="select-4day-calendar" id="div4">
+      	<%= render 'days_view'%>
+      </div>
+      <div class="select-4day-calendar" id="div5">
+      	<%= render 'agenda_view'%>
+      </div>
+  	</div>
+  </div>
+</section>
+
+<div class="create_calendar_modal">
+  <%= render 'create_calendar'%>
+</div>
+
+
+<script type="text/javascript">
+	$(function(){
+	  $(document).on("click", ".month_view", function(){
+	    var type = $(this).data("type");
+	    $.ajax({
+	      method : "GET",
+	      url : $(this).data("url"),
+	      data: {type: type},
+	      beforeSend: function() {
+	        $(".loader").show();
+	      }
+	    }).done(function(data){
+	      $(".loader").hide();
+	      console.log(data);
+	      // $(".select-week-calendar").html(data);
+	    });
+	  });
+
+	  $(document).on("click", ".dzs_table > tbody > tr > td", function(){
+	    window.location= "/times?date=" + $(this).data("date");
+	  });
+
+  });
+</script>
+
+<script type="text/javascript">
+	$(document).ready( function(){
+	 $(function() {
+	    $('#showdiv1').click(function() {
+	        $('div[id^=div]').hide();
+	        $('#div1').show();
+	    });
+	    $('#showdiv2').click(function() {
+	        $('div[id^=div]').hide();
+	        $('#div2').show();
+	    });
+	 
+	    $('#showdiv3').click(function() {
+	        $('div[id^=div]').hide();
+	        $('#div3').show();
+	    });
+	 
+	    $('#showdiv4').click(function() {
+	        $('div[id^=div]').hide();
+	        $('#div4').show();
+	    });
+
+	    $('#showdiv5').click(function() {
+	        $('div[id^=div]').hide();
+	        $('#div5').show();
+	    });
+	     $('#showdiv6').click(function() {
+	        $('div[id^=div]').hide();
+	        $('#div6').show();
+	    });
+	    $('#showdiv7').click(function() {
+	        $('div[id^=div]').hide();
+	        $('#div7').show();
+	    });
+    })
+	});
+</script>

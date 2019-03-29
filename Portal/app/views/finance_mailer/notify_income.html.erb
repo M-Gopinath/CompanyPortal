@@ -1,0 +1,26 @@
+<p>
+  Hi,
+</p>
+
+<p> Income Details</p>
+
+<p>
+  <strong>client:</strong>
+  <%= @income.client.first_name %>
+</p>
+<p>
+  <strong>Project:</strong>
+  <%= @income.project.name %>
+</p>
+<p>
+  <strong>Transaction Via:</strong>
+  <%= @income.transaction_via.name %>
+</p>
+<p>
+  <strong>Money Received Date:</strong>
+  <%= @income.money_received_date.strftime("%d-%m-%Y") %>
+</p>
+<p>
+  <strong>Money Received:</strong>
+  <%= @income.money_received %>
+</p>

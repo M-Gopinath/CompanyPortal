@@ -1,0 +1,14 @@
+<div id="myModal<%= task.id %>" class="modal fade" role="dialog">
+  <div class="modal-dialog my-modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Task</h4>
+      </div>
+      <%= render partial: "form", locals: {project: project, task: task, employees: employees} %>
+    </div>
+
+  </div>
+</div>

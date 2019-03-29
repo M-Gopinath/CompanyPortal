@@ -1,0 +1,25 @@
+$(".emp_professional_details_<%= @employee.id %>").html("<%= escape_javascript(render partial: 'form', locals: {employee_professional_details: @employee.employee_professional_details, employee_professional_detail: EmployeeProfessionalDetail.new, employee: @employee})%>");
+
+$(document).ready(function(){
+  $(".from_date").datepicker({
+      endDate: '-0d',
+      format: 'dd-mm-yyyy',
+      autoclose: true,
+  }).on('changeDate', function (selected) {
+      var startDate = new Date(selected.date.valueOf());
+      $('.to_date').datepicker('setStartDate', startDate);
+  }).on('clearDate', function (selected) {
+      $('.to_date').datepicker('setStartDate', null);
+  });
+
+  $(".to_date").datepicker({
+     format: 'yyyy-mm-dd',
+     endDate: '-0d',
+     autoclose: true,
+  }).on('changeDate', function (selected) {
+     var endDate = new Date(selected.date.valueOf());
+     $('.from_date').datepicker('setEndDate', endDate);
+  }).on('clearDate', function (selected) {
+     $('.from_date').datepicker('setEndDate', null);
+  });
+});

@@ -1,0 +1,717 @@
+<section class="content-header">
+  <h1>
+    Profile Details
+  </h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#myModal">
+	      <div class="info-box">
+	        <span class="info-box-icon bg-aqua"><i class="fa fa-info-circle" aria-hidden="true"></i></span>
+	        <div class="info-box-content">
+	          <span class="info-box-text">Personal Detail</span>
+	        </div>
+	      </div>
+	    </button>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#address">
+	      <div class="info-box">
+	        <span class="info-box-icon bg-red">
+	        <i class="fa fa-address-book" aria-hidden="true"></i></span>
+	        <div class="info-box-content">
+	          <span class="info-box-text">Address</span>
+	        </div>
+	      </div>
+	    </button>
+    </div>
+    <div class="clearfix visible-sm-block"></div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      
+      <button class="data-modal-btn" data-toggle="modal" data-target="#emergency-contact">
+	      <div class="info-box">
+	        <span class="info-box-icon bg-green"><i class="fa fa-ambulance" aria-hidden="true"></i></span>
+	        <div class="info-box-content">
+	          <span class="info-box-text">Emergency Contact</span>
+	        </div>
+	      </div>
+	    </button>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#language">
+	      <div class="info-box">
+	        <span class="info-box-icon bg-yellow"><i class="fa fa-language" aria-hidden="true"></i></i></span>
+	        <div class="info-box-content">
+	          <span class="info-box-text">Language </span>
+	        </div>
+	      </div>
+	    </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#qualification">
+	      <div class="info-box">
+	        <span class="info-box-icon bg-aqua"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
+	        <div class="info-box-content">
+	          <span class="info-box-text">Qualification</span>
+	        </div>
+	      </div>
+	    </button>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#professional">
+	      <div class="info-box">
+	        <span class="info-box-icon bg-red"><i class="fa fa-info" aria-hidden="true"></i></span>
+	        <div class="info-box-content">
+	          <span class="info-box-text">Professional Detail</span>
+	        </div>
+	      </div>
+	    </button>
+    </div>
+    <div class="clearfix visible-sm-block"></div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#edication-certificate">
+	      <div class="info-box">
+	        <span class="info-box-icon bg-green"><i class="fa fa-certificate" aria-hidden="true"></i></span>
+	        <div class="info-box-content">
+	          <span class="info-box-text">Education Certificate</span>
+	        </div>
+	      </div>
+	    </button>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#employment-certificate">
+	      <div class="info-box">
+	        <span class="info-box-icon bg-yellow"><i class="fa fa-shield" aria-hidden="true"></i></span>
+	        <div class="info-box-content">
+	          <span class="info-box-text"> Employment Certificate</span>
+	        </div>
+	      </div>
+	    </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#bank-details">
+	      <div class="info-box">
+	        <span class="info-box-icon bg-aqua"><i class="fa fa-university" aria-hidden="true"></i></span>
+	        <div class="info-box-content">
+	          <span class="info-box-text">Bank</span>
+	        </div>
+	      </div>
+	    </button>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <button class="data-modal-btn" data-toggle="modal" data-target="#agreement">
+	      <div class="info-box">
+	        <span class="info-box-icon bg-red"><i class="fa fa-files-o" aria-hidden="true"></i></span>
+	        <div class="info-box-content">
+	          <span class="info-box-text">Agreeements</span>
+	        </div>
+	      </div>
+	    </button>
+    </div>
+    <div class="clearfix visible-sm-block"></div>
+  </div>
+</section>
+
+<div id="address" class="modal fade" role="dialog">
+  <div class="modal-dialog addres-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Address Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="box-body">
+          <div class="col-md-4">
+          	<h5>Home Address</h5>
+          	<hr>
+          	<div class="form-group">
+              <label>Address</label>
+                <textarea class="form-control" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="city">
+            </div>
+
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" class="form-control" id="state">
+            </div>
+
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input type="text" class="form-control" id="country">
+            </div>
+
+            <div class="form-group">
+              <label for="zip_code">Zip Code</label>
+              <input type="text" class="form-control" id="zip_code">
+            </div>
+            <div>
+		          <button type="submit" class="btn btn-primary">Submit</button>
+		        </div>
+          </div>
+          <div class="col-md-4">
+          	<h5>Mail Address</h5>
+          	<hr>
+          	<div class="form-group">
+              <label>Address</label>
+                <textarea class="form-control" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="city">
+            </div>
+
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" class="form-control" id="state">
+            </div>
+
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input type="text" class="form-control" id="country">
+            </div>
+
+            <div class="form-group">
+              <label for="zip_code">Zip Code</label>
+              <input type="text" class="form-control" id="zip_code">
+            </div>
+            <div>
+		          <button type="submit" class="btn btn-primary">Submit</button>
+		        </div>
+          </div>
+          <div class="col-md-4">
+          	<h5>Work Address</h5>
+          	<hr>
+          	<div class="form-group">
+              <label>Address</label>
+                <textarea class="form-control" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="city">
+            </div>
+
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" class="form-control" id="state">
+            </div>
+
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input type="text" class="form-control" id="country">
+            </div>
+
+            <div class="form-group">
+              <label for="zip_code">Zip Code</label>
+              <input type="text" class="form-control" id="zip_code">
+            </div>
+            <div >
+		          <button type="submit" class="btn btn-primary">Submit</button>
+		        </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog my-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add New Personal Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="box-body">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="contact_number_1">Contact Number 1</label>
+              <input type="number" class="form-control" id="contact_number_1">
+            </div>
+            <div class="form-group">
+              <label for="contact_number_2">Contact Number 2</label>
+              <input type="number" class="form-control" id="contact_number_2">
+            </div>
+            <div class="form-group">
+              <label for="email">Personal Email</label>
+              <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+              <label>Gender</label> <br>
+            	<label class="radio-inline"><input type="radio" name="optradio">Male</label>
+              <label class="radio-inline"><input type="radio" name="optradio">Female</label>
+            </div>
+            <div class="form-group">
+              <label for="blood_group">Blood Group</label>
+              <input type="text" class="form-control" id="blood_group">
+            </div>
+
+            <div class="form-group">
+              <label>Identity Mark 1</label>
+                <textarea class="form-control" rows="2"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Identity Mark 2</label>
+                <textarea class="form-control" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile">File input</label>
+              <input type="file" id="exampleInputFile">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="contact_number_2">Pan Number</label>
+              <input type="number" class="form-control" id="pan_number">
+            </div>
+            <div class="form-group">
+              <label for="adhaar_card_number">Adhaar Card Number</label>
+              <input type="number" class="form-control" id="adhaar_card_number">
+            </div>
+
+            <div class="form-group">
+              <label for="driving_license_number">Driving License Number</label>
+              <input type="number" class="form-control" id="driving_license_number">
+            </div>
+            <div class="form-group">
+              <label for="voter_id">Voter Id</label>
+              <input type="number" class="form-control" id="voter_id">
+            </div>
+            <div class="form-group">
+              <label for="passport_number">Passport Number</label>
+              <input type="number" class="form-control" id="passport_number">
+            </div>
+
+            <div class="form-group">
+              <label for="passport_expiry_date">Passport Expiry Date</label>
+              <input type="date" class="form-control" id="passport_expiry_date">
+            </div>
+
+            <div class="form-group">
+              <label for="passport_registration_place">Passport Registration Place</label>
+              <input type="date" class="form-control" id="passport_registration_place">
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="emergency-contact" class="modal fade" role="dialog">
+  <div class="modal-dialog emergency-contact-details">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Emergency Contact Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="box-body">
+          <div class="row">
+          	<div class="col-md-1">
+          	  <div class="form-group">
+		            <label for="contact_person_name">Primary</label> <br>
+		            <input type="checkbox">
+		          </div>
+          	</div>
+          	<div class="col-md-3">
+          		<div class="form-group">
+		            <label for="contact_person_name">Contact Person Name</label>
+		            <input type="text" class="form-control" id="contact_person_name">
+		          </div>
+          	</div>
+          	<div class="col-md-3">
+          		<div class="form-group">
+		            <label for="relationship">Relationship</label>
+		            <input type="text" class="form-control" id="Relationship">
+		          </div>
+          	</div>
+          	<div class="col-md-3">
+          		<div class="form-group">
+		            <label for="contact_numbe">Contact Number</label>
+		            <input type="text" class="form-control" id="contact_numbe">
+		          </div>
+          	</div>
+          	<div class="col-md-2">
+          		<button type="submit" class="btn btn-primary one-more-add">Add Contact</button>
+          	</div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="language" class="modal fade" role="dialog">
+  <div class="modal-dialog my-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Language Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="box-body">
+          <div class="row">
+          	<div class="col-md-4">
+          		<div class="form-group">
+		            <label for="language">Language</label>
+		            <input type="text" class="form-control" id="language">
+              </div>
+          	</div>
+          	<div class="col-md-3">
+          		<div class="form-group">
+						    <label for="user_language_speaking_proficiency">Speaking proficiency</label><br>
+						      <input type="radio" value="High" name="user_language[speaking_proficiency]" id="user_language_speaking_proficiency_high">
+						      High
+						      <input type="radio" value="Medium" name="user_language[speaking_proficiency]" id="user_language_speaking_proficiency_medium">
+						      Medium
+						      <input type="radio" value="Low" name="user_language[speaking_proficiency]" id="user_language_speaking_proficiency_low">
+						      Low
+						  </div>
+          	</div>
+          	<div class="col-md-3">
+          		<div class="form-group">
+						    <label for="user_language_speaking_proficiency">Speaking proficiency</label><br>
+						      <input type="radio" value="High" name="user_language[speaking_proficiency]" id="user_language_speaking_proficiency_high">
+						      High
+						      <input type="radio" value="Medium" name="user_language[speaking_proficiency]" id="user_language_speaking_proficiency_medium">
+						      Medium
+						      <input type="radio" value="Low" name="user_language[speaking_proficiency]" id="user_language_speaking_proficiency_low">
+						      Low
+						  </div>
+          	</div>
+          	<div class="col-md-2">
+          		<button type="submit" class="btn btn-primary one-more-add">Add Language</button>
+          	</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="qualification" class="modal fade" role="dialog">
+  <div class="modal-dialog addres-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Qualification Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="box-body">
+          <table class="table">
+          	<tr>
+          	 	<td>
+			          <div class="form-group">
+                <label>Qualification</label>
+                <select class="form-control">
+                  <option>S.S.L.C</option>
+                  <option>H.S.C</option>
+                  <option>UG Degree</option>
+                  <option>PG Degree</option>
+                  <option>UG Marksheet</option>
+                  <option>PG Marksheet</option>
+                </select>
+              </div
+          	 	</td>
+          	 	<td>
+			          <div class="form-group">
+			            <label for="year_of_passing">Year Of Passing</label>
+			            <input type="date" class="form-control" id="speaking_proficiency_id">
+			          </div>
+          	 	</td>
+          	 	<td>
+			          <div class="form-group">
+			            <label for="institution_name">Institution Name</label>
+			            <input type="text" class="form-control" id="institution_name">
+			          </div>
+          	 	</td>
+          	 	<td>
+			          <div class="form-group">
+			            <label for="university_board">University Board</label>
+			            <input type="text" class="form-control" id="university_board">
+			          </div>
+          	 	</td>
+          	 	<td>
+			          <div class="form-group">
+			            <label for="percentage">Percentage</label>
+			            <input type="text" class="form-control" id="percentage">
+			          </div>
+          	 	</td>
+          	 	<td>
+                <button type="submit" class="btn btn-primary one-more-add">Submit</button>
+          	 	</td>
+          	</tr>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="professional" class="modal fade" role="dialog">
+  <div class="modal-dialog addres-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Qualification Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="box-body">
+          <table class="table">
+          	 <tr>
+          	 	 <td>
+			          <div class="form-group">
+			            <label for="employment_name">Employment Name</label>
+			            <input type="text" class="form-control" id="employment_name">
+			          </div>
+          	 	</td>
+          	 	<td>
+			          <div class="form-group">
+			            <label for="from_date">From Date</label>
+			            <input type="date" class="form-control" id="from_date">
+			          </div>
+          	 	</td>
+          	 	<td>
+			          <div class="form-group">
+			            <label for="to_date">To Date</label>
+			            <input type="text" class="form-control" id="to_date">
+			          </div>
+          	 	</td>
+          	 	<td>
+			          <div class="form-group">
+			            <label>Designation</label>
+			            <textarea class="form-control" rows="1"></textarea>
+			          </div>
+          	 	</td>
+          	 	<td>
+				        <div>
+				          <button type="submit" class="btn btn-primary one-more-add">Submit</button>
+				        </div>
+          	 	</td>
+          	</tr>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="edication-certificate" class="modal fade" role="dialog">
+  <div class="modal-dialog my-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Education Certificate Details</h4>
+      </div>
+      <div class="modal-body ">
+        <div class="box-body">
+          <table class="table">
+          	<tr>
+          	  <td>
+	          		<div class="form-group">
+	                <label>Certificate Type</label>
+	                <select class="form-control">
+	                  <option>10 Marksheet</option>
+	                  <option>12 Marksheet</option>
+	                  <option>UG Degree</option>
+	                  <option>PG Degree</option>
+	                  <option>UG Marksheet</option>
+	                  <option>PG Marksheet</option>
+	                </select>
+	              </div>
+          	  </td>
+          	  <td>
+	          		<div class="form-group">
+	          			<label>Certificate id</label>
+	          			<input type="number" name="certificate_id" class="form-control">
+	          		</div>
+	          	</td>
+	          	<td>
+	          		<div class="form-group">
+	                <label for="exampleInputFile">File input</label>
+	                <input type="file" id="exampleInputFile">
+	              </div>
+	          	</td>
+	          	<td>
+	          	  <div>
+          		    <button type="submit" class="btn btn-primary one-more-add">Add Education</button>
+	          	  	
+	          	  </div>
+	          	</td>
+          	</tr>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="employment-certificate" class="modal fade" role="dialog">
+  <div class="modal-dialog employment-certificate-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Employment Certificate Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="box-body">
+          <table class="table">
+          	<tr>
+	          	<td>
+	          		<div class="form-group"> 
+	          			<label>Employment Name</label>
+	          			<input type="text" name="employment" class="form-control">
+	          		</div>
+          	  </td>
+	          	<td>
+	          		<div class="form-group">
+	          			<label>From Date</label>
+	          			<input type="date" name="date" class="form-control">
+	          		</div>
+	          	</td>
+	          	<td>
+	          		<div class="form-group">
+	          			<label>To Date</label>
+	          			<input type="date" name="date" class="form-control">
+	          		</div>
+	          	</td>
+        	    <td>
+        	    	<div class="form-group">
+	                <label for="exampleInputFile">File input</label>
+	                <input type="file" id="exampleInputFile">
+	              </div>
+        	    </td>
+        	    <td>
+        	    	<div class="form-group">
+	                <button type="submit" class="btn btn-primary one-more-add"> Add Details</button>
+	              </div>
+        	    </td>
+          	</tr>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="bank-details" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Education Certificate Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="box-body">
+          <div class="form-group">
+            <label for="account_number">Account Number</label>
+            <input type="number" class="form-control" id="account_number">
+          </div>
+
+          <div class="form-group">
+            <label for="bank-name">Bank Name</label>
+            <input type="text" class="form-control" id="bank_name">
+          </div>
+
+           <div class="form-group">
+            <label for="bank-branch">Bank Branch Name</label>
+            <input type="text" class="form-control" id="bank_branch-name">
+          </div>
+
+          <div class="form-group">
+            <label for="ifsc_code">Ifsc Code</label>
+            <input type="text" class="form-control" id="ifsc_code">
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="agreement" class="modal fade" role="dialog">
+  <div class="modal-dialog my-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Education Certificate Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="box-body">
+          <div class="row">
+          	<div class=" col-md-4 align-center ">
+          		<button type="submit" class="btn btn-primary letter-btn"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Bond Letter</button>
+          	</div>
+          	<div class=" col-md-4 align-center">
+          		<button type="submit" class="btn btn-primary letter-btn"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Experience Letter</button>
+          	</div>
+          	<div class=" col-md-4 align-center">
+          		<button type="submit" class="btn btn-primary letter-btn"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Relieving Letter</button>
+          	</div>
+          </div>
+          <div class="row">
+          	<div class=" col-md-6 align-btn">
+          		<button type="submit" class="btn btn-primary letter-btn"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Resignation Letter</button>
+          	</div>
+          	<div class=" col-md-6 align-btn">
+          		<button type="submit" class="btn btn-primary letter-btn"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Joining Letter</button>
+          	</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

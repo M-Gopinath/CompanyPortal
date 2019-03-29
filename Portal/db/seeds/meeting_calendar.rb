@@ -1,0 +1,23 @@
+MeetingEventNotification.find_or_create_by(name: "TEN MINUTES", short_name: "10M")
+MeetingEventNotification.find_or_create_by(name: "HALF AND HOUR", short_name: "30M")
+MeetingEventNotification.find_or_create_by(name: "ONE HOUR", short_name: "1H")
+MeetingEventNotification.find_or_create_by(name: "TWO HOUR", short_name: "2H")
+MeetingEventNotification.find_or_create_by(name: "ONE DAY", short_name: "1D")
+MeetingEventNotification.find_or_create_by(name: "TWO DAY ", short_name: "2D")
+
+
+
+MeetingEventRepeat.find_or_create_by(name: "DAILY", short_name: "D")
+MeetingEventRepeat.find_or_create_by(name: "EVERY MONDAY", short_name: "EM")
+MeetingEventRepeat.find_or_create_by(name: "EVERY TUESDAY", short_name: "ET")
+MeetingEventRepeat.find_or_create_by(name: "EVERY WEDNESDAY", short_name: "EW")
+MeetingEventRepeat.find_or_create_by(name: "EVERY THURSDAY", short_name: "ETH")
+MeetingEventRepeat.find_or_create_by(name: "EVERY FRIDAY", short_name: "EF")
+MeetingEventRepeat.find_or_create_by(name: "EVERY SATURDAY", short_name: "ES")
+MeetingEventRepeat.find_or_create_by(name: "EVERY WEEK MONDAY TO FRIDAY", short_name: "EWMTF")
+MeetingEventRepeat.find_or_create_by(name: "EVERY WEEK MONDAY TO THURSDAY", short_name: "EWMTTH")
+MeetingEventRepeat.find_or_create_by(name: "EVERY WEEK MONDAY TO WEDNESDAY", short_name: "EWMTW")
+MeetingEventRepeat.find_or_create_by(name: "EVERY WEEK MONDAY WEDNESDAY FRIDAY", short_name: "EWMWF")
+MeetingEventRepeat.find_or_create_by(name: "EVERY WEEK TUESDAY THURSDAY", short_name: "EWTTH")
+MeetingEventRepeat.find_or_create_by(name: "EVERY MONTH", short_name: "EMON")
+MeetingEventRepeat.find_or_create_by(name: "EVERY YEAR", short_name: "EYR")

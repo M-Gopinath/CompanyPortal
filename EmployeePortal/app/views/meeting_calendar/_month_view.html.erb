@@ -1,0 +1,37 @@
+<div class="x_panel">
+  <!-- <h3 class="month_name_center">
+    <b>
+    <span class="prev_month month_view" data-url="/meeting_calendar/month/<%#= @sel_date - 1.month %>&calendar_view='month'" data-type="week"><<&nbsp; </span>
+    </b>|
+     <span class="month_view" data-url="/meeting_calendar/month/<%#= @sel_date - 1.month %>&calendar_view='month'" data-type="month">
+        <%#= @sel_date.strftime("%B").capitalize %>
+     </span> <%#= @sel_date.strftime("%Y").capitalize %> |<b>
+     <span data-type="week" class="next_month month_view" data-url="/meeting_calendar/month/<%#= @sel_date + 1.month %>">&nbsp;>>
+    </span></b>
+  </h3> -->
+  <input type="hidden" name="date" id="select-month" value="<%=@sel_date.end_of_month%>" >
+ <table class="table table-bordered dzs_table" style="border:0px;">
+    <tr class="noBorder">
+      <th>Mo</th>
+      <th>Tu</th>
+      <th>We</th>
+      <th>Th</th>
+      <th>Fr</th>
+      <th>Sa</th>
+      <th>Su</th>
+    </tr>
+
+    <% (1..5).each do |n| %>
+    <tr>
+      <% (1..7).each do |n| %>
+      <td class="<%= 'dzs_today' if @dbeg.today? %>" data-date="<%= @dbeg %>" style="width:90px;height:100px;">
+        <div class="pull-left table-date">
+          <%= @dbeg.day %>
+        </div><br>
+      </td>
+      <% @dbeg += 1 %>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
+</div>

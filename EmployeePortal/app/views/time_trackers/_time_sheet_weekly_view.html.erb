@@ -1,0 +1,42 @@
+<% (select_week..select_week.end_of_week).each do |day| %>
+	<% if day <= Time.now %>
+		<div class="day_of_week <%= 'day_of_week_background' if day.end_of_day == select_day.end_of_day %> ">
+			<%= day.strftime("%a, %d %B") %>
+			<span class="pull-right">
+				<a type="button" class="pull-right" data-toggle="modal" data-target="#myModal_<%= day %>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+			</span>
+		</div>
+		<div id="myModal_<%=day %>" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Approve / Cancel Request</h4>
+					</div>
+					<div class="modal-body">
+						<div class="prefill_timesheet_<%= day %>">
+							<%= render partial: "time_sheet_form",locals: {day: day,tasks: tasks, task: nil} %>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	<%end%>
+<%end%>
+
+<div class="col-md-12">
+	<% time_sheets = current_employee.time_sheets_select(select_day) %>
+	<% if time_sheets.count > 0 %>
+		<% time_sheets.each do |time| %>
+			<div class="col-md-3">
+				<p>Task Title : <%= time.try(:task).try(:title) %></p>
+				<p>Task Lap time : <%= time.try(:hours_taken) ? current_employee.hours_format(time.try(:hours_taken)) : "00:00:00" %></p>
+			</div>
+		<%end%>
+	<%else%>
+			<p>No task timer</p>
+	<%end%>
+</div>

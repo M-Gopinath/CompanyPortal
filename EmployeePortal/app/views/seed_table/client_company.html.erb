@@ -1,0 +1,119 @@
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>Client Company</h1><br />
+        </div>
+        <div class="col-md-4 content-header">
+        </div>
+        <div class="col-md-3 content-header">
+        </div>
+        <div class="header-border"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <p align="center">Client Company Create</p>
+        <%= form_for :client_company, url: seed_table_create_client_company_path do |f| %>
+        <div class="modal-body">
+          <div class="errors"></div>
+          <div class="form-group">
+            <%= f.label :client_id %>
+            <%= f.number_field :client_id, required: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, required: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :contact_number %>
+            <%= f.number_field :contact_number, required: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :address %>
+            <%= f.text_field :address, required: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :city %>
+            <%= f.text_field :city, required: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :state %>
+            <%= f.text_field :state, required: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :country %>
+            <%= f.text_field :country, required: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :zip_code %>
+            <%= f.text_field :zip_code, required: true, class: 'form-control' %>
+          </div>
+        </div>
+        <%= f.submit class: "btn btn-primary pd-10" %>
+        <%end%>
+      </div>
+      <div class="col-md-7">
+        <p align="center">Client Company List</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Client Company Address</th>
+              <th>Client Company City</th>
+              <th>Client Company State</th>
+              <th>Client Company Country</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @client_companyies.each do |client_company| %>
+            <tr>
+              <td><%= client_company.address %></td>
+              <td><%= client_company.city %></td>
+              <td><%= client_company.state %></td>
+              <td><%= client_company.country %></td>
+              <td class="action-link">
+                <a href="" data-toggle="modal" data-target="#client_company_id_<%= client_company.id%>">
+                  <i class="fa fa-user-circle-o"></i>
+                </a>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% @client_companyies.each do |client_company| %>
+  <!-- Modal -->
+  <div id="client_company_id_<%= client_company.id%>" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Client Company</h4>
+        </div>
+        <div class="modal-body">
+          <p>Client Company Id : <span><%= client_company.client_id %></span></p>
+          <p>Client Company Name : <span><%= client_company.name %></span></p>
+          <p>Client Company Contact Number : <span><%= client_company.contact_number %></span></p>
+          <p>Client Company Address : <span><%= client_company.address %></span></p>
+          <p>Client Company City : <span><%= client_company.city %></span></p>
+          <p>Client Company State : <span><%= client_company.state %></span></p>
+          <p>Client Company Country : <span><%= client_company.country %></span></p>
+          <p>Client Company Zipcode : <span><%= client_company.zip_code %></span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% end %>
+

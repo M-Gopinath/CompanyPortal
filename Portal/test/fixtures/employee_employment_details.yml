@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 
+  employee_professional_detail_id: 1
+  employment_certificate_id: 1
+  photo_copy: MyString
+
+two:
+  employee_id: 
+  employee_professional_detail_id: 1
+  employment_certificate_id: 1
+  photo_copy: MyString

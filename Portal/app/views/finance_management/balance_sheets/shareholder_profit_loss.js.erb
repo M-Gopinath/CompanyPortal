@@ -1,0 +1,2 @@
+$('.shareholder-pl').html("<%= j(render partial: 'selected_year', locals: {date: @date, next_year: @next_year}) %>")
+$('.profit-loss').html("<%= j(render partial: 'profit_loss', locals: {balance_sheets: @balance_sheets, date: @date}) %>")

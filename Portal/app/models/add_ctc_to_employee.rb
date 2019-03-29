@@ -1,0 +1,2 @@
+class AddCtcToEmployee < ApplicationRecord
+end

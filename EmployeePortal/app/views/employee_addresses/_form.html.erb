@@ -1,0 +1,35 @@
+<%= form_for(address_details, remote: true) do |f| %>
+  <%= f.hidden_field :employee_id, value: employee.id %>
+  <%= f.hidden_field :employee_address_type_id, value: address_type %>
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_field :address, class:"form-control", required: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :city %>
+    <%= f.text_field :city, class: "form-control letters_only", required: true%>
+  </div>
+  <div class="form-group">
+    <%= f.label :state %>
+    <%= f.text_field :state, class: "form-control letters_only", required: true%>
+  </div>
+  <div class="form-group">
+    <%= f.label :country %>
+    <%= f.text_field :country, class: "form-control letters_only", required: true%>
+  </div>
+  <div class="form-group">
+    <%= f.label :zipcode %>
+    <%= f.text_field :zipcode, class:"form-control employee_address_zipcode", required: true%>
+  </div>
+  <div class="actions">
+   <%= f.submit address_details.new_record? ? "Create" : "Update", :class => 'btn btn-primary btn-lg btn-block it-btn-them' %>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $(".employee_address_zipcode").numeric();
+  $('.letters_only').bind('keyup blur',function(){ 
+    $(this).val(function(i, val) {
+      return val.replace(/[^a-z\s]/gi,''); 
+    });
+  });
+</script>

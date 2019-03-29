@@ -1,0 +1,1 @@
+$(".expense-form").html("<%= escape_javascript(render partial: 'form', locals: {expense: @office_expense, url: finance_management_expense_path(@office_expense)}) %>")

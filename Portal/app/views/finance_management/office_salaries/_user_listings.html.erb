@@ -1,0 +1,27 @@
+<% actived_employees.each do |ae| %>
+  <% monthly_ctc = current_month_ctc(ae, date) %>
+  <% if monthly_ctc.present? %>
+    <tr>
+      <td><%= ae.employee_id %></td>
+      <td><%= ae.full_name %></td>
+      <td><%= (ae.ctc)/12 %></td>
+      <td><%= employee_total_deduction(monthly_ctc, ae, date) %></td>
+      <td><%= ((ae.ctc)/12) + employee_total_deduction(monthly_ctc, ae, date) %></td>
+      <td><%= monthly_ctc.lop_basic.present? ? monthly_ctc.lop_basic : monthly_ctc.basic_pay %></td>
+      <td><%= monthly_ctc.lop_hra.present? ? monthly_ctc.lop_hra : monthly_ctc.hra %></td>
+      <td><%= monthly_ctc.lop_special_allowance.present? ? monthly_ctc.lop_special_allowance : monthly_ctc.special_allowance %></td>
+      <td><%= monthly_ctc.telephone_allowance %></td>
+      <td><%= monthly_ctc.medical_allowance %></td>
+      <td><%= monthly_ctc.total_earnings %></td>
+      <td><%= monthly_ctc.pf_employee_contribution %></td>
+      <td><%= monthly_ctc.professonal_tax %></td>
+      <td><%= monthly_ctc.tax_deduction %></td>
+      <td><%= monthly_ctc.loss_of_pay.present? ? monthly_ctc.loss_of_pay : 0 %></td>
+      <td><%= monthly_ctc.total_deduction %></td>
+      <td><%= monthly_ctc.net_salary %></td>
+      <td><%= check_medical_insurance(ae, date) %></td>
+      <td><%= monthly_ctc.gratuity_employeer_contribution %></td>
+      <td><%= monthly_ctc.pf_employeer_contribution %></td>
+    </tr>
+  <% end %>
+<% end %>

@@ -1,0 +1,15 @@
+$(".leave-lists").html("<%= escape_javascript(render partial: 'leave_list', locals: {leave_list_calendars: @leave_list_calendars, date: @date})%>")
+$(".leave_apply_form").html("<%= escape_javascript(render partial: 'leave_form', locals: {apply_leave: @new_apply_leave, url: leave_permissions_create_apply_leave_path})%>")
+$(".recent_activities").html("<%= escape_javascript(render partial: 'leave_recent_activities', locals: {recent_activities: get_recent_activities})%>")
+$( ".datepicker" ).datepicker({
+    todayHighlight:'TRUE',
+    startDate: '-0d',
+    endDate: '+2m',
+    format: 'dd-mm-yyyy',
+    autoclose: true
+  });
+$(".approved_leave").html("<%= escape_javascript(render partial: 'approved_leave', locals: {approved_leaves: @approved_leaves})%>")
+$(".approved_permission").html("<%= escape_javascript(render partial: 'approved_permission', locals: {approved_permissions: @approved_permissions})%>")
+$(".remove-model").modal('hide');
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();

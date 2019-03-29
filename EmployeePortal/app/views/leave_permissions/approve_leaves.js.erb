@@ -1,0 +1,6 @@
+$('.pending_leave_lists').html("<%= escape_javascript(render partial: 'pending_lists', locals: {pending_requests: @pending_requests})%>")
+$(".approved_leave").html("<%= escape_javascript(render partial: 'approved_leave', locals: {approved_leaves: @approved_leaves})%>")
+$(".approved_permission").html("<%= escape_javascript(render partial: 'approved_permission', locals: {approved_permissions: @approved_permissions})%>")
+$(".remove-model").modal('hide');
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();

@@ -1,0 +1,68 @@
+<div class="table-responsive">
+	<% if @project.present? %>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Project Name</th>
+					<th>Description</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% project.each do |project| %>
+				<tr>
+					<td><%= project.name %></td>
+					<td><%= project.description %></td>
+					<td class="action-link">
+						<a data-toggle="modal" data-target="#deactive_project_<%= project.id%>"><i class="fa fa-user-circle-o"></i></a>
+						<%= link_to edit_project_listing_path(project) do%>
+              <i class="fa fa-edit"></i>
+            <% end %>
+						<%= link_to delete_project_path(project_id: project.id), method: :delete,data: {confirm: "Are you sure?"} do%>
+              <i class="fa fa-times"></i>
+            <% end %>
+						<%= link_to 'Active', active_path(project_id: project.id)%>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% else %>
+		<p align="center">No Project</p>
+	<% end %>
+</div>
+<div class="pagination-content">
+	<%= will_paginate project, renderer: BootstrapPagination::Rails %>
+</div>
+
+
+<% if @project.present? %>
+  <% @project.each do |ac|%>
+    <div id="deactive_project_<%= ac.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Dective Projects</h4>
+          </div>
+          <div class="modal-body">
+          	<p>Project Name : <span><%= ac.try(:name) %></span></p>
+          	<p>Description : <span><%= ac.try(:description) %></span></p>
+          	<div class="skill-content-height">
+          		<div class="skill-width-left">Skill Name : </div>
+          		<div class="skill-width-right">	
+          			<% ac.try(:projects_skills).each do |skill| %>
+          			<span><%= skill.get_skill_name(skill.skill_id)%></span><br>
+          			<% end %>
+          		</div>
+          	</div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

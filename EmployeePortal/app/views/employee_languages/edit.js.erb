@@ -1,0 +1,1 @@
+$(".emp-language_<%= @employee_language.id %>").html("<%= escape_javascript(render partial: 'new_form', locals: { language_detail: @employee_language, employee: @employee_language.employee } )%>")

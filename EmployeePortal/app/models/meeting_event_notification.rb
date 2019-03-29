@@ -1,0 +1,2 @@
+class MeetingEventNotification < ApplicationRecord
+end

@@ -1,0 +1,102 @@
+<div>
+  <div class="col-md-12">
+    <p class="text-center back-pre-btn">
+     <span class="pull-left"><%= link_to "<<", leave_permissions_permission_cancel_path(date: date - 1.year),class: "btn btn-default btn-xs", remote: true %></span>
+     <span><b><%= date.strftime("%Y") %></b></span>
+     <span class="pull-right"><%= link_to ">>", leave_permissions_permission_cancel_path(date: date + 1.year),class: "btn btn-default btn-xs", remote: true %></span>
+   </p>
+   <p class="text-center back-pre-btn">
+     <span><b><%= Date::MONTHNAMES[date.month] %></b></span>
+   </p>
+   <p class="text-center back-pre-btn">
+      <% (1..12).each_with_index do |m, index| %>
+      <span><%= link_to "#{Date::MONTHNAMES[m].first(3)}", leave_permissions_permission_cancel_path(date: date.beginning_of_year + index.month),class: "btn btn-default btn-xs", remote: true %></span>
+      <% end %>
+    </p>
+  </div>
+  <div class="col-md-12">
+    <% if cancel_permission_request.present? %>
+      <table class="table">
+        <thead>
+          <th>Emb.id</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Status</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+          <% cancel_permission_request.each do |pr| %>
+            <tr>
+              <td><%= pr.employee_id %></td>
+              <td><%= pr.get_emloyee_first_name(pr.employee_id) %></td>
+              <td><%= pr.get_emloyee_last_name(pr.employee_id) %></td>
+              <td><%= pr.get_status(pr.leave_permission_status_id) %></td>
+              <td class="action-link">
+                <a data-toggle="modal" data-target="#show_request_<%= pr.id%>"><i class="fa fa-user-circle-o"></i></a>
+                <%= link_to leave_permissions_permission_destroy_path(permission_id: pr.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="fa fa-times"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="pagination-content">
+        <%= will_paginate cancel_permission_request, renderer: BootstrapPagination::Rails %>
+      </div>
+    <% else %>
+      <p align="center"> No Request</p>
+    <% end %>
+  </div>
+</div>
+
+<% if cancel_permission_request.present? %>
+  <% cancel_permission_request.each do |pq| %>
+    <div id="show_request_<%=pq.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Permission Approve Request</h4>
+          </div>
+          <div class="modal-body">
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <td>Permission Date</td>
+                  <td><%= pq.permission_date.strftime("%d-%m-%Y")%></td>
+                </tr>
+                <tr>
+                  <td>From Time</td>
+                  <td><%= pq.try(:from_time?) %></td>
+                </tr>
+                <tr>
+                  <td>To Time</td>
+                  <td><%= pq.try(:to_time?) %></td>
+                </tr>
+                <tr>
+                  <td>No of hours</td>
+                  <td><%= pq.try(:no_of_hours?) %></td>
+                </tr>
+                <tr>
+                  <td>Reason</td>
+                  <td><%= pq.try(:reason) %></td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td><%= pq.get_status(pq.leave_permission_status_id) %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+<% end %>

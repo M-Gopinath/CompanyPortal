@@ -1,0 +1,64 @@
+<section class="content-header">
+  <p class="text-center back-pre-btn">
+    <span class="pull-left"><%= link_to "<<", finance_management_expenses_path(date: date - 1.year),class: "btn btn-default btn-xs", remote: true %></span>
+    <span><b>Office Expense</b></span>
+    <span><b><%= Date::MONTHNAMES[date.month] %></b></span>
+    <span><b><%= date.strftime("%Y") %></b></span>
+    <span class="pull-right"><%= link_to ">>", finance_management_expenses_path(date: date + 1.year),class: "btn btn-default btn-xs", remote: true %></span>
+  </p>
+  <p class="text-center back-pre-btn">
+    <% (1..12).each_with_index do |m, index| %>
+    <span><%= link_to "#{Date::MONTHNAMES[m].first(3)}", finance_management_expenses_path(date: date.beginning_of_year + index.month),class: "btn btn-default btn-xs", remote: true %></span>
+    <% end %>
+  </p>
+</section>
+<div class="content-header">
+  <div class="row">
+    <div class="col-md-12">
+       <div class="top-links pull-right">
+        <%= link_to 'xls', finance_management_expenses_path(format: "xls", date: date) %>
+        <%= link_to 'csv', finance_management_expenses_path(format: "csv", date: date) %>
+        <%= link_to 'pdf', finance_management_expenses_path(format: :pdf, date: date) %>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content"> 
+  <div class="row">
+    <div class="box box-sucess">
+      <div class="table-responsive expense-table box-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr class="income-head">
+              <th>Transaction Via</th>
+              <th>Spent Date</th>
+              <th>Money Spent</th>
+              <th>Description</th>
+              <th colspan="2" class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% office_expenses.each do |oe| %>
+              <tr>
+                <td><%= oe.transaction_via.name %></td>
+                <td><%= oe.spent_date.strftime("%b %d") %></td>
+                <td><%= oe.money_spent %></td>
+                <td><%= oe.description %></td>
+                <td class="text-center">
+                  <%= link_to edit_finance_management_expense_path(oe), remote: true do %>
+                    <i class="fa fa-edit"></i>
+                  <% end %>
+                </td>
+                <td class="text-center">
+                  <%= link_to finance_management_expense_path(oe, date: date), method: :delete, data: {confirm: "Are You Sure"}, remote: true do %>
+                    <i class="fa fa-times"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

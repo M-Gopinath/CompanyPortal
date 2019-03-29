@@ -1,0 +1,26 @@
+<!-- Modal -->
+
+<div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Cancel Applied Leave</h4>
+    </div>
+    <div class="modal-body">
+      <%= form_tag leave_permissions_cancel_applied_leave_path, method: :get, remote: true do %>
+        <%= hidden_field_tag :id, leave.id %>
+        <div class="form-group">
+          <%= label_tag :description %>
+          <%= text_area_tag :description, '', class: "form-control" %>
+        </div>
+        <div class="actions">
+          <%= submit_tag "Cancel", class: "btn btn-danger"%>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

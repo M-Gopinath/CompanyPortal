@@ -1,0 +1,53 @@
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>Client Company Details</h1><br />
+        </div>
+        <div class="col-md-4 content-header">
+        </div>
+        <div class="col-md-3 content-header">
+        </div>
+        <div class="header-border"></div>
+      </div>
+      <div class="">
+        <div class="col-md-6 col-sm-12">
+          <div class="pd-25 client_info_ajax">
+            <%= render "client_address" %>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="company-panel">
+            <h4 align="center">Client Address</h4>
+            <div class="field">
+              <label>Contact number: <span class="client_contact_number"><%= @client.try(:contact_number) %></span></label>
+            </div>
+            <div class="field">
+              <label>Address: <span class="client_address"><%= @client.try(:address) %></span></label>
+            </div>
+            <div class="field">
+              <label>City: <span class="client_city"><%= @client.try(:city) %></span></label>
+            </div>
+            <div class="field">
+              <label>State: <span class="client_state"><%= @client.try(:state) %></span></label>
+            </div>
+            <div class="field">
+              <label>Country: <span class="client_country"><%= @client.try(:country) %></span></label>
+            </div>
+            <div class="field">
+              <label>Zip code: <span class="client_zip_code"><%= @client.try(:zip_code) %></span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  $("#client_company_contact_number").numeric()
+  $(document).on("change", "#client_same_as_client_address", function(){
+    $(this).closest('form').submit();
+  })
+</script>

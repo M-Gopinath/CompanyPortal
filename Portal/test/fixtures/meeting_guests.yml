@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  meeting_calendar_id: 1
+  employee_guest_id: 
+  client_guest_id: 1
+
+two:
+  meeting_calendar_id: 1
+  employee_guest_id: 
+  client_guest_id: 1

@@ -1,0 +1,31 @@
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.description %></td>
+        <td class="action-link">
+          <%= link_to project_path(project) do %>
+            <i class="fa fa-user-circle-o"></i>
+          <% end %>
+          <a href="#"><i class="fa fa-edit"></i></a><a href="#"><i class="fa fa-times"></i></a>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to new_project_path,class: "btn btn-primary" do  %>
+  <i class="fa fa-plus-circle"></i><span> New Project</span>
+  <%end%>
+  <div class="pagination-content">
+    <%= will_paginate projects, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>

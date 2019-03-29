@@ -1,0 +1,54 @@
+<section class="content">
+	<div class="panel">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-4 content-header">
+					<h1><%= @month.strftime("%Y") %> Leave Calender</h1><br />
+				</div>
+				<div class="col-md-4 content-header">
+				</div>
+				<div class="col-md-4 content-header">
+					<div class="top-links new-top">
+						<%= link_to 'xls', yearly_holiday_calendar_index_path(format: "xls") %>
+						<%= link_to 'csv', yearly_holiday_calendar_index_path(format: "csv") %>
+						<%= link_to 'pdf', yearly_holiday_calendar_index_path(format: :pdf) %>
+					</div>
+				</div>
+				<div class="header-border"></div>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-7">
+					<div class="calender-header">
+						<p class="text-center back-pre-btn">
+							<span class="pull-left"><%= link_to "<<", yearly_holiday_calendar_index_path(month: @month - 1.year),class: "btn btn-default btn-xs" %></span>
+							<span><b><%= @month.strftime("%Y") %></b></span>
+							<span class="pull-right"><%= link_to ">>", yearly_holiday_calendar_index_path(month: @month + 1.year),class: "btn btn-default btn-xs" %></span>
+						</p>
+					</div>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Month</th>
+									<th>Date</th>
+									<th>Day</th>
+									<th>Reason</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% @yearly_holiday_calendars.each do |holiday| %>
+								<tr>
+									<td><%= holiday.holiday_date.strftime("%B") %></td>
+									<td><%= holiday.holiday_date.strftime("#{holiday.holiday_date.day.ordinalize}") %></td>
+									<td><%= holiday.holiday_date.strftime("%a") %></td>
+									<td><%= holiday.description %></td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

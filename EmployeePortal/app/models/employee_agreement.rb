@@ -1,0 +1,2 @@
+class EmployeeAgreement < ApplicationRecord
+end

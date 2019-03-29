@@ -1,0 +1,118 @@
+<section class="content-header">
+  <h1>
+    Dashboard
+  </h1>
+</section>
+<section class="content">
+  <div class="row">
+  	<div class="col-md-4">
+  		<div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Grid 1</h3>
+        </div>
+        <div class="box-body box-body-hei">
+          
+        </div>
+      </div>
+  	</div>
+  	<div class="col-md-4">
+  		<div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Grid 2</h3>
+        </div>
+        <div class="box-body box-body-hei">
+          
+        </div>
+      </div>
+  	</div>
+  	<div class="col-md-4">
+  		<div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Grid 3</h3>
+        </div>
+        <div class="box-body box-body-hei">
+        </div>
+      </div>
+  	</div>
+  </div>
+          
+  <div class="row">
+	  <div class="col-md-12">
+	    <div class="box box-bottom-7">
+	      <div class="box-header with-border">
+	        <h3 class="box-title">Recap Report</h3>
+	      </div>
+	      <div class="box-body">
+	        <div class="row">
+	          <div class="col-md-8">
+	            
+								<div id="container" class="pie-chart"></div>
+	          </div>
+	          <div class="col-md-4">
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</section>
+
+
+<script type="text/javascript">
+Highcharts.getOptions().plotOptions.pie.colors = (function () {
+    var colors = [],
+        base = Highcharts.getOptions().colors[0],
+        i;
+    for (i = 0; i < 10; i += 1) {
+      colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());
+    }
+    return colors;
+}());
+
+Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Report'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+
+    credits: {
+      enabled: false
+    },
+
+    exporting: {
+         enabled: false
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Brands',
+        data: [
+            { name: 'Ruby on rails', y: 56.33 },
+            { name: 'Angular js', y: 24.03 },
+            { name: 'Jquery', y: 10.38 },
+            { name: 'javascript', y: 4.77 },
+            { name: 'Html', y: 0.91 },
+            { name: 'css', y: 0.2 }
+        ]
+    }]
+});
+</script>

@@ -1,0 +1,17 @@
+$.progressForm();
+$('.timepicker').timepicker({ 'scrollDefault': 'now' });
+<% if @time_sheet.errors.present? %>
+	$(".errors").text("");
+  <% @time_sheet.errors.full_messages.each do |error| %>
+    $(".errors").append("<li><%= error %></li>");
+  <% end %>
+<%else%>
+	// $.ajax({
+	// 	url: "/time_trackers/time_sheet",
+	// 	data: {day: @time_sheet.entry_date},
+	// 	dataType: "script"
+	// });
+	$('#myModal_<%= @time_sheet.entry_date %>').modal('toggle');
+	$('.modal-backdrop').remove();
+	window.location.href = "<%= time_trackers_time_sheet_path(day: @time_sheet.entry_date ) %>";
+<%end%>

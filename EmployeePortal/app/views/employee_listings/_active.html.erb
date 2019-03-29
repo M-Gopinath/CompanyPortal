@@ -1,0 +1,23 @@
+<% actived_employees.each do |ae| %>
+  <tr>
+    <td><%= ae.employee_id %></td>
+    <td><%= ae.first_name %></td>
+    <td><%= ae.last_name %></td>
+    <td><%= ae.email %></td>
+    <td class="action-link">
+      <a href="#" class="md-trigger pull-right" data-toggle="modal" data-target="#showEmpModal_<%= ae.id %>"><i class="fa fa-user-circle-o"></i></a>
+      <div id="showEmpModal_<%= ae.id %>" class="modal fade" role="dialog">
+        <%= render partial: 'employees/registrations/show_employee', locals: {employee: ae} %>
+      </div>
+    </td>
+    <td class="new-action-link">
+      <a href="#" class="md-trigger pull-right" data-toggle="modal" data-target="#editEmpModal_<%= ae.id %>"><i class="fa fa-edit"></i></a>
+      <div id="editEmpModal_<%= ae.id %>" class="modal fade" role="dialog">
+        <%= render partial: 'employees/registrations/edit_employee', locals: {employee: ae} %>
+      </div>
+    </td>
+    <td class="action-link">
+      <%= link_to "Deactive", deactivate_employee_path(employee_id: ae.employee_id), data: { confirm: 'Are you sure?' }, class: "active-btn" %>
+    </td>
+  </tr>
+<% end %>

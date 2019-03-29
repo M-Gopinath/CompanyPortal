@@ -1,0 +1,85 @@
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>SocialNetwork</h1><br />
+        </div>
+        <div class="col-md-4 content-header">
+        </div>
+        <div class="col-md-3 content-header">
+        </div>
+        <div class="header-border"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <p align="center">SocialNetwork create</p>
+        <%= form_for :socialnetwork, url: seed_table_create_socialnetwork_path do |f| %>
+        <div class="modal-body">
+          <div class="errors"></div>
+          <div class="form-group">
+            <%= f.label :network_name %>
+            <%= f.text_field :network_name, required: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :network_short_name %>
+            <%= f.text_field :network_short_name, required: true, class: 'form-control' %>
+          </div>
+        </div>
+        <%= f.submit class: "btn btn-primary pd-10" %>
+        <%end%>
+      </div>
+      <div class="col-md-7">
+        <p align="center">SocialNetwork List</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>SocialNetwork Name</th>
+              <th>SocialNetwork Short Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @socialnetworks.each do |socialnetwork| %>
+            <tr>
+              <td><%= socialnetwork.network_name %></td>
+              <td><%= socialnetwork.network_short_name %></td>
+              <td class="action-link">
+                <a href="" data-toggle="modal" data-target="#socialnetwork_id_<%= socialnetwork.id%>">
+                  <i class="fa fa-user-circle-o"></i>
+                </a>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% @socialnetworks.each do |socialnetwork| %>
+  <!-- Modal -->
+  <div id="socialnetwork_id_<%= socialnetwork.id%>" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">SocialNetwork</h4>
+        </div>
+        <div class="modal-body">
+          <p>SocialNetwork Name : <span><%= socialnetwork.network_name %></span></p>
+          <p>SocialNetwork Short Name : <span><%= socialnetwork.network_short_name %></span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% end %>
+

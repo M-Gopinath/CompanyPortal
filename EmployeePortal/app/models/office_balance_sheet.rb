@@ -1,0 +1,2 @@
+class OfficeBalanceSheet < ApplicationRecord
+end

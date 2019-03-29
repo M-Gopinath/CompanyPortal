@@ -1,0 +1,174 @@
+<section class="content">
+	<div class="panel">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-4 content-header">
+					<h1>Time Sheet - <span class="h1-span">Approve / Cancel</span></h1>
+				</div>
+				<div class="col-md-4 content-header">
+				</div>
+				<div class="col-md-3 content-header">
+					<div class="top-links new-top">
+						<%= link_to "xls",time_trackers_index_path(format: "xls", status: "undefined") %>
+						<%= link_to "csv",time_trackers_index_path(format: "csv", status: "undefined") %>
+						<%= link_to "pdf",time_trackers_index_path(format: "pdf", status: "undefined") %>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-12 pd-10">
+					<div class="panel panel-bg">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Emb.id</th>
+										<th>Firstname</th>
+										<th>Lastname</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% if @undefined_time_sheets.count > 0 %>
+										<% @undefined_time_sheets.each.with_index(1) do |time_sheet, index| %>
+											<tr>
+												<td><%= time_sheet.try(:employee).try(:employee_id) %></td>
+												<td><%= time_sheet.try(:employee).try(:first_name) %></td>
+												<td><%= time_sheet.try(:employee).try(:last_name) %></td>
+												<td class="action-link">
+													<a href="#" data-toggle="modal" data-target="#fullview_time_tracker_<%= index %>"><i class="fa fa-user-circle-o"></i></a>
+													<%= link_to time_sheet_approved_cancelled_path(time_sheet,status: "APPROVED"), method: :put do  %>
+														<i class="fa fa-check"></i>
+													<%end%>
+													<%= link_to time_sheet_approved_cancelled_path(time_sheet, status: "CANCELLED"), method: :put do %>
+														<i class="fa fa-times"></i>
+													<%end%>
+													<div id="fullview_time_tracker_<%= index %>" class="modal fade" role="dialog">
+														<%= render partial: "time_sheet_approve_modal", locals: {time_sheet: time_sheet} %>
+													</div>
+												</td>
+											</tr>
+										<%end%>
+									<%else%>
+										<tr><td colspan="4" class="text-center">No record</td></tr>
+									<%end%>
+								</tbody>
+							</table>
+						</div>
+						<div class="pagination-content">
+							<%= will_paginate @undefined_time_sheets, renderer: BootstrapPagination::Rails %>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-6">
+					<div class="col-md-6 content-header">
+						<h4>Time Sheet - <span class="h1-span">Approve</span></h4>
+					</div>
+					<div class="col-md-6 content-header">
+						<div class="top-links new-top">
+							<%= link_to "xls",time_trackers_index_path(format: "xls", status: "approved") %>
+							<%= link_to "csv",time_trackers_index_path(format: "csv", status: "approved") %>
+							<%= link_to "pdf",time_trackers_index_path(format: "pdf", status: "approved") %>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="col-md-6 content-header">
+						<h4>Time Sheet - <span class="h1-span">Cancel</span></h4>
+					</div>
+					<div class="col-md-6 content-header">
+						<div class="top-links new-top">
+							<%= link_to "xls",time_trackers_index_path(format: "xls", status: "unapproved") %>
+							<%= link_to "csv",time_trackers_index_path(format: "csv", status: "unapproved") %>
+							<%= link_to "pdf",time_trackers_index_path(format: "pdf", status: "unapproved") %>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 pd-10">
+					<div class="panel panel-bg">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Emb.id</th>
+										<th>Firstname</th>
+										<th>Lastname</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% if @approved_time_sheets.count > 0 %>
+										<% @approved_time_sheets.each.with_index(1) do |time_sheet, index| %>
+											<tr>
+												<td><%= time_sheet.try(:employee).try(:employee_id) %></td>
+												<td><%= time_sheet.try(:employee).try(:first_name) %></td>
+												<td><%= time_sheet.try(:employee).try(:last_name) %></td>
+												<td class="action-link">
+													<a href="#" data-toggle="modal" data-target="#fullview_time_tracker_<%= index %>"><i class="fa fa-user-circle-o"></i></a>
+													<%= link_to time_sheet_approved_cancelled_path(time_sheet,status: "APPROVED"), method: :put do  %>
+														<i class="fa fa-check"></i>
+													<%end%>
+													<%= link_to time_sheet_approved_cancelled_path(time_sheet, status: "CANCELLED"), method: :put do %>
+														<i class="fa fa-times"></i>
+													<%end%>
+													<div id="fullview_time_tracker_<%= index %>" class="modal fade" role="dialog">
+														<%= render partial: "time_sheet_approve_modal", locals: {time_sheet: time_sheet} %>
+													</div>
+												</td>
+											</tr>
+										<%end%>
+									<%else%>
+										<tr><td colspan="4" class="text-center">No record</td></tr>
+									<%end%>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 pd-10">
+					<div class="panel panel-bg">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Emb.id</th>
+										<th>Firstname</th>
+										<th>Lastname</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% if @cancelled_time_sheets.count > 0 %>
+										<% @cancelled_time_sheets.each.with_index(1) do |time_sheet, index| %>
+											<tr>
+												<td><%= time_sheet.try(:employee).try(:employee_id) %></td>
+												<td><%= time_sheet.try(:employee).try(:first_name) %></td>
+												<td><%= time_sheet.try(:employee).try(:last_name) %></td>
+												<td class="action-link">
+													<a href="#" data-toggle="modal" data-target="#fullview_time_tracker_<%= index %>"><i class="fa fa-user-circle-o"></i></a>
+													<%= link_to time_sheet_approved_cancelled_path(time_sheet,status: "APPROVED"), method: :put do  %>
+														<i class="fa fa-check"></i>
+													<%end%>
+													<%= link_to time_sheet_approved_cancelled_path(time_sheet, status: "CANCELLED"), method: :put do %>
+														<i class="fa fa-times"></i>
+													<%end%>
+													<div id="fullview_time_tracker_<%= index %>" class="modal fade" role="dialog">
+														<%= render partial: "time_sheet_approve_modal", locals: {time_sheet: time_sheet} %>
+													</div>
+												</td>
+											</tr>
+										<%end%>
+									<%else%>
+										<tr><td colspan="4" class="text-center">No record</td></tr>
+									<%end%>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

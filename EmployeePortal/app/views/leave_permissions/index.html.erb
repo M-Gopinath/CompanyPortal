@@ -1,0 +1,65 @@
+<section class="content">
+	<div class="panel">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-6">
+					<div class="col-md-6 content-header">
+						<h1>Approve / Cancel Request</h1><br />
+					</div>
+					<div class="col-md-6 content-header">
+						<div class="top-links new-top">
+							<%= link_to "xls", leave_permissions_index_path(format: "xls", pdf_request: :leave)%>
+							<%= link_to 'csv', leave_permissions_index_path(format: "csv", pdf_request: :leave) %>
+							<%= link_to 'pdf', leave_permissions_index_path(format: :pdf, pdf_request: :leave) %>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="col-md-6 content-header">
+						<h1>Approve / Cancel Request</h1><br />
+					</div>
+					<div class="col-md-6 content-header">
+						<div class="top-links new-top">
+							<%= link_to "xls", leave_permissions_index_path(format: "xls", pdf_request: :permission)%>
+							<%= link_to 'csv', leave_permissions_index_path(format: "csv", pdf_request: :permission) %>
+							<%= link_to 'pdf', leave_permissions_index_path(format: :pdf, pdf_request: :permission) %>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-6 pd-10">
+					<div class="pending_leave_lists">
+						<%= render partial: "pending_lists", locals: {pending_requests: @pending_leave_requests} %>
+					</div>
+				</div>
+				<div class="col-md-6 pd-10">
+					<div class="pending_permission_lists">
+						<%= render partial: "pending_permissions", locals: {pending_requests: @pending_requests} %>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-6 pd-10">
+					<div class="">
+						<p>Approved list</p>
+						<div class="panel panel-bg">
+							<div class="approved_leave">
+								<%= render partial: "approved_leave", locals: {approved_leaves: @approved_leaves} %>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 pd-10">
+					<div class="">
+						<p>Approved list</p>
+						<div class="panel panel-bg">
+							<div class="approved_permission">
+								<%= render partial: "approved_permission", locals: {approved_permissions: @approved_permissions} %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+</section>

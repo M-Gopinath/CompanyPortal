@@ -1,0 +1,27 @@
+<div id="letter_bad">
+  <h2 align="center">YearlyHolidayCalendar List</h2>
+  <% if @yearly_holiday_calendars.present?%>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>YearlyHolidayCalendar Month</th>
+        <th>YearlyHolidayCalendar Date</th>
+        <th>YearlyHolidayCalendar Day</th>
+        <th>YearlyHolidayCalendar Reason</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @yearly_holiday_calendars.each do |holiday| %>
+      <tr>
+        <td><%= holiday.holiday_date.strftime("%B") %></td>
+        <td><%= holiday.holiday_date.strftime("#{holiday.holiday_date.day.ordinalize}") %></td>
+        <td><%= holiday.holiday_date.strftime("%a") %></td>
+        <td><%= holiday.description %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+    <p align="center">No YearlyHolidayCalendar List</p>
+  <% end %>
+</div>

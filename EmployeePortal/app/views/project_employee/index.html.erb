@@ -1,0 +1,47 @@
+<section class="content-header">
+  <h1>Assign Employees</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Clients</label>
+          <%= select_tag "client_id", options_for_select(@clients.map{|c| [c.try(:name?), c.try(:id)]}, @client.try(:id)), prompt: 'Select', class: "form-control assign-select-client" %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Projects</label>
+          <%= select_tag "project_id", options_for_select([]), prompt: 'Select', class: "form-control assign-select-project" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Assigned Users</h3>
+        </div>
+        <div class="box-body no-padding">
+          <div class="assigned_users">
+            <%= render partial: "assigned_users", locals: {assigned_users: []} %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Unassigned Users</h3>
+        </div>
+        <div class="box-body no-padding">
+          <div class="unassigned_users">
+            <%= render partial: "unassigned_users", locals: {unassigned_users: []} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

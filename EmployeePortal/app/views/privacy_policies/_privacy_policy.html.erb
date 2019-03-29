@@ -1,0 +1,178 @@
+<div class="table-responsive policy-content">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Topic</th>
+        <th width="50%">Description</th>
+        <th>Action
+        <a href="#" class="md-trigger pull-right" data-toggle="modal" data-target="#policy_create"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% privacy_policies.each do |privacy_policy| %>
+      <tr>
+        <td><%= privacy_policy.topic %></td>
+        <td><%= privacy_policy.description %></td>
+        <td class="action-link">
+          <a data-toggle="modal" data-target="#privacy_policy_<%= privacy_policy.id%>"><i class="fa fa-user-circle-o"></i></a>
+          <a data-toggle="modal" data-target="#privacy_policy_edit<%= privacy_policy.id%>"><i class="fa fa-edit"></i></a>
+          <%= link_to privacy_policy, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-times"></i>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="pagination-content">
+  <%= will_paginate privacy_policies, renderer: BootstrapPagination::Rails %>
+</div>
+
+
+<% if privacy_policies.present? %>
+  <% privacy_policies.each do |ac|%>
+    <div id="privacy_policy_<%= ac.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Privacy Policy</h4>
+          </div>
+          <div class="modal-body">
+            <p>Topic : <span><%= ac.try(:topic) %></span></p>
+            <p>Description : <span><%= ac.try(:description) %></span></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% if privacy_policies.present? %>
+  <% privacy_policies.each do |ac|%>
+    <div id="privacy_policy_edit<%= ac.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Privacy Policy</h4>
+          </div>
+          <div class="modal-body">
+            <%= form_for :privacy_policy, url: privacy_policies_update_policy_path(policy_id: ac.id), method: :put do |f| %>
+            <div class="form-group">
+              <%= f.label :topic %>
+              <%= f.text_field :topic, value: ac.topic, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :description %>
+              <%= f.text_area :description, value: ac.description, class: "form-control" %>
+            </div>
+            <div class="field">
+              <%= f.label :for_client %>
+              <%= f.check_box :for_client, checked: ac.for_client %>
+            </div>
+            <div class="form-group">
+              <div class="actions">
+                <%= f.submit 'Update Policy', class: "btn btn-primary btn-lg btn-block it-btn-them" %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+
+<!-- Modal -->
+<div id="policy_create" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New Policy</h4>
+      </div>
+      <div class="modal-body">
+        <div class="pd-10">
+          <%= form_for :privacy_policy do |f| %>
+            <div class="form-group">
+              <%= f.label :topic %>
+              <%= f.text_field :topic, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :description %>
+              <%= f.text_field :description, class: "form-control" %>
+            </div>
+            <div class="field">
+              <%= f.label :for_client %>
+              <%= f.check_box :for_client %>
+            </div>
+            <div class="form-group">
+              <div class="actions">
+                <%= f.submit class: "btn btn-primary btn-lg btn-block it-btn-them" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="policy_create" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New Project</h4>
+      </div>
+      <div class="modal-body">
+        <div class="pd-10">
+          <%= form_for :privacy_policy do |f| %>
+            <div class="form-group">
+              <%= f.label :topic %>
+              <%= f.text_field :topic, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :description %>
+              <%= f.text_area :description, class: "form-control" %>
+            </div>
+            <div class="field">
+              <%= f.label :for_client %>
+              <%= f.check_box :for_client %>
+            </div>
+            <div class="form-group">
+              <div class="actions">
+                <%= f.submit class: "btn btn-primary btn-lg btn-block it-btn-them" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

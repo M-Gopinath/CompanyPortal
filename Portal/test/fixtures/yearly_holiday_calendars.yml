@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  holidate_date: 2017-04-18
+  description: MyText
+
+two:
+  holidate_date: 2017-04-18
+  description: MyText

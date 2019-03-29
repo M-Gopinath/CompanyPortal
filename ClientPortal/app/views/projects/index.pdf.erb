@@ -1,0 +1,23 @@
+<div id="letter_bad">
+  <h2 align="center">Project List</h2>
+  <% if @projects.present?%>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Project Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |pp| %>
+      <tr>
+        <td><%= pp.try(:name) %></td>
+        <td><%= pp.try(:description) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+    <p align="center">No Project List</p>
+  <% end %>
+</div>

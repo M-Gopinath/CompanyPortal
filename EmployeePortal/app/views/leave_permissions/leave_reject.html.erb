@@ -1,0 +1,40 @@
+<section class="content">
+	<div class="panel">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-4 content-header">
+					<h1>Permission Activities</h1><br>
+				</div>
+       <div class="col-md-4 content-header">
+         <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' }, remote: true do |f| %>
+            <%= f.text_field(
+              :search_query,
+              class: 'filterrific-periodically-observed search-input col-xs-11 search-clients form-control',placeholder: "Search"
+            ) %>
+            <%= f.hidden_field :sorted_by, value: "created_at_desc" %>
+          <%end%>
+       </div>
+       <div class="col-md-4 content-header">
+         <div class="top-links new-top">
+          <%= link_to "xls", leave_permissions_leave_reject_path(format: "xls")%>
+          <%= link_to 'csv', leave_permissions_leave_reject_path(format: "csv") %>
+          <%= link_to 'pdf', leave_permissions_leave_reject_path(format: :pdf) %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-12">		
+        <p align="center">Leave Reject List</p>
+        <div class="new-header-border"></div>
+        <div>
+        	<div class="leave-reject-lists">
+        		<%= render partial: "leave_reject_list", locals: {reject_leave_request: @reject_leave_request, date: @date} %>
+        	</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>

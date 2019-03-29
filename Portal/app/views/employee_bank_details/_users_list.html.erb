@@ -1,0 +1,24 @@
+<td><%= emp.first_name %></td>
+  <td><%= emp.last_name %></td>
+  <td><%= emp.email %></td>
+  <td><%= emp.employee_bank_detail.try(:account_number) %></td>
+  <td><%= emp.employee_bank_detail.try(:bank_name) %></td>
+  <td><%= emp.employee_bank_detail.try(:bank_branch) %></td>
+  <td>
+    <a href="#" class="md-trigger" data-toggle="modal" data-target="#empBankModal_<%= emp.id %>" title="Add/Edit"><i class="fa fa-plus" aria-hidden="true"></i></a>
+    <div id="empBankModal_<%= emp.id %>" class="modal fade" role="dialog">
+      <%= render partial: "employee_bank_details/bank_detail", locals: {employee: emp} %>
+    </div>
+  </td>
+<% if emp.employee_bank_detail.present? %>
+  <td>
+    <a href="#" class="md-trigger" data-toggle="modal" data-target="#showBankModal_<%= emp.id %>" title="Show"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
+    <div id="showBankModal_<%= emp.id %>" class="modal fade" role="dialog">
+      <%= render partial: "employee_bank_details/show", locals: {bank_detail: emp.employee_bank_detail} %>
+    </div>
+  </td>
+<% else %>
+  <td></td>
+  <td></td>
+  <td></td>
+<% end %>

@@ -1,0 +1,40 @@
+# ClientPortal
+
+# Ignore bundler config.
+ClientPortal/.bundle
+
+# Ignore all logfiles and tempfiles.
+ClientPortal/log/*
+ClientPortal/tmp/*
+ClientPortal/config/database.yml
+ClientPortal/config/secrets.yml
+ClientPortal/public/assets/
+
+
+
+# EmployeePortal
+
+# Ignore bundler config.
+EmployeePortal/.bundle
+
+# Ignore all logfiles and tempfiles.
+EmployeePortal/log/*
+EmployeePortal/tmp/*
+EmployeePortal/config/database.yml
+EmployeePortal/config/secrets.yml
+EmployeePortal/public/assets/
+
+
+
+# Portal
+
+# Ignore bundler config.
+EmployeePortal/.bundle
+
+# Ignore all logfiles and tempfiles.
+Portal/log/*
+Portal/tmp/*
+Portal/config/database.yml
+Portal/config/secrets.yml
+Portal/public/assets/
+

@@ -1,0 +1,37 @@
+<div class="col-md-12">
+	<div class="col-md-12 pd-10">
+		<div class="panel panel-bg">
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Emb.id</th>
+							<th>Firstname</th>
+							<th>Lastname</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% if params[:status] == "undefined" %>
+			        <% @data = @undefined_time_sheets %>
+			      <% elsif params[:status] == "unapproved" %>
+			        <% @data = @approved_time_sheets %>
+			      <% elsif params[:status] == "approved" %>
+			        <% @data = @cancelled_time_sheets %>
+			      <%end%>
+						<% if @data.count > 0 %>
+							<% @data.each.with_index(1) do |time_sheet, index| %>
+								<tr>
+									<td><%= time_sheet.try(:employee).try(:employee_id) %></td>
+									<td><%= time_sheet.try(:employee).try(:first_name) %></td>
+									<td><%= time_sheet.try(:employee).try(:last_name) %></td>
+								</tr>
+							<%end%>
+						<%else%>
+							<tr><td colspan="4" class="text-center">No record</td></tr>
+						<%end%>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

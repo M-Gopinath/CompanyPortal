@@ -1,0 +1,27 @@
+<%= form_for(@privacy_policy) do |f| %>
+  <% if @privacy_policy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@privacy_policy.errors.count, "error") %> prohibited this privacy policy from being saved:</h2>
+
+      <ul>
+      <% @privacy_policy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :topic %>
+    <%= f.text_field :topic, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <div class="actions">
+      <%= f.submit class: "btn btn-primary btn-lg btn-block it-btn-them" %>
+    </div>
+  </div>
+<% end %>

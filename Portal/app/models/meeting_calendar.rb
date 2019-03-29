@@ -1,0 +1,2 @@
+class MeetingCalendar < ApplicationRecord
+end

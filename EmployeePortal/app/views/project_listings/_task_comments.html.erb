@@ -1,0 +1,246 @@
+<div id="GSCCModal<%= task.id %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+ <div class="modal-dialog addres-modal-dialog overflow-scroll">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button> -->
+        <%= link_to "x", project_listings_task_management_path(client_id: project.client.id,project_id: project.id), class: "close","data-dismiss"=>"modal", "aria-hidden"=> true, remote: true %>
+        <h4 class="modal-title" id="myModalLabel">Task Comments</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="box task-border">
+              <div class="box-header with-border">
+                <h3 class="box-title">Adding Notes to practies</h3>
+                <h4>Last update <span>name</span><span> date</span></h4>
+                <div class="box-tools pull-right">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="box-body">
+                <table class="table remove-border-table">
+                  <thead>
+                    <tr>
+                      <th>Type</th>
+                      <th>Est.Hours(s)</th>
+                      <th>Project</th>
+                      <th>Priority</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><%= task.try(:task_type?) %></td>
+                      <td><%= task.try(:estimated_hours?) %></td>
+                      <td><%= task.try(:project).try(:name) %></td>
+                      <td><%= task.try(:priority) %></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <hr>
+                <table class="table remove-border-table">
+                  <thead>
+                    <tr>
+                      <th>Spent Hour(s)</th>
+                      <th>Created Date</th>
+                      <th>Status</th>
+                      <th>Task Group</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><%= task.try(:spent_hours?) %></td>
+                      <td><%= task.try(:create_time) %></td>
+                      <td><%= task.try(:status) %></td>
+                      <td>April 2017</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <hr>
+                <div class="row">
+                  <div class="col-md-12">
+                    <ul class="products-list product-list-in-box">
+                      <li class="item">
+                        <div class="product-img">
+                          <img src="/assets/user.png">
+                        </div>
+                        <div class="product-info">
+                          <a href="javascript:void(0)" class="product-title">
+                            Mc created
+                          </a>
+                          <span class="product-description">
+                            Mar 29 wed 2:59 pm
+                          </span>
+                        </div>
+                      </li>
+                    </ul>
+                    <p><%= task.try(:project).try(:client).try(:name?) %></p>
+                    <p><b><%= task.try(:description).to_s.html_safe %></b></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-12 margin-bottom">
+                      <span class="pull-right collapse-btn" data-toggle="collapse" data-target="#demo"> <b>Collapse Description <i class="fa fa-angle-up"></i></b></span>
+                    </div> 
+                    <h3>Comments</h3>
+                    <div class="form_comments">
+                      <%= render partial: "form_comments", locals: {task: task, project: project} %>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="box-table">
+                      <div>
+                        <h4 class="box-title box-titls-span">
+                          <span>Time Log:</span> <span>Logged:</span><span>---</span><span>Non-Billable:</span><span>---</span><span>Estimated</span><span>---</span>
+                        </h4>
+                        <div class="box-tools pull-right">
+                          <input type="text" name="">
+                          <input type="text" name="">
+                        </div>
+                      </div>
+                      <div class="box-body no-padding">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Date</th>
+                              <th>Name</th>
+                              <th>Description</th>
+                              <th>Start</th>
+                              <th>End</th>
+                              <th>Break</th>
+                              <th>Billable</th>
+                              <th>Hours</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% if task.time_sheets.count > 0 %>
+                              <% task.time_sheets.each do |time| %>
+                                <tr>
+                                  <td><%= time.try(:entry_date?) %></td>
+                                  <td><%= time.try(:employee?)  %></td>
+                                  <td><%= time.try(:description).to_s.html_safe %></td>
+                                  <td><%= time.try(:start_time?) %></td>
+                                  <td><%= time.try(:end_time?) %></td>
+                                  <td>2 braea</td>
+                                  <td>10</td>
+                                   <td><%= current_employee.hours_format(time.try(:hours_taken)) %></td>
+                                </tr>
+                              <%end%>
+                            <%end%>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          </div>
+          <div class="col-md-4">
+            <div class="box task-border">
+              <div class="box-header with-border">
+                <h3 class="box-title"></h3>
+                <div class="box-tools pull-left">
+                  <button type="button" class="btn btn-box-tool" ><i class="fa fa-repeat" aria-hidden="true"></i></i>
+                  </button>
+                  <button type="button" class="btn btn-box-tool" ><i class="fa fa-check-square-o" aria-hidden="true"></i>
+                  </button>
+                   <button type="button" class="btn btn-box-tool"><i class="fa fa-trash" aria-hidden="true"></i>
+                  </button>
+                  <button type="button" class="btn btn-box-tool" ><i class="fa fa-download" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="box-body no-padding">
+                <div class="col-md-12">
+                  <div class="box-header with-border">
+                    <p>Assign To</p>
+                    <ul class="products-list product-list-in-box">
+                      <li class="item">
+                        <div class="product-img">
+                          <img src="/assets/user.png">
+                        </div>
+                        <div class="product-info">
+                          <a href="javascript:void(0)" class="product-title">
+                            Mc created
+                          </a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="box-header with-border">
+                      <p>Due Date</p>
+                      <p><span><b>Date not Set</b></span><span class="pull-right"><i class="fa fa-calendar"></i></span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="box-header with-border">
+                      <div class="clearfix">
+                        <p>
+                          <span class="pull-left">Task Progress</span>
+                          <small class="pull-right">90%</small>
+                        </p>
+                      </div> <br>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-green" style="width: 90%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="box-header with-border">
+                      <h4 class="box-title">File in this task</h4>
+                      <p><span class="btn btn-primary">0 file</span><span class="pull-right"><i class="fa fa-paperclip" aria-hidden="true"></i></i></span></p>
+                      <span><b>No Files in this task</b></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="box-header with-border">
+                      <p><span>Activites</span><span class="pull-right"><i class="fa fa-line-chart" aria-hidden="true"></i></span></p>
+                      <div>
+                        <p>Last Update</p>
+                        <span><b>Lewis y'day 4.03 apm</b></span>
+                       </div>
+                       <div>
+                        <p>Last Update</p>
+                        <span><b>Lewis y'day 4.03 apm</b></span>
+                       </div>
+                       <div>
+                        <p>Last Update</p>
+                        <span><b>Lewis y'day 4.03 apm</b></span>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="box-header with-border ">
+                      <p><span>People Involved</span><span class="pull-right"><i class="fa fa-user" aria-hidden="true"></i></i></span></p>
+                      <span class="product-img"><img src="/assets/user.png"></span> <span class="product-img"><img src="/assets/user.png"></span> <span class="product-img"><img src="/assets/user.png"></span> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Close", project_listings_task_management_path(client_id: project.client.id,project_id: project.id), class: "btn btn-default","data-dismiss"=>"modal", remote: true %>
+      </div>
+    </div>
+  </div>
+</div>

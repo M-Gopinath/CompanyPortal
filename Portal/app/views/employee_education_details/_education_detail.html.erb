@@ -1,0 +1,14 @@
+<div class="modal-dialog modal-lg">
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Employee Education Details</h4>
+    </div>
+    <div class="modal-body">
+      <div class="emp_education_details_<%= employee.id %>">
+          <%= render partial: 'employee_education_details/form', locals: {employee_education_details: employee.employee_education_details, employee_education_detail: EmployeeEducationDetail.new, employee: employee } %>
+      </div>
+    </div>
+  </div>
+</div>

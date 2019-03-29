@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-3">
+    <label for="Certificate Type">Institution Name</label>
+  </div>
+  <div class="col-md-2">
+    <label for="Certificate Id">Certificate Name</label>
+  </div>
+  <div class="col-md-2">
+    <label for="Certificate File">Certificate</label>
+  </div>
+  <div class="col-md-3">
+    <label for="Certificate File">Photo Copy</label>
+  </div>
+  <div class="col-md-2">
+    <label for="Actions">Actions</label>
+  </div>
+</div>
+<% employee_education_details.each do |uec| %>
+  <div class="emp-education_<%= uec.id %>">
+    <div class="row">
+      <div class="col-md-3">
+        <%= uec.employee_qualification_detail.institution_name %>
+      </div>
+      <div class="col-md-2">
+        <%= uec.education_certificate.name %>
+      </div>
+      <div class="col-md-2">
+        <%= uec.certificate_id %>
+      </div>
+      <div class="col-md-3">
+        <% if uec.photo_copy.present? %>
+          <%= link_to uec.photo_copy.url, target: :_blank do %>
+            <%= uec.photo_copy_identifier %>     
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-1">
+        <%= link_to 'Edit', edit_employee_education_detail_path(uec), remote: true %>
+      </div>
+      <div class="col-md-1">
+        <%= link_to employee_education_detail_path(uec, employee_id: employee.id), method: :delete, data: { confirm: 'Are you sure?' }, remote: true do %>
+          <i class="fa fa-times" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="edu-cert-form">
+  <%= render partial: "employee_education_details/new_form", locals: {employee_education_detail: employee_education_detail, employee: employee} %>
+</div>

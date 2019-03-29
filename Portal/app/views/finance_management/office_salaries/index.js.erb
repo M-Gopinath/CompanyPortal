@@ -1,0 +1,5 @@
+$(".employee_salary").html("<%= escape_javascript(render partial: 'user_index', locals: {actived_employees: @actived_employees, date: @date, monthly_ctcs: @monthly_ctc}) %>")
+$(".pagination-content").html("<%= escape_javascript(will_paginate @actived_employees, renderer: BootstrapPagination::Rails) %>")
+$(".displaying_employees").html("<%= escape_javascript(page_entries_info @actived_employees) %>")
+$('.selected-month').html("<%= j(render partial: 'selected_month', locals: {date: @date}) %>")
+$("#date").val("<%= @date %>")

@@ -1,0 +1,15 @@
+<table class="table">
+	<thead>
+   <tr>
+     <th>#</th>
+     <th>Client Name</th>
+     <th>Company Name</th>
+     <th>Contact Number</th>
+     <th>Address</th>
+     <th>Action</th>
+   </tr> 
+  </thead>
+  <tbody class="active_listings">
+    <%= render partial: "client", locals: {clients: @clients} %>
+  </tbody>
+</table>

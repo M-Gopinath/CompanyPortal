@@ -1,0 +1,1 @@
+$('.employee_supervisor_id').html("<%= escape_javascript(options_for_select(@employees.map {|u| [u.full_name, u.employee_id]})) %>");

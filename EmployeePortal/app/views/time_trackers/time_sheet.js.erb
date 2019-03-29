@@ -1,0 +1,5 @@
+$('.time_sheet_month_only').html("<%= escape_javascript(render partial: 'time_sheet_month_only', locals: { select_month_start: @select_month_start, select_month_end: @select_month_end, select_week: @select_week, select_day: @select_day }) %>");
+$('.time_sheet_monthly_view').html("<%= escape_javascript(render partial: 'time_sheet_monthly_view', locals: { select_month_start: @select_month_start, select_month_end: @select_month_end, select_week: @select_week, select_day: @select_day }) %>");
+$('.time_sheet_weekly_view').html("<%= escape_javascript(render partial: 'time_sheet_weekly_view', locals: { select_month_start: @select_month_start, select_month_end: @select_month_end, select_week: @select_week, select_day: @select_day, time_sheet: @time_sheet, projects: @projects,tasks: @tasks }) %>");
+$.progressForm();
+$('.timepicker').timepicker({ 'scrollDefault': 'now' });

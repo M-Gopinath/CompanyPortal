@@ -1,0 +1,14 @@
+<div class="modal-dialog">
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Bank Detail</h4>
+    </div>
+    <div class="modal-body">
+      <div class="emp_bank">
+        <%= render partial: 'employee_bank_details/form', locals: {employee_bank_detail: check_emp_bank(employee), employee: employee } %>
+      </div>
+    </div>
+  </div>
+</div>

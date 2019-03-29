@@ -1,0 +1,2 @@
+class ShareHolder < ApplicationRecord
+end

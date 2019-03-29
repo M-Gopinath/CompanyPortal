@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  spent_year: MyString
+  spent_month: MyString
+  spent_date: 2017-04-20
+  description: MyString
+  transaction_via_id: 1
+  money_spent: 9.99
+
+two:
+  spent_year: MyString
+  spent_month: MyString
+  spent_date: 2017-04-20
+  description: MyString
+  transaction_via_id: 1
+  money_spent: 9.99

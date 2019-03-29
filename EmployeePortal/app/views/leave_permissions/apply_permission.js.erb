@@ -1,0 +1,13 @@
+$(".permission_apply_form").html("<%= escape_javascript(render partial: 'permission_form', locals: {apply_permission: @apply_permission})%>")
+$('.timepicker').timepicker({ 
+	 minTime: "10:00am",
+	 maxTime: "10:00pm"
+});
+$(".permission-lists").html("<%= escape_javascript(render partial: 'permission_list', locals: {permission_list_calendars: @permission_list_calendars, date: @date})%>")
+$( ".datepicker" ).datepicker({
+    todayHighlight:'TRUE',
+    startDate: '-0d',
+    endDate: '+2m',
+    format: 'dd-mm-yyyy',
+    autoclose: true
+  });

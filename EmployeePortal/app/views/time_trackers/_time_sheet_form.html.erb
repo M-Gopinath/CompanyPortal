@@ -1,0 +1,35 @@
+<%= form_for :time_sheet, url: timesheet_entry_create_path, method: :post, remote: true,multipart: true do |f| %>
+	<div class="errors"></div>
+	<div class="form-group">
+		<label>Task</label>
+		<%= f.select :task_id, options_for_select(tasks.where(start_date: day).map{|t| [t.title,t.id] }.compact.uniq+["Other"], task == "Other" ? "Other" :  task.try(:id)),{prompt: "Select Task"}, class: "form-control time_sheet_entry", "data-day" => "#{day}" %>
+	</div>
+	<div class="form-group">
+		<label>Date</label>
+		<input type="" value="<%= day %>" class="form-control" readonly>
+		<%= f.hidden_field :entry_date, value: day %>
+	</div>
+	<% if params[:task_id] == "Other" %>
+		<div class="form-group">
+			<label>Start time</label>
+			<input class="timepicker form-control" type="text" id="time_sheet_start_time" name="time_sheet[start_time]" required="true">
+		</div>
+		<div class="form-group">
+			<label>To time</label>
+			<input class="timepicker form-control" type="text" id="time_sheet_end_time" name="time_sheet[end_time]" required="true">
+		</div>
+	<%else%>
+		<div class="form-group">
+			<label>Spent Hours</label>
+			<%= task.present? ? current_employee.spend_task_select_day_hours(task,day) : "00:00:00" %>
+		</div>
+	<%end%>
+	<div class="form-group">
+		<label>Description</label>
+		<textarea class="form-control" name="time_sheet[description]"></textarea>
+	</div>
+	<div class="modal-footer">
+		<input name="commit" value="Save" class="btn btn-primary" type="submit">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	</div>
+<%end%>

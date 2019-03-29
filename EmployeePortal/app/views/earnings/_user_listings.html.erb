@@ -1,0 +1,12 @@
+<% actived_employees.each do |ae| %>
+  <tr>
+    <td><%= ae.employee_id %></td>
+    <td><%= ae.email %></td>
+    <% (1..12).each_with_index do |m, index| %>
+      <td><span><%= link_to "#{Date::MONTHNAMES[m].first(3)}", generate_payslip_path(format: :pdf, date: date.beginning_of_year + index.month, employee_id: ae.id),class: "btn btn-default" %></span></td>
+    <% end %>
+    <td>
+      <%= link_to "All", generate_payslip_path(format: :pdf, date: date.beginning_of_year, whole_year: :true, employee_id: ae.id), class: "btn btn-default" %>
+    </td>
+  </tr>
+<% end %>

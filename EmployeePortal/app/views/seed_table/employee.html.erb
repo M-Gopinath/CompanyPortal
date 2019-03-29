@@ -1,0 +1,121 @@
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>Employee</h1><br />
+        </div>
+        <div class="col-md-4 content-header">
+        </div>
+        <div class="col-md-3 content-header">
+        </div>
+        <div class="header-border"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <p align="center">Employee Create</p>
+        <div class="pd-10">
+          <%= form_for :employee, url: registration_path(:employee) do |f| %>
+          <%= f.hidden_field :is_active, value: true %>
+          <input type="hidden" name="employee[seed_table]">
+          <div class="form-group">
+            <%= f.label "Designation" %>
+            <%= f.select :role_id, options_for_select(Role.all_roles.map{|des| [des.name, des.id]}), {prompt: 'Select'}, class:"form-control employee_role_id", required: true %>
+          </div>
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.select :title, options_for_select(possible_options), {prompt: 'Select'}, class:"form-control", required: true %>
+          </div>
+          <div class="form-group">
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, class: "form-control employee_first_name", required: true %>
+          </div>
+          <div class="form-group">
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name, class: "form-control employee_last_name", required: true %>
+          </div>
+          <div class="form-group">
+            <%= f.label :Date_of_Birth %> <br>
+            <%= f.text_field :dob, class:"form-control datepicker-user"%>
+          </div>
+          <div class="input-group">
+            <%= f.label :email %>
+            <%= f.text_field :email, class: "form-control employee_email", readonly: :true , style:"background: transparant"%>
+            <div class="input-group-btn">
+              <button class="btn btn-default" style="margin-top:21px;">xxxxx</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <%#= f.label "Assign Supervisor" %>
+            <%#= f.select :supervisor_id, options_for_select([], employee.supervisor_id), {prompt: 'Select'}, class:"form-control employee_supervisor_id" %>
+          </div>
+          <div class="form-group">
+            <%= f.hidden_field :first_password, class: "employee_first_password", readonly: :true %>
+            <%= f.hidden_field :password, class:"form-control employee_password", readonly: :true %>
+            <%= f.hidden_field :password_confirmation, class:"form-control employee_password_confirmation", readonly: :true %>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-lg btn-block it-btn-them" type="submit">Add Employee</button>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <p align="center">Employee List</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Employee First Name</th>
+              <th>Employee Last Name</th>
+              <th>Employee Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @employees.each do |employee| %>
+            <tr>
+              <td><%= employee.first_name %></td>
+              <td><%= employee.last_name %></td>
+              <td><%= employee.email %></td>
+              <td class="action-link">
+                <a href="" data-toggle="modal" data-target="#employee_id_<%= employee.id%>">
+                  <i class="fa fa-user-circle-o"></i>
+                </a>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<% @employees.each do |employee| %>
+  <!-- Modal -->
+  <div id="employee_id_<%= employee.id%>" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Employee</h4>
+        </div>
+        <div class="modal-body">
+          <p>Employee Id : <span><%= employee.employee_id %></span></p>
+          <p>Employee First Name : <span><%= employee.first_name %></span></p>
+          <p>Employee Last Name : <span><%= employee.last_name %></span></p>
+          <p>Employee Email : <span><%= employee.email %></span></p>
+          <p>Employee DOB : <span><%= employee.dob %></span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% end %>

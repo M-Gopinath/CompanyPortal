@@ -1,0 +1,31 @@
+<% actived_employees.each do |ae| %>
+  <tr>
+    <td><%= ae.employee_id %></td>
+    <td><%= ae.first_name %></td>
+    <td><%= ae.last_name %></td>
+    <td><%= ae.email %></td>
+    <% if ae.employee_personal_detail.present? %>
+      <td class="action-link">
+        <a href="#" class="md-trigger pull-right" data-toggle="modal" data-target="#showEmpPD_<%= ae.id %>"><i class="fa fa-user-circle-o"></i></a>
+        <div id="showEmpPD_<%= ae.id %>" class="modal fade" role="dialog">
+          <%= render partial: 'employee_personal_details/show', locals: {personal_detail: ae.employee_personal_detail} %>
+        </div>
+      </td>
+      <td class="action-link">
+        <a href="#" class="md-trigger pull-right" data-toggle="modal" data-target="#editEmpPD_<%= ae.id %>"><i class="fa fa-edit"></i></a>
+        <div id="editEmpPD_<%= ae.id %>" class="modal fade" role="dialog">
+          <%= render partial: 'employee_personal_details/edit', locals: {personal_detail: ae.employee_personal_detail} %>
+        </div>
+      </td>
+    <% else %>
+      <td class="action-link">
+        <a href="#" class="md-trigger pull-right" data-toggle="modal" data-target="#newEmpPD_<%= ae.id %>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        <div id="newEmpPD_<%= ae.id %>" class="modal fade" role="dialog">
+          <%= render partial: 'employee_personal_details/form', locals: {personal_detail: ae.build_employee_personal_detail } %>
+        </div>
+      </td>
+      <td>
+      </td>
+    <% end %>
+  </tr>
+<% end %>

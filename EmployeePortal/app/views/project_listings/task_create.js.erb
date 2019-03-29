@@ -1,0 +1,10 @@
+<% if @task.errors.present? %>
+	$(".errors").text("");
+  <% @task.errors.full_messages.each do |error| %>
+    $(".errors").append("<li><%= error %></li>");
+  <% end %>
+<%else%>
+	$('#task-management').modal('toggle');
+	$('.modal-backdrop').remove();
+	$('.client_project_list').html("<%= escape_javascript(render 'project_listings/task_management') %>");
+<%end%>

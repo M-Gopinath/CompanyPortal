@@ -1,0 +1,13 @@
+<% employees.each do |emp| %>
+  <tr>
+    <td><%= emp.first_name %></td>
+    <td><%= emp.last_name %></td>
+    <td><%= emp.email %></td>
+    <td>
+      <a href="#" class="md-trigger" data-toggle="modal" data-target="#empqualiModal_<%= emp.id %>" title="Add"><i class="fa fa-plus" aria-hidden="true"></i></a>
+      <div id="empqualiModal_<%= emp.id %>" class="modal fade" role="dialog">
+        <%= render partial: "employee_qualification_details/qualification_detail", locals: {employee: emp} %>
+      </div>
+    </td>
+  </tr>
+<% end %>

@@ -1,0 +1,49 @@
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>Employee Education Details</h1><br />
+          <p class="displaying_employees"><%= page_entries_info @employees %></p>
+        </div>
+        <div class="col-md-4 content-header">
+          <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' }, remote: true do |f| %>
+            <%= f.text_field(
+              :search_query,
+              class: 'filterrific-periodically-observed search-input col-xs-11 search-clients form-control',placeholder: "Search"
+            ) %>
+            <%= f.hidden_field :sorted_by, value: "created_at_desc" %>
+            <%#= render_filterrific_spinner %>
+          <%end%>
+        </div>
+        <div class="col-md-3 content-header">
+          <div class="top-links new-top">
+            <%= link_to 'xls', employee_education_details_path(format: "xls", page: params[:page]) %>
+            <%= link_to 'csv', employee_education_details_path(format: "csv", page: params[:page]) %>
+            <%= link_to 'pdf', employee_education_details_path(format: :pdf, page: params[:page]) %>
+          </div>
+        </div>
+        <div class="header-border"></div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="education_list">
+          <%= render partial: "list", locals: {employees: @employees } %>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination-content">
+      <%= will_paginate @employees, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+</section>
+  

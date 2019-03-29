@@ -1,0 +1,2 @@
+module FinanceManagement::ExpensesHelper
+end

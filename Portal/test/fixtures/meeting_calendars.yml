@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_organizer_id: 
+  client_organizer_id: 1
+  event_title: MyString
+  from_date: 2017-04-19
+  from_time: 
+  to_time: 
+  time_zone: 
+  description: MyText
+  meeting_attachment: MyString
+  meeting_event_repeat_id: MyString
+  meeting_event_notification_id: MyString
+
+two:
+  employee_organizer_id: 
+  client_organizer_id: 1
+  event_title: MyString
+  from_date: 2017-04-19
+  from_time: 
+  to_time: 
+  time_zone: 
+  description: MyText
+  meeting_attachment: MyString
+  meeting_event_repeat_id: MyString
+  meeting_event_notification_id: MyString

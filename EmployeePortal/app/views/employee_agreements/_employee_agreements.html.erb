@@ -1,0 +1,41 @@
+<div class="modal-dialog my-modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Agreement Details</h4>
+    </div>
+    <div class="modal-body">
+      <div class="box-body">
+        <div class="row">
+          <div class=" col-md-4 align-center ">
+            <%= link_to employee_agreements_bond_letter_path(employee_id: current_employee.id, format: :pdf) do %>
+              <button type="submit" class="btn btn-primary letter-btn"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Bond Letter</button>
+            <% end %>
+          </div>
+          <div class=" col-md-4 align-center">
+             <%= link_to employee_agreements_experience_letter_path(employee_id: current_employee.id, format: :pdf) do %>
+              <button type="submit" class="btn btn-primary letter-btn"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Experience Letter</button>
+            <% end %>
+          </div>
+          <div class=" col-md-4 align-center">
+             <%= link_to employee_agreements_relieving_letter_path(employee_id: current_employee.id, format: :pdf) do %>
+              <button type="submit" class="btn btn-primary letter-btn"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Relieving Letter</button>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class=" col-md-6 align-btn">
+            <%= link_to employee_agreements_resignation_letter_path(employee_id: current_employee.id, format: :pdf) do %>
+              <button type="submit" class="btn btn-primary letter-btn"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Resignation Letter</button>
+            <% end %>
+          </div>
+          <div class=" col-md-6 align-btn">
+            <%= link_to employee_agreements_joining_letter_path(employee_id: current_employee.id, format: :pdf) do %>
+              <button type="submit" class="btn btn-primary letter-btn"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Joining Letter</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

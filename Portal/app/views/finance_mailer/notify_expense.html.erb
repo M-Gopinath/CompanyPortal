@@ -1,0 +1,22 @@
+<p>
+  Hi,
+</p>
+
+<p> Expense Details</p>
+
+<p>
+  <strong>Transaction Via:</strong>
+  <%= @expense.transaction_via.name %>
+</p>
+<p>
+  <strong>Spent Date:</strong>
+  <%= @expense.spent_date.strftime("%d-%m-%Y") %>
+</p>
+<p>
+  <strong>spent Money:</strong>
+  <%= @expense.money_spent %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @expense.description %>
+</p>

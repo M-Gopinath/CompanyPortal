@@ -1,0 +1,14 @@
+<section class="content-header">
+  <h1>
+    Project
+    <small>Detail</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+    <li class="active">Here</li>
+  </ol>
+</section>
+<section class="content">
+  <p><span><b>Project Name: </b></span><span><%= @project.try(:name) %></span></p>
+  <p><span><b>Project Description: </b></span><span><%= @project.try(:description) %></span></p>
+</section>

@@ -1,0 +1,152 @@
+<section class="content">
+	<div class="panel">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-4 content-header">
+					<h1>Permission Activities</h1><br />
+				</div>
+				<div class="col-md-4 content-header">
+				</div>
+				<div class="col-md-3 content-header">
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-5">
+					<div class="row panel panel-bg new-panel pd-10">
+						<div class="">
+							<div>
+								<h2 align="center">Leave Balance</h2>
+								<div class="new-header-border"></div>
+								<div class="calender-header">
+									<div>
+										<div class="col-md-6">
+											<p>
+												<strong>Sick Leave:</strong>
+												<%= get_remaining_leave_counts(t("leave_types.sick_leave")) %>
+											</p>
+											<p>
+												<strong>Personal Leave:</strong>
+												<%= get_remaining_leave_counts(t("leave_types.personal_leave")) %>
+											</p>
+										</div>
+										<div class="col-md-6">
+											<p>
+												<strong>Earned Leave:</strong>
+												<%= get_remaining_leave_counts(t("leave_types.earned_leave")) %>
+											</p>
+											<p>
+												<strong>Comoff Leave:</strong>
+												<%= get_remaining_leave_counts(t("leave_types.comoff_leave")) %>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row pd-10">
+						<div class="panel panel-bg">
+							<div>
+								<h2 align="center">Create Leave</h2>
+								<div class="new-header-border"></div>
+								<div class="calender-header">
+									<div class="leave_apply_form">
+										<%= render partial: "leave_form", locals: {apply_leave: @apply_leave, url: leave_permissions_create_apply_leave_path} %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-7">
+					<div class="row pd-10">
+						<div class="panel panel-bg">
+							<div class="calender-header">
+								<div>
+									<h2 align="center">Leave List</h2>
+									<div class="new-header-border"></div>
+								</div>
+								<div>
+									<div class="leave-lists">
+										<%= render partial: "leave_list", locals: {leave_list_calendars: @leave_list_calendars, date: @date} %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row pd-10">
+						<div class="panel panel-bg">
+							<div>
+								<h2 align="center">Recent Activities</h2>
+								<div class="new-header-border"></div>
+								<div class="recent_activities">
+									<%= render partial: "leave_recent_activities", locals: {recent_activities: get_recent_activities } %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script type="text/javascript">
+	$(document).on("focus", ".datepicker", function(){
+		$(this).datepicker({
+			todayHighlight:'TRUE',
+			startDate: '-0d',
+			endDate: '+2m',
+			format: 'dd-mm-yyyy',
+			autoclose: true
+		});
+	});
+	$(document).on('change', '#leave_request_to_date, #leave_request_from_date', function() {
+		var days, from_date, to_date;
+		from_date = $('#leave_request_from_date').datepicker("getDate");
+		to_date = $("#leave_request_to_date").datepicker("getDate");
+		if (from_date && to_date) {
+			if (from_date <= to_date) {
+				days = (to_date - from_date) / (1000 * 60 * 60 * 24);
+				if ($('#half_day').is(':checked')) {
+					days = days + 0.5;
+				} else {
+					days = days + 1;
+				}
+				return $('#leave_request_no_of_days').val(days);
+			} else {
+				alert("From Date is greater than To Date");
+				$('#leave_request_no_of_days').val('');
+				return $("#leave_request_to_date").val('');
+			}
+		} else {
+
+		}
+	});
+
+	$(document).on('click', '#half_day', function() {
+		var days, from_date, half_day, to_date;
+		half_day = $('#half_day').val();
+		from_date = $('#leave_request_from_date').datepicker("getDate");
+		to_date = $("#leave_request_to_date").datepicker("getDate");
+			if (from_date && to_date) {
+				days = (to_date - from_date) / (1000 * 60 * 60 * 24);
+				if ($(this).is(':checked')) {
+					days = days + 0.5;
+				} else {
+					days = days + 1;
+				}
+			return $('#leave_request_no_of_days').val(days);
+		}
+	});
+
+	$(document).on('click', '.leave-submit', function() {
+		var a, b, c, month, day, year;
+		a= $('#leave_request_to_date').val();
+		b=a.split('/');
+		month = b[0];
+		day = b[1];
+		year = b[2];
+		c = day+'-'+month+'-'+year
+		$('#leave_request_to_date').val(c);
+	});
+</script>

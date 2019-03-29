@@ -1,0 +1,21 @@
+<div class="row">
+  <%= form_for(employee_professional_detail, remote: true) do |f| %>
+    <%= f.hidden_field :employee_id, value: employee.id %>
+    <%= hidden_field_tag :employee_id, employee.id %>
+    <div class="col-md-3">
+      <%= f.text_field :employment_name, class: "form-control", required: true %>
+    </div>
+    <div class="col-md-2">
+      <%= f.text_field :from_date, class: "from_date form-control pro_from_date from_pro_#{employee.id}", "data-user_id" => employee.id, required: true %>
+    </div>
+    <div class="col-md-2">
+      <%= f.text_field :to_date, class: "to_date form-control pro_to_date to_pro_#{employee.id}", "data-user_id" => employee.id,  required: true %>
+    </div>
+    <div class="col-md-3">
+      <%= f.text_field :designation, class: "form-control", required: true %>
+    </div>
+    <div class="col-md-2">
+      <%= f.submit employee_professional_detail.new_record? ? "Create" : "Update", class: "btn btn-primary btn-lg btn-block it-btn-them" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,36 @@
+<%= form_for :time_sheet, url: task_timesheet_create_path(task), method: :post, remote: true,multipart: true do |f| %>
+  <div class="modal-body">
+    <div class="errors"></div>
+    <div class="form-group">
+      <label>Task</label>
+      <%= task.try(:title) %>
+      <%= f.hidden_field :task_id, value: task.id %>
+      <%= f.hidden_field :employee_id, value: current_employee.id %>
+    </div>
+    <div class="form-group">
+      <label>Date</label>
+      <input type="" value="<%= Time.now.strftime("%Y-%m-%d") %>" class="form-control" readonly>
+      <%= f.hidden_field :entry_date, value: Time.now %>
+    </div>
+    <div class="form-group">
+      <!-- <label>Start time</label> -->
+      <%= f.hidden_field :start_time,value: nil, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <!-- <label>To time</label> -->
+      <%= f.hidden_field :end_time,value: nil, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label>Spend Hours</label>
+      <%= current_employee.spend_task_select_day_hours(task,Date.today) %>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea class="form-control" name="time_sheet[description]"></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit "Submit",class: "btn btn-primary" %>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+<%end%>

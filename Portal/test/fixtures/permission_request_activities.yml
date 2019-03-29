@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 
+  approver_id: 
+  permission_request_id: 1
+  leave_permission_status_id: 1
+  description: MyText
+
+two:
+  employee_id: 
+  approver_id: 
+  permission_request_id: 1
+  leave_permission_status_id: 1
+  description: MyText

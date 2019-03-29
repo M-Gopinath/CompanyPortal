@@ -1,0 +1,23 @@
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+        <h1>Policy</h1><br />
+        </div>
+        <div class="col-md-4 content-header">
+        </div>
+        <div class="col-md-4 content-header">
+          <div class="top-links new-top">
+            <%= link_to 'xls', privacy_policies_path(format: "xls") %>
+            <%= link_to 'csv', privacy_policies_path(format: "csv") %>
+            <%= link_to 'pdf', privacy_policies_path(format: :pdf) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="privacy_policy"> 
+    <%= render partial: "new_privacy_policy", locals: {privacy_policies: @privacy_policies} %>
+  </div>
+</section>

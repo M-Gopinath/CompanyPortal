@@ -1,0 +1,14 @@
+<% @clients.each.with_index(1) do |client, index| %>
+<tr>
+  <td><%= index %></td>
+  <td><%= client.try(:name?) %></td>
+  <td><%= client.try(:client_company).try(:name) %></td>
+  <td><%= client.try(:client_company).try(:contact_number) %></td>
+  <td><%= client.try(:client_company).try(:address?) %></td>
+  <td>
+    <%= link_to "Edit", client_edit_companies_path(client) %>
+    <%= link_to "Show", show_clients_company_path(client) %>
+    <%= link_to "Delete", client_delete_company_path(client), method: :delete,data: {confirm: "Are you sure?"} %>
+  </td>
+</tr>
+<%end%>

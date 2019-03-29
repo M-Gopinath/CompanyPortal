@@ -1,0 +1,4 @@
+$(".assigned_users").html("<%= escape_javascript(render partial: 'assigned_users', locals: {assigned_users: @assigned_users}) %>")
+$(".unassigned_users").html("<%= escape_javascript(render partial: 'unassigned_users', locals: {unassigned_users: @unassigned_users}) %>")
+$(".client_id_hid").val("<%= @client_id %>")
+$(".project_id_hid").val("<%= @project_id %>")

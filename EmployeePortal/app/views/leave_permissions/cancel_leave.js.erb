@@ -1,0 +1,4 @@
+$('.pending_leave_lists').html("<%= escape_javascript(render partial: 'pending_lists', locals: {pending_requests: @pending_requests})%>")
+$(".remove-model").modal('hide');
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();

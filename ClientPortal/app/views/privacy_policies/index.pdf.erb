@@ -1,0 +1,23 @@
+<div id="letter_bad">
+  <h2 align="center">Privacy Policy List</h2>
+  <% if @privacy_policies.present?%>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Privacy Policy Topic</th>
+        <th>Privacy Policy Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @privacy_policies.each do |pp| %>
+      <tr>
+        <td><%= pp.try(:topic) %></td>
+        <td><%= pp.try(:description) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+    <p align="center">No Privacy Policy List</p>
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 
+  company_working_days: 1.5
+  employee_worked_days: 1.5
+  loss_of_pay: 1.5
+  month: 1
+  year: 1
+
+two:
+  employee_id: 
+  company_working_days: 1.5
+  employee_worked_days: 1.5
+  loss_of_pay: 1.5
+  month: 1
+  year: 1

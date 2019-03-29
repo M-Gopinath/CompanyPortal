@@ -1,0 +1,2 @@
+class EmployeeMonthlyWorkReport < ApplicationRecord
+end

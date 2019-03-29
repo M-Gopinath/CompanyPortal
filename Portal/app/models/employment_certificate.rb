@@ -1,0 +1,2 @@
+class EmploymentCertificate < ApplicationRecord
+end

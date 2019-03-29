@@ -1,0 +1,435 @@
+<div id="calendar-creat" class="modal fade">
+  <div class="modal-dialog my-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+          <h4 id="modalTitle" class="modal-title"></h4>
+      </div>
+      <div id="modalBody" class="modal-body">
+        <div class="col-md-12">
+        	<ul class="list-inline">
+        		<li><button class="btn btn-primary"><i class="fa fa-reply" aria-hidden="true"></i></button></li>
+        		<li><button class="btn btn-primary">Save</button></li>
+        		<li><button class="btn btn-default">Discard</button></li>
+        	</ul>
+        </div>
+        <hr>
+        <div class="col-md-12">
+	        <div class="form-group">
+	          <input type="email" class="form-control" id="event" placeholder="Untitled event">
+	        </div>
+        </div>
+        <div class="col-md-12">
+        	<ul class="list-inline">
+        		<li><input type="text" name="" class="form-control"></li>
+        		<li><span><input type="text" class="time-in-input"></span>To<span>
+        		<input type="text" class="time-out-input"></span></li>
+        		<li><input type="text" name="" class="form-control"></li>
+        		<li><a href="#">Time Zone</a></li>
+        	</ul>
+        </div>
+        <div class="col-md-12">
+        	<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#find-title" aria-controls="find-title" role="tab" data-toggle="tab">Event Details</a></li>
+						<li role="presentation"><a href="#find-time" aria-controls="find-time" role="tab" data-toggle="tab">Find a Time</a></li>
+					</ul>
+        </div> 
+        <div class="col-md-12 margin-top-10">
+        	<div class="tab-content">
+				    <div role="tabpanel" class="tab-pane active" id="find-title">
+				      <div class="form-group row">
+							  <label for="example-text-input" class="col-md-2 col-form-label">Where</label>
+							  <div class="col-md-10">
+							    <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+							  </div>
+							</div>
+							<div class="form-group row">
+							  <label for="example-text-input" class="col-md-2 col-form-label">Vido call</label>
+							  <div class="col-md-10">
+							    <span>Join meeting: periyanayagam-a</span>
+							  </div>
+							</div>
+							<div class="form-group row">
+							  <label for="example-text-input" class="col-md-2 col-form-label">Calendar</label>
+							  <div class="col-md-10">
+							    <select class="form-control">
+							    	<option>Itbeezone</option>
+							    	<option>Itbeezone1</option>
+							    </select>
+							  </div>
+							</div>
+							<div class="form-group row">
+							  <label for="example-text-input" class="col-md-2 col-form-label">Description</label>
+							  <div class="col-md-10">
+							   <textarea class="form-control"></textarea>
+							  </div>
+							</div>
+							<div class="form-group row">
+							  <label for="example-text-input" class="col-md-2 col-form-label">Attachment</label>
+							  <div class="col-md-10">
+							   <label  for="my-file-selector">
+									    <input id="my-file-selector" type="file">
+									    File Attached
+									</label>
+							  </div>
+							</div>
+							<hr>
+              <br>
+							<div class="form-group row">
+							  <label for="example-text-input" class="col-md-2 col-form-label">Event color</label>
+							  <div class="col-md-10">
+							    <div class="btn-group" data-toggle="buttons">
+			              <ul class="list-inline color-box">
+			               	<li>
+		               		  <label class="btn btn-success active">
+													<input type="radio" name="options" id="option2" autocomplete="off">
+													<span class="glyphicon glyphicon-ok"></span>
+											  </label>
+			               	</li>
+			               	<li>
+		               		 <label class="btn btn-success active">
+													<input type="radio" name="options" id="option2" autocomplete="off">
+													<span class="glyphicon glyphicon-ok"></span>
+												</label>
+			               	</li>
+			               	<li>
+												<label class="btn btn-success active">
+													<input type="radio" name="options" id="option2" autocomplete="off">
+													<span class="glyphicon glyphicon-ok"></span>
+												</label>
+			               	</li>
+			               	<li>
+												<label class="btn btn-primary">
+													<input type="radio" name="options" id="option1" autocomplete="off">
+													<span class="glyphicon glyphicon-ok"></span>
+												</label>
+			               	</li>
+			               	<li>
+												<label class="btn btn-info">
+													<input type="radio" name="options" id="option2" autocomplete="off">
+													<span class="glyphicon glyphicon-ok"></span>
+												</label>
+			               	</li>
+			               	<li>
+												<label class="btn btn-default">
+													<input type="radio" name="options" id="option2" autocomplete="off">
+													<span class="glyphicon glyphicon-ok"></span>
+												</label>
+			               	</li>
+			               	<li>
+												<label class="btn btn-warning">
+													<input type="radio" name="options" id="option2" autocomplete="off">
+													<span class="glyphicon glyphicon-ok"></span>
+												</label>
+			               	</li>
+			               	<li>
+
+												<label class="btn btn-danger">
+													<input type="radio" name="options" id="option2" autocomplete="off">
+													<span class="glyphicon glyphicon-ok"></span>
+											  </label>
+			               		
+			               	</li>
+			              </ul>
+	                </div>
+							  </div>
+							</div>
+							<div class="form-group row">
+							  <label for="example-text-input" class="col-md-2 col-form-label">Notifications</label>
+							  <div class="col-md-10">
+							    <ul class="list-inline">
+							    	<li>
+							    		 <select class="form-control">
+							    		 	 <option>Email</option>
+							    		 	 <option>Notification</option>
+							    		 </select>
+							    	</li>
+							    	<li>
+							    		<input type="text" name="" placeholder="10" class="form-control">
+							    	</li>
+							    	<li>
+							    		 <select class="form-control">
+							    		 	<option>minutes</option>
+							    		 	<option>Hours</option>
+							    		 	<option>Days</option>
+							    		 	<option>Weeks</option>
+							    		 </select>
+							    	</li>
+							    </ul>
+							  </div>
+							</div>
+							<hr>
+							<br>
+							<div class="form-group row">
+							  <label for="example-text-input" class="col-md-2 col-form-label">Show me as</label>
+							  <div class="col-md-10">
+									<div class="form-group">
+					          <input type="radio" name="r1" value="1"> Available
+					          <input type="radio" name="r1" value="2"> Busy
+					        </div> 
+							  </div>
+							</div>
+							<div class="form-group row">
+							  <label for="example-text-input" class="col-md-2 col-form-label">Show me as</label>
+							  <div class="col-md-10">
+									<div class="form-group">
+					          <input type="radio" name="r1" value="1"> Calendar default
+					          <input type="radio" name="r1" value="2"> Public
+					          <input type="radio" name="r1" value="3"> Private
+					        </div> 
+							  </div>
+							</div>
+				    </div>
+				    <hr>
+				    <br>
+				    <div role="tabpanel" class="tab-pane" id="find-time">
+				    	 <div class="row">
+							    <div class="col-md-12">
+							      <div class="var-nav">
+									    <div class="col-md-5">
+									    	<ul class="list-inline">
+									    	  <li><button class="btn btn-primary">Today</button></li>
+									    	  <li>
+									    	  	<div class="btn-group">
+									            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+									            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+									          </div>
+									        </li>
+									        <li><span>Thursday</span><span>,</span><span>Apr</span><span>,</span><span>20</span><span>,</span><span>2017</span></li>
+									    	</ul>
+									    </div>
+									    <div class="col-md-5">
+									      <ul class="nav nav-tabs ">
+													<li class="active">
+														<a href="#tab_default_1" data-toggle="tab">
+														Day </a>
+													</li>
+													<li>
+														<a href="#tab_default_2" data-toggle="tab">
+														Week</a>
+													</li>
+												</ul>
+									    </div>
+							      </div>
+							     </div>
+							  </div>
+							  <div class="row">
+							    <div class="tab-content">
+							      <div class="tab-pane active" id="tab_default_1">
+									  	<div class="col-md-12">
+									  		<table class="table table-bordered table-color-meeting">
+												  <thead>
+												      <tr>
+												        <th class="with-tr-td">GMT+05:30</th>
+												        <th></th>
+												      </tr>
+												   </thead>
+												   <tbody>
+												      <tr>
+												        <td>8 am</td>
+												        <td></td>
+												      </tr>
+												      <tr>
+												        <td>8 am</td>
+												        <td></td>
+												      </tr>
+												      <tr>
+												        <td>8 am</td>
+												        <td></td>
+												      </tr>
+												      <tr>
+												        <td>8 am</td>
+												        <td></td>
+												      </tr>
+												      <tr>
+												        <td>8 am</td>
+												        <td></td>
+												      </tr>
+												      <tr>
+												        <td>8 am</td>
+												        <td></td>
+												      </tr>
+												      <tr>
+												        <td>8 am</td>
+												        <td></td>
+												      </tr>
+												      <tr>
+												        <td>8 am</td>
+												        <td></td>
+												      </tr>
+												      <tr>
+												        <td>8 am</td>
+												        <td></td>
+												      </tr>
+												      <tr>
+												        <td>8 am</td>
+												        <td></td>
+												      </tr>
+												      <tr>
+												        <td>8 am</td>
+												        <td></td>
+												      </tr>
+												      <tr>
+												        <td>8 am</td>
+												        <td></td>
+												      </tr>
+												    </tbody>
+												</table>
+									  	</div>
+									  </div>
+									  <div class="tab-pane" id="tab_default_2">
+									  	<div class="col-md-12"  class="tabl-hide">
+									  		<table class="table table-bordered table-color-meeting">
+												  <thead>
+												    <tr>
+												      <th></th>
+												      <th>sun 4/16</th>
+												      <th>Mon 4/17</th>
+												      <th>Tue 4/18 </th>
+												      <th>wed 4/19</th>
+												      <th>thu 4/20</th>
+												      <th>Fri 4/21</th>
+												      <th>sat 4/22</th>
+												    </tr>
+												  </thead>
+												  <tbody>
+												    <tr>
+												      <td>all day</td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												    </tr>
+												    <tr>
+												      <td>
+												        <p>12am</p>
+												         <hr>
+												        <p></p>
+												      </td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												    </tr>
+												    <tr>
+												      <td>
+												        <p>1am</p>
+												         <hr>
+												        <p></p>
+												      </td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												    </tr>
+												    <tr>
+												      <td>
+												        <p>1am</p>
+												         <hr>
+												        <p></p>
+												      </td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												    </tr>
+												    <tr>
+												      <td>
+												        <p>1am</p>
+												         <hr>
+												        <p></p>
+												      </td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												    </tr>
+												    <tr>
+												      <td>
+												        <p>1am</p>
+												         <hr>
+												        <p></p>
+												      </td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												    </tr>
+												    <tr>
+												      <td>
+												        <p>1am</p>
+												         <hr>
+												        <p></p>
+												      </td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												    </tr>
+												    <tr>
+												      <td>
+												        <p>1am</p>
+												         <hr>
+												        <p></p>
+												      </td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												    </tr>
+												    <tr>
+												      <td>
+												        <p>1am</p>
+												         <hr>
+												        <p></p>
+												      </td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												      <td></td>
+												    </tr>
+												  </tbody>
+												</table>
+									  	</div>
+									  </div>
+								  </div>
+							  </div>
+				    </div>
+				  </div>
+        </div>
+        <div>
+      </div></div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

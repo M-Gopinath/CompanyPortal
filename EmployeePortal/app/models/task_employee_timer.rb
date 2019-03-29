@@ -1,0 +1,2 @@
+class TaskEmployeeTimer < ApplicationRecord
+end

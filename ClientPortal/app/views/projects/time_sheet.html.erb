@@ -1,0 +1,84 @@
+<section class="content">
+	<div class="panel">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-4 content-header">
+					<h1>Time Sheet</h1><br />
+				</div>
+				<div class="col-md-4 content-header">
+				</div>
+				<div class="col-md-4 content-header">
+					<div class="top-links new-top">
+						<a href="">xls</a>
+						<a href="">csv</a>
+						<a href="">pdf</a>
+					</div>
+				</div>
+				<div class="header-border"></div>
+			</div>
+			<div class="col-md-12">
+				<div class="time_sheet_header time_sheet_month_only">
+					<%= render partial: "time_sheet_month_only", locals:{select_month_start: @select_month_start, select_month_end: @select_month_end, select_week: @select_week, select_day: @select_day} %>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="time_sheet_monthly_view">
+					<%= render partial: "time_sheet_monthly_view", locals: {select_month_start: @select_month_start, select_month_end: @select_month_end, select_week: @select_week, select_day: @select_day} %>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="time_sheet_weekly_view">
+					<%= render partial: "time_sheet_weekly_view", locals: {select_month_start: @select_month_start, select_month_end: @select_month_end, select_week: @select_week, select_day: @select_day, tasks: @tasks} %>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(document).ready(function() {
+			return $.progressForm();
+		});
+
+		$.progressForm = function() {
+			$('.vertical .progress-fill span').each(function() {
+				var bg, hour_percent, pTop, percent;
+				percent = $(this).html();
+				hour_percent = parseInt(percent * 100 / 12);
+				pTop = 100 - hour_percent + '%';
+				bg = 'red';
+				if (hour_percent > 25 && hour_percent < 51) {
+					bg = '#81D';
+				} else if (hour_percent > 51 && hour_percent < 71) {
+					bg = '#8A0';
+				} else if (hour_percent > 71 && hour_percent <= 100) {
+					bg = '#A18';
+				}
+				$(this).parent().css({
+					'height': hour_percent,
+					'top': pTop,
+					'background': bg
+				});
+			});
+			return $('.vertical .progress-fill-two span').each(function() {
+				var bg, hour_percent, pTop, percent;
+				percent = $(this).html();
+				hour_percent = parseInt(percent * 100 / 12);
+				pTop = 100 - hour_percent + '%';
+				bg = 'yellow';
+				if (hour_percent > 25 && hour_percent < 51) {
+					bg = '#A18';
+				} else if (hour_percent > 51 && hour_percent < 71) {
+					bg = '#81D';
+				} else if (hour_percent > 71 && hour_percent <= 100) {
+					bg = '#8A0';
+				}
+				$(this).parent().css({
+					'height': hour_percent,
+					'top': pTop,
+					'background': bg
+				});
+			});
+		};
+	});
+</script>

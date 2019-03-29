@@ -1,0 +1,8 @@
+<% if @project.errors.present? %>
+	$(".errors").text("");
+  <% @project.errors.full_messages.each do |error| %>
+    $(".errors").append("<li><%= error %></li>");
+  <% end %>
+<%else%>
+	window.location.assign("<%= dashboard_active_listing_path %>");
+<%end%>

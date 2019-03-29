@@ -1,0 +1,78 @@
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>Task Priority</h1><br />
+        </div>
+        <div class="col-md-4 content-header">
+        </div>
+        <div class="col-md-3 content-header">
+        </div>
+        <div class="header-border"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <p align="center">Task Priority create</p>
+        <%= form_for :task_priority, url: seed_table_create_task_priority_path do |f| %>
+        <div class="modal-body">
+          <div class="errors"></div>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, required: true, class: 'form-control' %>
+          </div>
+        </div>
+        <%= f.submit class: "btn btn-primary pd-10" %>
+        <%end%>
+      </div>
+      <div class="col-md-7">
+        <p align="center">Task Priority List</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Task Priority Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @task_priorities.each do |task_priority| %>
+            <tr>
+              <td><%= task_priority.name %></td>
+              <td class="action-link">
+                <a href="" data-toggle="modal" data-target="#task_priority_id_<%= task_priority.id%>">
+                  <i class="fa fa-user-circle-o"></i>
+                </a>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% @task_priorities.each do |task_priority| %>
+  <!-- Modal -->
+  <div id="task_priority_id_<%= task_priority.id%>" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Task Priority</h4>
+        </div>
+        <div class="modal-body">
+          <p>Task Priority Name : <span><%= task_priority.name %></span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% end %>
+

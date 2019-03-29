@@ -1,0 +1,105 @@
+
+<div class="modal-dialog modal-lg">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Add Employee Personal Details</h4>
+    </div>
+    <div class="modal-body">
+      <%= form_for personal_detail, html: { multipart: true } do |f| %>
+        <%= f.hidden_field :employee_id %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :personal_email %>
+              <%= f.email_field :personal_email, class: "form-control", required: true %>
+            </div>
+            <div class="form-group">
+              <%= f.label "Contact Number 1" %>
+              <%= f.text_field :contact_number_1, class: "form-control", required: true %>
+            </div>
+            <div class="form-group">
+              <%= f.label "Contact Number 2" %>
+              <%= f.text_field :contact_number_2, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :gender %><br>
+              <% EmployeePersonalDetail::GENDER.each do |g| %>
+                <%= f.radio_button :gender, g, required: true %><%= g %>
+              <% end %>
+            </div>
+            <div class="form-group">
+              <%= f.label :blood_group %>
+              <%= f.select :blood_group, options_for_select(EmployeePersonalDetail::BLOODGROUP.map {|bg| [bg, bg]}), {prompt: 'Select'}, class:"form-control", required: true %>
+            </div>
+            <div class="form-group">
+              <%= f.label :avatar %>
+              <div class="responsive_image">
+                <%= image_tag(personal_detail.avatar_url)if personal_detail.avatar? %>
+              </div>
+              <%= f.file_field :avatar %>
+              <%= f.hidden_field :avatar_cache %>
+            </div>
+            <div class="form-group">
+              <%= f.label :identity_mark_1 %>
+              <%= f.text_field :identity_mark_1, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :identity_mark_2 %>
+              <%= f.text_field :identity_mark_2, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :pan_number %>
+              <%= f.text_field :pan_number, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :adhaar_card_number %>
+              <%= f.text_field :adhaar_card_number, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :driving_license_number %>
+              <%= f.text_field :driving_license_number, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :voter_id %>
+              <%= f.text_field :voter_id, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :passport_number %>
+              <%= f.text_field :passport_number, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :passport_expiry_date %>
+              <%= f.text_field :passport_expiry_date, class: "form-control passport-datepicker" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :passport_registration_place %>
+              <%= f.text_field :passport_registration_place, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="form-group row text-center">
+          <div class="col-sm-12">
+            <%= f.submit personal_detail.new_record? ? "Create" : "Update", class: 'btn btn-success'%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $("#employee_personal_detail_contact_number_1").numeric();
+  $("#employee_personal_detail_contact_number_2").numeric();
+  $(document).on("focus", ".passport-datepicker", function(){
+    $(this).datepicker({
+      startView: "decade",
+      format: 'yyyy-mm-dd',
+      autoclose: true
+    });
+  });
+</script>

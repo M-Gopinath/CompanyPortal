@@ -1,0 +1,40 @@
+<div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Employee Details</h4>
+    </div>
+    <div class="modal-body">
+      <p>
+        <strong>Designation:</strong>
+        <%= employee.role.name %>
+      </p>
+
+      <p>
+        <strong>Employee Id:</strong>
+        <%= employee.employee_id %>
+      </p>
+
+      <p>
+        <strong>First Name:</strong>
+        <%= employee.first_name %>
+      </p>
+      <p>
+        <strong>Last Name:</strong>
+        <%= employee.last_name %>
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <%= employee.email %>
+      </p>
+      <p>
+        <strong>DOB:</strong>
+        <%= employee.dob %>
+      </p>
+
+    </div>
+  </div>
+</div>

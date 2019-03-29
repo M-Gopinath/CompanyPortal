@@ -1,0 +1,28 @@
+<div class="">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>From</th>
+        <th>To</th>
+        <th>Leave Type</th>
+        <th>Status</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% recent_activities.each do |ra| %>
+      <tr>
+        <td><%= ra.leave_request.try(:from_date) %></td>
+        <td><%= ra.leave_request.try(:to_date) %></td>
+        <td><%= ra.leave_request.try(:leave_type).try(:name) %></td>
+        <td><%= ra.get_status(ra.leave_permission_status_id) %></td>
+        <td><%= ra.description %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="pagination-content">
+    <%= will_paginate recent_activities, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>

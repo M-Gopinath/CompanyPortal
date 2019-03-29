@@ -1,0 +1,99 @@
+  <p>Leave Request</p>
+<div class="panel panel-bg">
+  <div class="table-responsive">
+    <% if pending_requests.present? %>
+      <div class="scroll_content">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Emb.id</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% pending_requests.each do |pq| %>
+            <tr>
+              <td><%= pq.employee_id %></td>
+              <td><%= pq.get_emloyee_first_name(pq.employee_id)%></td>
+              <td><%= pq.get_emloyee_last_name(pq.employee_id)%></td>
+              <td class="action-link">
+                <a href="#" data-toggle="modal" data-target="#fullview<%=pq.id%>"><i class="fa fa-user-circle-o"></i></a>
+                <%= link_to  leave_permissions_approve_leaves_path(leave_id: pq.id, leave_permission_status_id: 2), remote: true do %>
+                  <i class="fa fa-check"></i>
+                <% end %>
+                <%= link_to leave_permissions_reject_leaves_path(leave_id: pq.id, leave_permission_status_id: 3), remote: true do %>
+                  <i class="fa fa-times"></i>
+                <% end %>
+              <td>
+              </td>
+              <td>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table> 
+      </div>
+    <% else %>
+      <p align="center">No record</p>
+    <% end %>
+  </div>
+</div>
+
+<% if pending_requests.present? %>
+  <% pending_requests.each do |pq| %>
+    <div id="fullview<%=pq.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Approve / Cancel Request</h4>
+          </div>
+          <div class="modal-body">
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <td>From Date</td>
+                  <td><%= pq.from_date.strftime("%d-%m-%Y")%></td>
+                </tr>
+                <tr>
+                  <td>To Date</td>
+                  <td><%= pq.to_date.strftime("%d-%m-%Y") %></td>
+                </tr>
+                <tr>
+                  <td>No of days</td>
+                  <td><%= pq.no_of_days %></td>
+                </tr>
+                <tr>
+                  <td>Leave Type</td>
+                  <td><%= pq.leave_type.try(:name) %></td>
+                </tr>
+                <tr>
+                  <td>Reason</td>
+                  <td><%= pq.reason %></td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td><%= pq.get_status(pq.leave_permission_status_id) %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <div class="col-md-8 pull-left">
+              <% if pq.try(:leave_permission_status_id) == 1 %>
+                <%= link_to "Approve", leave_permissions_approve_leaves_path(leave_id: pq.id, leave_permission_status_id: 2),class: "btn btn-default remove-model", remote: true %>
+                <%= link_to "Rejected",leave_permissions_reject_leaves_path(leave_id: pq.id, leave_permission_status_id: 3),class: "btn btn-default remove-model", remote: true %>
+              <% end %>
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+<% end %>

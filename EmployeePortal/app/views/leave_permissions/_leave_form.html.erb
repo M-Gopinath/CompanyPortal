@@ -1,0 +1,47 @@
+<div class="clearfix remaining_leave_lists">
+  <div class="clearfix"></div>
+</div>
+<%= form_for apply_leave, url: url, html: {id: "apply-leave-form"} do |f| %>
+  <% if @apply_leave.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@apply_leave.errors.count, "error") %> prohibited this leave_request from being saved:</h2>
+
+      <ul>
+      <% @apply_leave.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= hidden_field_tag :id, apply_leave.id unless f.object.new_record? %>
+  <%= f.hidden_field :employee_id, value: current_employee.id %>
+  <%= f.hidden_field :approver_id, value: current_employee.supervisor_id %>
+  <div class="form-group">
+    <%= f.label "LEave Type" %>
+    <%= f.select :leave_type_id, options_for_select(get_leave_types, apply_leave.leave_type_id), {prompt: 'Select'}, class: "form-control", required: true %>
+    <div class="balance_leave_text float-right"></div>
+  </div>
+  <div class="form-group">
+    <%= f.label :from_date %>
+    <%= f.text_field :from_date, class: "form-control datepicker", required: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :to_date %>
+    <%= f.text_field :to_date, class: "form-control datepicker", required: true %>
+  </div>
+  <div class="form-group">
+    <%= check_box_tag :half_day %>
+    <%= label_tag "HalfDay" %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Total Days Count" %>
+    <%= f.text_field :no_of_days, class: "form-control", readonly: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :reason%>
+    <%= f.text_area :reason, class: "form-control", required: true, rows:"2" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary btn-lg btn-block it-btn-them leave-submit" %>
+  </div>
+<%end%>

@@ -1,0 +1,54 @@
+ <% @clients.each.with_index(1) do |client,index| %>
+<tr>
+  <td><%= index %></td>
+  <td><%= client.try(:email) %></td>
+  <td><%= client.name? %></td>
+  <td class="action-link" align="center">
+    <a><span><i class="fa fa-facebook-square" style="<%= client.facebook_present? ? 'color:green' : 'color:blue' %>"></i></span></a>
+    <a><span><i class="fa fa-google-plus-square" style="<%= client.gmail_present? ? 'color:green' : 'color:blue' %>"></i></span></a>
+    <a><span>
+      <i class="fa fa-twitter-square" style="<%= client.twitter_present? ? 'color:green' : 'color:blue' %>"></i>
+    </span></a>
+    <a><span><i class="fa fa-linkedin-square" style="<%= client.linkedin_present? ? 'color:green' : 'color:blue' %>"></i></span></a>
+  </td>
+  <td class="action-link">
+    <a data-toggle="modal" data-target="#social_network_<%= client.id%>"><i class="fa fa-user-circle-o"></i></a>
+  <td>
+</tr>
+<%end%>
+
+<% if @clients.present? %>
+  <% @clients.each do |ac|%>
+    <div id="social_network_<%= ac.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Active Clients</h4>
+          </div>
+          <div class="modal-body">
+          	<p>Email : <span><%= ac.try(:email) %></span></p>
+          	<p>Name : <span><%= ac.try(:name?) %></span></p>
+            <div>
+              <p align="center">Social Network</p>
+              <div>
+                <p align="center">
+                  <a><span><i class="fa fa-facebook-square fa-social-1" style="<%= ac.facebook_present? ? 'color:green' : 'color:blue' %>"></i></span></a>
+                  <a><span><i class="fa fa-google-plus-square fa-social-1" style="<%= ac.gmail_present? ? 'color:green' : 'color:blue' %>"></i></span></a>
+                  <a><span>
+                    <i class="fa fa-twitter-square fa-social-1" style="<%= ac.twitter_present? ? 'color:green' : 'color:blue' %>"></i>
+                  </span></a>
+                  <a><span><i class="fa fa-linkedin-square fa-social-1" style="<%= ac.linkedin_present? ? 'color:green' : 'color:blue' %>"></i></span></a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,13 @@
+<% @clients.each.with_index(1) do |client,index| %>
+<tr>
+  <td><%= index %></td>
+  <td><%= client.try(:email) %></td>
+  <td><%= client.name? %></td>
+  <td>
+    <%= link_to "Edit", edit_clients_path(client) %>
+    <%= link_to "Show", show_clients_path(client) %>
+    <%= link_to "Deactive", update_active_clients_path(client), method: :put %>
+    <%= link_to "Delete", delete_clients_path(client), method: :delete,data: {confirm: "Are you sure?"} %>
+  </td>
+</tr>
+<%end%>

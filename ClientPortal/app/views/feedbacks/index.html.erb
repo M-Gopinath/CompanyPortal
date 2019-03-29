@@ -1,0 +1,32 @@
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 content-header">
+          <h1>Feedback</h1><br />
+          <p class="displaying_feedback"><%= page_entries_info @feedbacks %></p>
+        </div>
+        <div class="col-md-4 content-header">
+          <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' }, remote: true do |f| %>
+            <%= f.text_field(
+              :search_query,
+              class: 'filterrific-periodically-observed search-input form-control col-xs-11 search-clients',placeholder: "Search"
+            ) %>
+            <%= f.hidden_field :sorted_by, value: "created_at_desc" %>
+          <%end%>
+        </div>
+        <div class="col-md-4 content-header">
+          <div class="top-links new-top">
+            <%= link_to 'xls', feedbacks_path(format: "xls") %>
+            <%= link_to 'csv', feedbacks_path(format: "csv") %>
+            <%= link_to 'pdf', feedbacks_path(format: :pdf) %>
+          </div>
+        </div>
+        <div class="header-border"></div>
+      </div>
+    </div>
+    <div class="feedback_list">
+      <%= render partial: "list", locals: {feedbacks: @feedbacks} %>
+    </div>
+  </div>
+</section>

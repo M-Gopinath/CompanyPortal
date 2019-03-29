@@ -1,0 +1,41 @@
+<% @clients.each.with_index(1) do |client,index| %>
+<tr>
+  <td><%= index %></td>
+  <td><%= client.try(:email) %></td>
+  <td><%= client.name? %></td>
+  <td class="action-link">
+  <a data-toggle="modal" data-target="#deactive_client_<%= client.id%>"><i class="fa fa-user-circle-o"></i></a>
+  	<%= link_to  edit_clients_path(client) do %>
+  	<i class="fa fa-edit"></i>
+  	<% end %>
+  	<%= link_to delete_clients_path(client), method: :delete,data: {confirm: "Are you sure?"} do %>
+  	<i class="fa fa-times"></i>
+  	<% end %>
+  	<%= link_to "Active", update_active_clients_path(client), method: :put %>
+  	<td>
+</tr>
+<%end%>
+
+
+<% if @clients.present? %>
+  <% @clients.each do |ac|%>
+    <div id="deactive_client_<%= ac.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Deactive Clients</h4>
+          </div>
+          <div class="modal-body">
+          	<p>Email : <span><%= ac.try(:email) %></span></p>
+          	<p>Name : <span><%= ac.try(:name?) %></span></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

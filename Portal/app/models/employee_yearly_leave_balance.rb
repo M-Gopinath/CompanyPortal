@@ -1,0 +1,2 @@
+class EmployeeYearlyLeaveBalance < ApplicationRecord
+end

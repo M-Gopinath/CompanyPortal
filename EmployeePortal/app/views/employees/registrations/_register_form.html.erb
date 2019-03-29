@@ -1,0 +1,76 @@
+<div id="empRegisterModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Add Employee to Organization</h4>
+    </div>
+    <div class="modal-body">
+     <%= form_for employee, url: registration_path(employee) do |f| %>
+     <%#= devise_error_messages! %>
+     <%= f.hidden_field :is_active, value: true %>
+     <div class="form-group">
+      <%= f.label "Designation" %>
+      <%= f.select :role_id, options_for_select(Role.all_roles.map{|des| [des.name, des.id]}, employee.role_id), {prompt: 'Select'}, class:"form-control employee_role_id", required: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.select :title, options_for_select(possible_options), {prompt: 'Select'}, class:"form-control", required: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: "form-control employee_first_name", required: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: "form-control employee_last_name", required: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :Date_of_Birth %> <br>
+      <%= f.text_field :dob, class:"form-control datepicker-user"%>
+    </div>
+    <div class="input-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control employee_email", readonly: :true , style:"background: transparant"%>
+      <div class="input-group-btn">
+        <button class="btn btn-default" style="margin-top:21px;">xxxxx</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label "Assign Supervisor" %>
+      <%= f.select :supervisor_id, options_for_select([], employee.supervisor_id), {prompt: 'Select'}, class:"form-control employee_supervisor_id" %>
+    </div>
+     <div class="form-group">
+        <%= f.label "Cost to Company(CTC)" %>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-inr" aria-hidden="true"></i></span>
+          <%= f.text_field :ctc, class: "form-control currency", required: true %>
+        </div>
+      </div>
+    <div class="form-group">
+      <%= f.hidden_field :first_password, class: "employee_first_password", readonly: :true %>
+      <%= f.hidden_field :password, class:"form-control employee_password", readonly: :true %>
+      <%= f.hidden_field :password_confirmation, class:"form-control employee_password_confirmation", readonly: :true %>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-lg btn-block it-btn-them" type="submit">Add Employee</button>
+    </div>
+    <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).on("focus", ".datepicker-user", function(){
+    $(this).datepicker({
+      startView: "decade",
+      startDate: '-50y',
+      endDate: '-1y',
+      format: 'yyyy-mm-dd',
+      autoclose: true
+    });
+  });
+</script>

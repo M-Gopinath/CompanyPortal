@@ -1,0 +1,25 @@
+<%= form_for(employee_bank_detail, remote: check_current_employee)  do |f| %>
+  <%= f.hidden_field :employee_id, value: employee.id %>
+  <div class="form-group">
+    <%= f.label :account_number %>
+    <%= f.text_field :account_number, class:"form-control", min: "0", step: 1 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :bank_name %>
+    <%= f.text_field :bank_name, class:"form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :bank_branch %>
+    <%= f.text_field :bank_branch, class:"form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :ifsc_code %>
+    <%= f.text_field :ifsc_code, class:"form-control"%>
+  </div>
+  <div class="actions">
+   <%= f.submit employee_bank_detail.new_record? ? "Create" : "Update", :class => 'btn btn-primary btn-lg btn-block it-btn-them' %>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $("#employee_bank_detail_account_number").numeric();
+</script>

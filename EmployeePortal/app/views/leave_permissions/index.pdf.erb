@@ -1,0 +1,54 @@
+<div id="letter_bad">
+  <h2 align="center">Users List</h2>
+  <%#= wicked_pdf_image_tag('letterhead-itbeezone.jpg',style:"width:180px;") %>
+  <% if params[:pdf_request] == "leave" %>
+    <% if @approved_leaves.present?%>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+         <% @approved_leaves.each do |al|%>
+         <tr>
+            <td><%= al.employee_id %></td>
+            <td><%= al.get_emloyee_first_name(al.employee_id) %></td>
+            <td><%= al.get_emloyee_last_name(al.employee_id) %></td>
+            <td><%= al.get_status(al.leave_permission_status_id) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% else %>
+      <p align="center">No Leaves</p>
+    <% end %>
+  <% end %>
+  <% if params[:pdf_request] == "permission" %>
+    <% if @approved_permissions.present?%>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+         <% @approved_permissions.each do |ap|%>
+         <tr>
+            <td><%= ap.employee_id %></td>
+            <td><%= ap.get_emloyee_first_name(ap.employee_id) %></td>
+            <td><%= ap.get_emloyee_last_name(ap.employee_id) %></td>
+            <td><%= ap.get_status(ap.leave_permission_status_id) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% else %>
+      <p align="center">No Permission</p>
+    <% end %>
+  <% end %>
+</div>

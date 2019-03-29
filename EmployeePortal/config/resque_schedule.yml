@@ -1,0 +1,32 @@
+user_yearly_lev_balance:
+  # cron: "* * * * *"
+  cron: "45 23 31 12 *"
+  class: "UserYearlyLevBalance"
+  queue: "user_queue"
+  description: "This job will create yearly leave balance"
+user_monthly_lev_balance:
+  # cron: "* * * * *"
+  cron: "55   23  31     1,3,5,7,8,10,12   *"
+  cron: "55   23  30     4,6,9,11          *"
+  cron: "55   23  28,29  2 *"
+  class: "UserMonthlyLevBalance"
+  queue: "user_queue"
+  description: "This job will create monthly leave balance"
+user_monthly_worked_report:
+  # cron: "* * * * *"
+  cron: "5 * 26 * *"
+  queue: "user_report"
+  class: "UserMonthlyWorkedReport"
+  description: "This job will generate monthly report for worked days"
+generate_tax_for_income:
+  # cron: "* * * * *"
+  cron: "10 * 26 * *"
+  queue: "generate_tax"
+  class: "GenerateMonthlyTax"
+  description: "This job for generate monthly tax"
+generate_employees_salary:
+  # cron: "* * * * * "
+  cron: "15 * 26 * *"
+  queue: "total_salary_queue"
+  class: "CompanySalarySpent"
+  description: "This job for generate company spent monthly salaries"

@@ -1,0 +1,56 @@
+<section class="content-header">
+  <h1>
+    Client
+    <small>Company Details</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+    <li class="active">Here</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="panel">
+    <div class="row">
+      <div class="wel">
+      	<div class="col-sm-9 col-md-9 ht-100 main-content">
+      		<div class="wel">
+      			<h2 align="center">Company</h2>
+      			<div class="col-md-6 col-sm-12">
+      				<div class="panel pd-25 client_info_ajax">
+                <%= render "client_address" %>
+      				</div>
+      			</div>
+      			<div class="col-md-6 col-sm-12">
+      				<div class="panel company-panel">
+      					<h4 align="center">Client Address</h4>
+      					<div class="field">
+      						<label>Contact number: <span class="client_contact_number"><%= @client.try(:contact_number) %></span></label>
+      					</div>
+      					<div class="field">
+      						<label>Address: <span class="client_address"><%= @client.try(:address) %></span></label>
+      					</div>
+      					<div class="field">
+      						<label>City: <span class="client_city"><%= @client.try(:city) %></span></label>
+      					</div>
+      					<div class="field">
+      						<label>State: <span class="client_state"><%= @client.try(:state) %></span></label>
+      					</div>
+      					<div class="field">
+      						<label>Country: <span class="client_country"><%= @client.try(:country) %></span></label>
+      					</div>
+      					<div class="field">
+      						<label>Zip code: <span class="client_zip_code"><%= @client.try(:zip_code) %></span></label>
+      					</div>
+      				</div>
+      			</div>
+      		</div>
+        </div>
+      </div>
+  	</div>
+  </div>
+</section>
+<script type="text/javascript">
+  $(document).on("change", "#client_same_as_client_address", function(){
+    $(this).closest('form').submit();
+  })
+</script>

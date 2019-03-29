@@ -1,0 +1,30 @@
+<% (select_week..select_week.end_of_week).each do |day| %>
+	<% if day <= Time.now %>
+		<%= link_to day.end_of_day > Date.today.end_of_day ? "#" : time_sheet_projects_path(day: day), remote: true do %>
+			<div class="day_of_week <%= 'day_of_week_background' if day.end_of_day == select_day.end_of_day %> ">
+				<%= day.strftime("%a, %d %B") %>
+			</div>
+		<%end%>
+	<%end%>
+<%end%>
+
+<div class="col-md-12">
+	<% if tasks.count > 0 %>
+		<% tasks.each do |task| %>
+			<div class="col-md-3">
+				<% task_timers =  task.task_timers.select_day_timer(select_day)%>
+				<p><h3><%= "Project : #{task.project.name}" %></h3></p>
+				<p><h4>Task Title : <%= task.try(:title) %></h4></p>
+				<% if task_timers.count > 0 %>
+					<% task_timers.each do |time| %>
+							<p>Task Lap time : <%= time.try(:lap_time) ? time.hours_format(time.try(:lap_time)) : "00:00:00" %></p>
+					<%end%>
+				<%else%>
+					<p>No task timer</p>
+				<%end%>
+			</div>
+		<%end%>
+	<%else%>
+		<p>No task</p>
+	<%end%>
+</div>
